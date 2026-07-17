@@ -1,31 +1,42 @@
 # PropertyTracker
 
-Monitor de propiedades en [Portal Inmobiliario](https://www.portalinmobiliario.com), con la misma lógica de JobTrackerChile: cada corrida scrapea los resultados de búsqueda, los contrasta contra lo ya guardado y reporta los avisos realmente nuevos y los cambios de precio.
+A real estate listing monitor built in Python. PropertyTracker scrapes apartment listings from [Portal Inmobiliario](https://www.portalinmobiliario.com) (Chile's largest real estate marketplace, owned by MercadoLibre), maintains a historical dataset of listings and prices, and detects newly published properties and price changes over time.
 
-## Uso
+The long-term goal is to use this growing dataset to **detect personal real estate investment opportunities**: undervalued listings, price drops, and neighborhoods trending above or below their historical price per m².
+
+## How it works
+
+Each run:
+
+* Scrapes all search result pages for the configured searches (no browser needed — the site embeds structured JSON in its HTML)
+* Compares against the stored dataset by listing ID
+* Reports **truly new listings** and **price changes** since the last run
+* Tracks `first_seen_date`, `last_seen_date` and `first_seen_price` per listing
+* Stores the full history in `data/raw/portalinmobiliario_listings.csv`
+* Exports listings discovered in the last 7 days to `data/recent_listings.csv`
 
 ```bash
 python3 main.py
 ```
 
-Cada corrida:
+The exact publication date is not public on the site, so `first_seen_date` approximates it with one-day precision when the tracker runs daily — building a timestamped dataset that doesn't exist anywhere else.
 
-* Scrapea todas las páginas de resultados de las búsquedas configuradas
-* Detecta avisos nuevos (`listing_id` no visto antes) y los imprime
-* Detecta cambios de precio contra la corrida anterior y los imprime
-* Mantiene `first_seen_date` / `last_seen_date` y `first_seen_price` por aviso
-* Guarda el histórico en `data/raw/portalinmobiliario_listings.csv`
-* Exporta los avisos de los últimos 7 días a `data/recent_listings.csv`
+## Data captured
 
-## Datos capturados
+Per listing: title, price (UF or CLP), bedrooms, bathrooms, usable m², **UF per m²** (computed), location, property kind (used / new development), seller, URL, and first/last seen dates.
 
-Por cada aviso: título, precio (UF o CLP), dormitorios, baños, m² útiles, **UF/m²** (calculado), ubicación, tipo (usada / proyecto), link, y fechas de primera y última vez visto.
+## Roadmap: ML for investment opportunity detection
 
-La fecha exacta de publicación no es pública en el sitio, pero corriendo el tracker a diario, `first_seen_date` la aproxima con precisión de un día.
+The dataset this tracker accumulates is designed to feed machine learning models:
 
-## Configuración
+* **Price modeling** — regression models (hedonic pricing) to estimate the expected price of a listing from its attributes (m², bedrooms, neighborhood, floor, building age), flagging listings priced significantly below their prediction as potential opportunities
+* **Time-on-market signals** — using `first_seen` / `last_seen` history to estimate how fast comparable properties sell, and which price cuts precede a sale
+* **Neighborhood trends** — tracking median UF/m² per neighborhood over time to detect areas appreciating faster than the comuna average
+* **Anomaly detection** — unsupervised methods to surface listings that deviate from their cluster of comparables
 
-Las búsquedas se definen en `scrapers/portalinmobiliario.py` (`SEARCHES`). Para agregar arriendo u otra comuna:
+## Configuration
+
+Searches are defined in `scrapers/portalinmobiliario.py` (`SEARCHES`). To add rentals or other comunas:
 
 ```python
 SEARCHES = [
@@ -34,11 +45,14 @@ SEARCHES = [
 ]
 ```
 
-El slug de `location` es el que aparece en la URL del sitio al buscar la comuna.
+The `location` slug is the one that appears in the site URL when searching for a comuna.
 
-## Notas
+## Notes
 
-* No usa browser: el sitio devuelve el HTML con un JSON embebido (`_n.ctx.r=`) que contiene todos los datos de las tarjetas ya estructurados.
-* Los avisos con `is_pad` (publicidad pagada) se excluyen porque suelen ser de otras comunas y duplican los orgánicos.
-* En proyectos (edificios nuevos) los m² vienen como rango, por lo que `uf_per_m2` solo se calcula para propiedades con m² único.
-* Una corrida diaria con pausa de 1s entre páginas (~70 requests) es un volumen respetuoso con el sitio.
+* Paid placements (`is_pad`) are excluded: they often belong to other comunas and duplicate organic results
+* For new developments, m² comes as a range, so `uf_per_m2` is only computed for listings with a single m² value
+* One daily run with a 1-second pause between pages (~70 requests) keeps the load on the site respectful
+
+## Status
+
+Active personal project focused on real estate data collection, price tracking, and investment opportunity modeling.
