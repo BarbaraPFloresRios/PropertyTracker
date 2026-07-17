@@ -3,6 +3,8 @@ import time
 
 import pandas as pd
 
+from src.generate_readme import generate_readme
+
 from scrapers.portalinmobiliario import (
     fetch_listing_details,
     scrape_portalinmobiliario,
@@ -335,3 +337,8 @@ def run_pipeline():
         f"Saved {len(recent_listings)} recent listings "
         "to data/recent_listings.csv"
     )
+
+    print_phase("Updating README")
+
+    generate_readme()
+    print("Updated README.md")
