@@ -96,21 +96,24 @@ def parse_attributes(card):
     texts = get_component(card, "attributes_list").get("texts", [])
 
     bedrooms_text = bathrooms_text = m2_text = None
-    m2_utiles = None
+    bedrooms_n = m2_utiles = None
 
     for text in texts:
         if "dormitorio" in text or "ambiente" in text.lower():
             bedrooms_text = text
+
+            # only single values ("3 dormitorios"), not ranges ("2 a 3")
+            if " a " not in text:
+                bedrooms_n = parse_int(text)
         elif "baño" in text:
             bathrooms_text = text
         elif "m²" in text:
             m2_text = text
 
-            # only single values ("170 m² útiles"), not ranges ("57 - 104")
             if "-" not in text and " a " not in text:
                 m2_utiles = parse_int(text)
 
-    return bedrooms_text, bathrooms_text, m2_text, m2_utiles
+    return bedrooms_text, bedrooms_n, bathrooms_text, m2_text, m2_utiles
 
 
 def parse_card(card, search):
@@ -130,7 +133,7 @@ def parse_card(card, search):
     price_value = price.get("value")
     currency = price.get("currency")
 
-    bedrooms, bathrooms, m2_text, m2_utiles = parse_attributes(card)
+    bedrooms, bedrooms_n, bathrooms, m2_text, m2_utiles = parse_attributes(card)
 
     is_project = "DEVELOPMENT" in (metadata.get("domain_id") or "")
 
@@ -139,6 +142,7 @@ def parse_card(card, search):
         "price": price_value,
         "currency": currency,
         "bedrooms": bedrooms,
+        "bedrooms_n": bedrooms_n,
         "bathrooms": bathrooms,
         "m2": m2_text,
         "m2_utiles": m2_utiles,
@@ -195,6 +199,52 @@ def scrape_search(search):
         time.sleep(SLEEP_SECONDS)
 
     return listings
+
+
+def parse_clp_amount(text):
+    digits = re.sub(r"\D", "", text or "")
+    return int(digits) if digits else None
+
+
+def fetch_listing_details(url):
+    """Fetch parking and common expenses from a listing's detail page."""
+    try:
+        response = requests.get(url, headers=HEADERS, timeout=30)
+        response.raise_for_status()
+    except Exception as e:
+        print(f"Detail fetch failed: {url} ({e})")
+        return None
+
+    start = response.text.find('{"id":"technical_specifications"')
+
+    if start == -1:
+        return {}
+
+    try:
+        specs_component, _ = (
+            json.JSONDecoder().raw_decode(response.text[start:])
+        )
+    except ValueError:
+        return {}
+
+    attributes = {}
+
+    for spec in specs_component.get("specs", []):
+        for attribute in spec.get("attributes", []):
+            attributes[attribute.get("id")] = attribute.get("text")
+
+    if "Estacionamientos" in attributes:
+        parking = parse_int(attributes["Estacionamientos"])
+    else:
+        # a spec sheet without the attribute means no parking
+        parking = 0 if attributes else None
+
+    return {
+        "parking": parking,
+        "gastos_comunes_clp": parse_clp_amount(
+            attributes.get("Gastos comunes")
+        ),
+    }
 
 
 def fetch_uf_value():

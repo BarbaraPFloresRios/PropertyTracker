@@ -1,8 +1,12 @@
 import os
+import time
 
 import pandas as pd
 
-from scrapers.portalinmobiliario import scrape_portalinmobiliario
+from scrapers.portalinmobiliario import (
+    fetch_listing_details,
+    scrape_portalinmobiliario,
+)
 
 RAW_DATA_DIR = "data/raw"
 
@@ -11,6 +15,12 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 )
 
 RECENT_DAYS = 7
+RECENT_MAX_M2 = 100
+
+ENRICH_MAX_PER_RUN = 300
+ENRICH_SLEEP_SECONDS = 0.5
+
+ENRICH_COLUMNS = ["parking", "gastos_comunes_clp", "enriched_date"]
 
 
 def normalize_key(series):
@@ -126,6 +136,13 @@ def save_listings(current_listings, output_path, source=""):
             .fillna(current_listings["price"])
         )
 
+        # keep detail-page data already fetched for known listings
+        for column in ENRICH_COLUMNS:
+            if column in old_indexed.columns:
+                current_listings[column] = (
+                    current_listings[dedupe_key].map(old_indexed[column])
+                )
+
         listings = pd.concat(
             [old_listings, current_listings],
             ignore_index=True,
@@ -205,17 +222,68 @@ def save_listings(current_listings, output_path, source=""):
     return new_listings
 
 
+def recent_mask(listings):
+    cutoff = (
+        pd.Timestamp.today() - pd.Timedelta(days=RECENT_DAYS)
+    ).strftime("%Y-%m-%d")
+
+    return (
+        (listings["first_seen_date"] >= cutoff)
+        & (listings["m2_utiles"] < RECENT_MAX_M2)
+    )
+
+
+def enrich_recent_listings():
+    """Fetch parking and common expenses for recent listings, with cache."""
+    if not os.path.exists(PORTALINMOBILIARIO_OUTPUT_PATH):
+        return
+
+    listings = pd.read_csv(PORTALINMOBILIARIO_OUTPUT_PATH)
+
+    for column in ENRICH_COLUMNS:
+        if column not in listings.columns:
+            listings[column] = pd.NA
+
+    candidates = listings.index[
+        recent_mask(listings)
+        & listings["enriched_date"].isna()
+        & listings["url"].notna()
+    ]
+
+    pending = len(candidates)
+    candidates = candidates[:ENRICH_MAX_PER_RUN]
+
+    print(f"Enriching {len(candidates)} of {pending} pending listings")
+
+    today = pd.Timestamp.today().strftime("%Y-%m-%d")
+
+    for count, index in enumerate(candidates, start=1):
+        details = fetch_listing_details(listings.at[index, "url"])
+
+        if details is None:
+            continue
+
+        listings.at[index, "parking"] = details.get("parking")
+        listings.at[index, "gastos_comunes_clp"] = (
+            details.get("gastos_comunes_clp")
+        )
+        listings.at[index, "enriched_date"] = today
+
+        if count % 50 == 0:
+            print(f"  {count}/{len(candidates)} enriched")
+
+        time.sleep(ENRICH_SLEEP_SECONDS)
+
+    listings.to_csv(PORTALINMOBILIARIO_OUTPUT_PATH, index=False)
+
+
 def build_recent_listings():
     if not os.path.exists(PORTALINMOBILIARIO_OUTPUT_PATH):
         return pd.DataFrame()
 
     listings = pd.read_csv(PORTALINMOBILIARIO_OUTPUT_PATH)
 
-    cutoff = (
-        pd.Timestamp.today() - pd.Timedelta(days=RECENT_DAYS)
-    ).strftime("%Y-%m-%d")
-
-    recent = listings[listings["first_seen_date"] >= cutoff].copy()
+    recent = listings[recent_mask(listings)].copy()
 
     recent = recent.sort_values(
         by="uf_per_m2",
@@ -229,6 +297,9 @@ def build_recent_listings():
         "price_clp",
         "m2_utiles",
         "uf_per_m2",
+        "bedrooms_n",
+        "parking",
+        "gastos_comunes_clp",
         "first_seen_date",
         "url",
     ]
@@ -250,6 +321,10 @@ def run_pipeline():
         PORTALINMOBILIARIO_OUTPUT_PATH,
         "Portalinmobiliario",
     )
+
+    print_phase("Enriching recent listings")
+
+    enrich_recent_listings()
 
     print_phase("Exporting recent listings")
 

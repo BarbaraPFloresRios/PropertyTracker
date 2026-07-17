@@ -13,7 +13,7 @@ Each run:
 * Reports **truly new listings** and **price changes** since the last run
 * Tracks `first_seen_date`, `last_seen_date` and `first_seen_price` per listing
 * Stores the full history in `data/raw/portalinmobiliario_listings.csv`
-* Exports listings discovered in the last 7 days to `data/recent_listings.csv`
+* Exports listings discovered in the last 7 days (under 100 m², sorted by UF/m²) to `data/recent_listings.csv`
 
 ```bash
 python3 main.py
@@ -24,6 +24,8 @@ The exact publication date is not public on the site, so `first_seen_date` appro
 ## Data captured
 
 Per listing: title, price in both UF and CLP (converted daily via mindicador.cl), bedrooms, bathrooms, usable m², **UF per m²** (computed), location, property kind (used / new development), seller, URL, and first/last seen dates.
+
+Recent listings are also enriched from each listing's detail page with **parking spots** and **monthly common expenses** (gastos comunes), fetched once per listing and cached.
 
 ## Roadmap: ML for investment opportunity detection
 
