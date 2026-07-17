@@ -216,8 +216,8 @@ def build_recent_listings():
     recent = listings[listings["first_seen_date"] >= cutoff].copy()
 
     recent = recent.sort_values(
-        by=["first_seen_date", "uf_per_m2"],
-        ascending=[False, True],
+        by="uf_per_m2",
+        ascending=True,
         na_position="last",
     )
 
@@ -225,11 +225,8 @@ def build_recent_listings():
         "title",
         "price",
         "currency",
+        "m2_utiles",
         "uf_per_m2",
-        "m2",
-        "bedrooms",
-        "location",
-        "property_kind",
         "first_seen_date",
         "url",
     ]
