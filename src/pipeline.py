@@ -22,7 +22,21 @@ RECENT_MAX_M2 = 100
 ENRICH_MAX_PER_RUN = 300
 ENRICH_SLEEP_SECONDS = 0.5
 
-ENRICH_COLUMNS = ["parking", "gastos_comunes_clp", "enriched_date"]
+ENRICH_VALUE_COLUMNS = [
+    "parking",
+    "bodegas",
+    "gastos_comunes_clp",
+    "antiguedad_anos",
+    "m2_totales",
+    "m2_terraza",
+    "piso_unidad",
+    "pisos_edificio",
+    "deptos_por_piso",
+    "orientacion",
+    "lat",
+    "lng",
+]
+ENRICH_COLUMNS = ENRICH_VALUE_COLUMNS + ["enriched_date"]
 
 
 def normalize_key(series):
@@ -176,10 +190,15 @@ def save_listings(current_listings, output_path, source=""):
         "first_seen_price",
         "uf_per_m2",
         "bedrooms",
+        "bedrooms_n",
         "bathrooms",
+        "bathrooms_n",
         "m2",
         "m2_utiles",
+        "seller",
+        "tienda_oficial",
         "location",
+        "barrio",
         "property_kind",
         "operation",
         "property_type",
@@ -246,6 +265,10 @@ def enrich_recent_listings():
         if column not in listings.columns:
             listings[column] = pd.NA
 
+    # text goes into these; an all-NaN column defaults to float
+    for column in ("orientacion", "enriched_date"):
+        listings[column] = listings[column].astype("object")
+
     candidates = listings.index[
         recent_mask(listings)
         & listings["enriched_date"].isna()
@@ -265,10 +288,9 @@ def enrich_recent_listings():
         if details is None:
             continue
 
-        listings.at[index, "parking"] = details.get("parking")
-        listings.at[index, "gastos_comunes_clp"] = (
-            details.get("gastos_comunes_clp")
-        )
+        for column in ENRICH_VALUE_COLUMNS:
+            listings.at[index, column] = details.get(column)
+
         listings.at[index, "enriched_date"] = today
 
         if count % 50 == 0:
@@ -302,6 +324,7 @@ def build_recent_listings():
         "bedrooms_n",
         "parking",
         "gastos_comunes_clp",
+        "barrio",
         "first_seen_date",
         "url",
     ]

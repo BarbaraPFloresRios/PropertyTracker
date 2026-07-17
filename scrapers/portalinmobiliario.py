@@ -96,7 +96,7 @@ def parse_attributes(card):
     texts = get_component(card, "attributes_list").get("texts", [])
 
     bedrooms_text = bathrooms_text = m2_text = None
-    bedrooms_n = m2_utiles = None
+    bedrooms_n = bathrooms_n = m2_utiles = None
 
     for text in texts:
         if "dormitorio" in text or "ambiente" in text.lower():
@@ -107,13 +107,42 @@ def parse_attributes(card):
                 bedrooms_n = parse_int(text)
         elif "baño" in text:
             bathrooms_text = text
+
+            if " a " not in text:
+                bathrooms_n = parse_int(text)
         elif "m²" in text:
             m2_text = text
 
             if "-" not in text and " a " not in text:
                 m2_utiles = parse_int(text)
 
-    return bedrooms_text, bedrooms_n, bathrooms_text, m2_text, m2_utiles
+    return {
+        "bedrooms": bedrooms_text,
+        "bedrooms_n": bedrooms_n,
+        "bathrooms": bathrooms_text,
+        "bathrooms_n": bathrooms_n,
+        "m2": m2_text,
+        "m2_utiles": m2_utiles,
+    }
+
+
+def parse_seller(card):
+    text = get_component(card, "seller").get("text") or ""
+    seller = re.sub(r"\{[^}]*\}", "", text).strip()
+
+    return seller or None, "icon_cockade" in text
+
+
+def parse_barrio(location_text):
+    parts = [p.strip() for p in (location_text or "").split(",") if p.strip()]
+
+    if len(parts) < 2:
+        return None
+
+    barrio = parts[-2]
+
+    # a digit means it's a street address, not a neighborhood
+    return None if re.search(r"\d", barrio) else barrio
 
 
 def parse_card(card, search):
@@ -133,20 +162,21 @@ def parse_card(card, search):
     price_value = price.get("value")
     currency = price.get("currency")
 
-    bedrooms, bedrooms_n, bathrooms, m2_text, m2_utiles = parse_attributes(card)
+    attributes = parse_attributes(card)
+    seller, tienda_oficial = parse_seller(card)
 
+    location = get_component(card, "location").get("text")
     is_project = "DEVELOPMENT" in (metadata.get("domain_id") or "")
 
     return {
         "title": get_component(card, "title").get("text", "").strip(),
         "price": price_value,
         "currency": currency,
-        "bedrooms": bedrooms,
-        "bedrooms_n": bedrooms_n,
-        "bathrooms": bathrooms,
-        "m2": m2_text,
-        "m2_utiles": m2_utiles,
-        "location": get_component(card, "location").get("text"),
+        **attributes,
+        "seller": seller,
+        "tienda_oficial": tienda_oficial,
+        "location": location,
+        "barrio": parse_barrio(location),
         "property_kind": "proyecto" if is_project else "usada",
         "listing_id": listing_id,
         "operation": search["operation"],
@@ -206,8 +236,35 @@ def parse_clp_amount(text):
     return int(digits) if digits else None
 
 
+# fallback coordinates the site uses when a listing has no real location
+DEFAULT_COORDINATES = (-35.675148, -71.54297)
+
+
+def parse_coordinates(html_text):
+    match = re.search(
+        r'"latitude":"(-?\d+\.?\d*)","longitude":"(-?\d+\.?\d*)"',
+        html_text,
+    ) or re.search(
+        r'"latitude":(-?\d+\.?\d*),"longitude":(-?\d+\.?\d*)',
+        html_text,
+    )
+
+    if not match:
+        return None, None
+
+    lat, lng = float(match.group(1)), float(match.group(2))
+
+    if (round(lat, 4), round(lng, 4)) == (
+        round(DEFAULT_COORDINATES[0], 4),
+        round(DEFAULT_COORDINATES[1], 4),
+    ):
+        return None, None
+
+    return lat, lng
+
+
 def fetch_listing_details(url):
-    """Fetch parking and common expenses from a listing's detail page."""
+    """Fetch parking, common expenses and coordinates from a detail page."""
     try:
         response = requests.get(url, headers=HEADERS, timeout=30)
         response.raise_for_status()
@@ -215,36 +272,57 @@ def fetch_listing_details(url):
         print(f"Detail fetch failed: {url} ({e})")
         return None
 
-    start = response.text.find('{"id":"technical_specifications"')
-
-    if start == -1:
-        return {}
-
-    try:
-        specs_component, _ = (
-            json.JSONDecoder().raw_decode(response.text[start:])
-        )
-    except ValueError:
-        return {}
+    lat, lng = parse_coordinates(response.text)
+    details = {"lat": lat, "lng": lng}
 
     attributes = {}
+    start = response.text.find('{"id":"technical_specifications"')
 
-    for spec in specs_component.get("specs", []):
-        for attribute in spec.get("attributes", []):
-            attributes[attribute.get("id")] = attribute.get("text")
+    if start != -1:
+        try:
+            specs_component, _ = (
+                json.JSONDecoder().raw_decode(response.text[start:])
+            )
+        except ValueError:
+            specs_component = {}
 
-    if "Estacionamientos" in attributes:
-        parking = parse_int(attributes["Estacionamientos"])
+        for spec in specs_component.get("specs", []):
+            for attribute in spec.get("attributes", []):
+                attributes[attribute.get("id")] = attribute.get("text")
+
+    def count_of(attribute_id):
+        if attribute_id in attributes:
+            return parse_int(attributes[attribute_id])
+
+        # a spec sheet without the attribute means none
+        return 0 if attributes else None
+
+    details["parking"] = count_of("Estacionamientos")
+    details["bodegas"] = count_of("Bodegas")
+
+    details["gastos_comunes_clp"] = parse_clp_amount(
+        attributes.get("Gastos comunes")
+    )
+
+    antiguedad = attributes.get("Antigüedad")
+
+    if antiguedad and "estrenar" in antiguedad.lower():
+        details["antiguedad_anos"] = 0
     else:
-        # a spec sheet without the attribute means no parking
-        parking = 0 if attributes else None
+        details["antiguedad_anos"] = parse_int(antiguedad)
 
-    return {
-        "parking": parking,
-        "gastos_comunes_clp": parse_clp_amount(
-            attributes.get("Gastos comunes")
-        ),
-    }
+    details["m2_totales"] = parse_int(attributes.get("Superficie total"))
+    details["m2_terraza"] = parse_int(attributes.get("Superficie de terraza"))
+    details["piso_unidad"] = parse_int(
+        attributes.get("Número de piso de la unidad")
+    )
+    details["pisos_edificio"] = parse_int(attributes.get("Cantidad de pisos"))
+    details["deptos_por_piso"] = parse_int(
+        attributes.get("Departamentos por piso")
+    )
+    details["orientacion"] = attributes.get("Orientación")
+
+    return details
 
 
 def fetch_uf_value():
