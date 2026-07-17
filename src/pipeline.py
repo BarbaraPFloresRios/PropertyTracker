@@ -152,6 +152,8 @@ def save_listings(current_listings, output_path, source=""):
         "title",
         "price",
         "currency",
+        "price_uf",
+        "price_clp",
         "first_seen_price",
         "uf_per_m2",
         "bedrooms",
@@ -223,8 +225,8 @@ def build_recent_listings():
 
     columns = [
         "title",
-        "price",
-        "currency",
+        "price_uf",
+        "price_clp",
         "m2_utiles",
         "uf_per_m2",
         "first_seen_date",

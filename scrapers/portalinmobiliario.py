@@ -7,6 +7,7 @@ import requests
 
 
 BASE_URL = "https://www.portalinmobiliario.com"
+UF_API_URL = "https://mindicador.cl/api/uf"
 
 RESULTS_PER_PAGE = 48
 MAX_PAGES = 100
@@ -131,11 +132,6 @@ def parse_card(card, search):
 
     bedrooms, bathrooms, m2_text, m2_utiles = parse_attributes(card)
 
-    uf_per_m2 = None
-
-    if currency == "CLF" and price_value and m2_utiles:
-        uf_per_m2 = round(price_value / m2_utiles, 2)
-
     is_project = "DEVELOPMENT" in (metadata.get("domain_id") or "")
 
     return {
@@ -146,7 +142,6 @@ def parse_card(card, search):
         "bathrooms": bathrooms,
         "m2": m2_text,
         "m2_utiles": m2_utiles,
-        "uf_per_m2": uf_per_m2,
         "location": get_component(card, "location").get("text"),
         "property_kind": "proyecto" if is_project else "usada",
         "listing_id": listing_id,
@@ -202,6 +197,34 @@ def scrape_search(search):
     return listings
 
 
+def fetch_uf_value():
+    try:
+        response = requests.get(UF_API_URL, timeout=30)
+        response.raise_for_status()
+        value = response.json()["serie"][0]["valor"]
+        print(f"UF value: {value:,.2f} CLP")
+        return value
+    except Exception as e:
+        print(f"UF value fetch failed: {e}")
+        return None
+
+
+def add_price_conversions(df, uf_value):
+    in_uf = df["currency"] == "CLF"
+    in_clp = df["currency"] == "CLP"
+
+    df["price_uf"] = df["price"].where(in_uf)
+    df["price_clp"] = df["price"].where(in_clp)
+
+    if uf_value:
+        df.loc[in_uf, "price_clp"] = (df.loc[in_uf, "price"] * uf_value).round()
+        df.loc[in_clp, "price_uf"] = (df.loc[in_clp, "price"] / uf_value).round(1)
+
+    df["uf_per_m2"] = (df["price_uf"] / df["m2_utiles"]).round(2)
+
+    return df
+
+
 def scrape_portalinmobiliario():
     listings = []
 
@@ -214,5 +237,6 @@ def scrape_portalinmobiliario():
         return df
 
     df = df.drop_duplicates(subset=["listing_id"], keep="first")
+    df = add_price_conversions(df, fetch_uf_value())
 
     return df

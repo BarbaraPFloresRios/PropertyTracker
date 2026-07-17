@@ -23,7 +23,7 @@ The exact publication date is not public on the site, so `first_seen_date` appro
 
 ## Data captured
 
-Per listing: title, price (UF or CLP), bedrooms, bathrooms, usable m², **UF per m²** (computed), location, property kind (used / new development), seller, URL, and first/last seen dates.
+Per listing: title, price in both UF and CLP (converted daily via mindicador.cl), bedrooms, bathrooms, usable m², **UF per m²** (computed), location, property kind (used / new development), seller, URL, and first/last seen dates.
 
 ## Roadmap: ML for investment opportunity detection
 
