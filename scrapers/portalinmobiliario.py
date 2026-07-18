@@ -263,6 +263,27 @@ def parse_coordinates(html_text):
     return lat, lng
 
 
+def parse_zona_uf_m2(html_text):
+    """Extract the site's "Promedio en la zona" UF/m² from the price comparison widget."""
+    start = html_text.find('{"id":"price_comparison"')
+
+    if start == -1:
+        return None
+
+    try:
+        component, _ = json.JSONDecoder().raw_decode(html_text[start:])
+    except ValueError:
+        return None
+
+    paragraphs = component.get("extra_info", {}).get("paragraph", [])
+
+    for paragraph in paragraphs:
+        if paragraph.get("title", {}).get("text") == "Promedio en la zona":
+            return parse_int(paragraph.get("value", {}).get("text"))
+
+    return None
+
+
 def fetch_listing_details(url):
     """Fetch parking, common expenses and coordinates from a detail page."""
     try:
@@ -273,7 +294,11 @@ def fetch_listing_details(url):
         return None
 
     lat, lng = parse_coordinates(response.text)
-    details = {"lat": lat, "lng": lng}
+    details = {
+        "lat": lat,
+        "lng": lng,
+        "zona_uf_m2": parse_zona_uf_m2(response.text),
+    }
 
     attributes = {}
     start = response.text.find('{"id":"technical_specifications"')

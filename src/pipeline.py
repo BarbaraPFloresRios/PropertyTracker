@@ -35,6 +35,7 @@ ENRICH_VALUE_COLUMNS = [
     "orientacion",
     "lat",
     "lng",
+    "zona_uf_m2",
 ]
 ENRICH_COLUMNS = ENRICH_VALUE_COLUMNS + ["enriched_date"]
 
@@ -189,6 +190,7 @@ def save_listings(current_listings, output_path, source=""):
         "price_clp",
         "first_seen_price",
         "uf_per_m2",
+        "zona_uf_m2",
         "bedrooms",
         "bedrooms_n",
         "bathrooms",
@@ -321,6 +323,7 @@ def build_recent_listings():
         "price_clp",
         "m2_utiles",
         "uf_per_m2",
+        "zona_uf_m2",
         "bedrooms_n",
         "parking",
         "gastos_comunes_clp",
