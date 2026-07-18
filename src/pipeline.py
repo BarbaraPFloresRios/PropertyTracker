@@ -3,6 +3,7 @@ import time
 
 import pandas as pd
 
+from src.generate_interactive_map import generate_interactive_map
 from src.generate_readme import generate_readme
 
 from scrapers.portalinmobiliario import (
@@ -363,6 +364,10 @@ def run_pipeline():
         f"Saved {len(recent_listings)} recent listings "
         "to data/recent_listings.csv"
     )
+
+    print_phase("Updating interactive map")
+
+    generate_interactive_map()
 
     print_phase("Updating README")
 

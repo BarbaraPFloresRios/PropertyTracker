@@ -4,6 +4,10 @@ A real estate listing monitor built in Python. PropertyTracker scrapes apartment
 
 The long-term goal is to use this growing dataset to **detect personal real estate investment opportunities**: undervalued listings, price drops, and neighborhoods trending above or below their historical price per m².
 
+## Interactive map
+
+**[🗺️ Open the interactive map](https://barbarapfloresrios.github.io/PropertyTracker/map.html)** — recent listings colored by UF/m², with price, size and a link to each listing on hover/click. Regenerated on every pipeline run from `docs/map.html`.
+
 ## Latest listings
 
 <!-- RECENT_LISTINGS:START -->
