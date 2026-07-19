@@ -67,7 +67,10 @@
 </div>
 
 <div id="filter-panel" class="panel">
-  <label>Precio máx. <span class="range-value" id="price-value"></span>
+  <label>Precio mín. <span class="range-value" id="price-min-value"></span>
+    <input type="range" id="price-min" autocomplete="off">
+  </label>
+  <label>Precio máx. <span class="range-value" id="price-max-value"></span>
     <input type="range" id="price-max" autocomplete="off">
   </label>
   <label>m² mín. <span class="range-value" id="m2-min-value"></span>
@@ -170,6 +173,7 @@ const markers = LISTINGS.map((listing) => ({
 }));
 
 // filters
+const priceMin = document.getElementById("price-min");
 const priceMax = document.getElementById("price-max");
 const m2Min = document.getElementById("m2-min");
 const m2Max = document.getElementById("m2-max");
@@ -177,9 +181,10 @@ const parkingOnly = document.getElementById("parking-only");
 
 const prices = LISTINGS.map((l) => l.price_clp);
 const step = 5_000_000;
-priceMax.min = Math.floor(Math.min(...prices) / step) * step;
-priceMax.max = Math.ceil(Math.max(...prices) / step) * step;
-priceMax.step = step;
+priceMin.min = priceMax.min = Math.floor(Math.min(...prices) / step) * step;
+priceMin.max = priceMax.max = Math.ceil(Math.max(...prices) / step) * step;
+priceMin.step = priceMax.step = step;
+priceMin.value = priceMin.min;
 priceMax.value = priceMax.max;
 
 const areas = LISTINGS.map((l) => l.m2_utiles);
@@ -189,13 +194,18 @@ m2Min.value = m2Min.min;
 m2Max.value = m2Max.max;
 
 function applyFilters() {
-  // keep the two m² handles from crossing
+  // keep min/max handle pairs from crossing
+  if (Number(priceMin.value) > Number(priceMax.value)) {
+    if (this === priceMin) priceMax.value = priceMin.value;
+    else priceMin.value = priceMax.value;
+  }
   if (Number(m2Min.value) > Number(m2Max.value)) {
     if (this === m2Min) m2Max.value = m2Min.value;
     else m2Min.value = m2Max.value;
   }
 
-  document.getElementById("price-value").textContent = "$" + fmt(priceMax.value);
+  document.getElementById("price-min-value").textContent = "$" + fmt(priceMin.value);
+  document.getElementById("price-max-value").textContent = "$" + fmt(priceMax.value);
   document.getElementById("m2-min-value").textContent = m2Min.value;
   document.getElementById("m2-max-value").textContent = m2Max.value;
 
@@ -203,6 +213,7 @@ function applyFilters() {
 
   for (const { listing, marker } of markers) {
     const show =
+      listing.price_clp >= Number(priceMin.value) &&
       listing.price_clp <= Number(priceMax.value) &&
       listing.m2_utiles >= Number(m2Min.value) &&
       listing.m2_utiles <= Number(m2Max.value) &&
@@ -221,7 +232,7 @@ function applyFilters() {
     `vistos por primera vez en los últimos ${CONFIG.recentDays} días · ${CONFIG.updated}`;
 }
 
-for (const input of [priceMax, m2Min, m2Max, parkingOnly]) {
+for (const input of [priceMin, priceMax, m2Min, m2Max, parkingOnly]) {
   input.addEventListener("input", applyFilters);
 }
 
