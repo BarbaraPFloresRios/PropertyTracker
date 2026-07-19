@@ -20,6 +20,13 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 RECENT_DAYS = 7
 RECENT_MAX_M2 = 100
 
+# listings captured by the very first scrape may have been published long
+# before tracking started, so their first_seen_date is not a real "new" date
+FIRST_SEEN_MIN_DATE = "2026-07-17"
+
+# runs a listing can miss (partial scrapes) before counting as delisted
+DELIST_TOLERANCE_DAYS = 2
+
 ENRICH_MAX_PER_RUN = 300
 ENRICH_SLEEP_SECONDS = 0.5
 
@@ -96,6 +103,25 @@ def report_price_changes(current_listings, old_listings, dedupe_key):
 
         if listing.get("url"):
             print(f"  {listing['url']}")
+
+
+def add_delisting_columns(listings, today):
+    first_seen = pd.to_datetime(listings["first_seen_date"])
+    last_seen = pd.to_datetime(listings["last_seen_date"])
+
+    listings["days_published"] = (last_seen - first_seen).dt.days + 1
+
+    # recomputed every run, so a listing that reappears is un-delisted
+    gone = (pd.Timestamp(today) - last_seen).dt.days >= DELIST_TOLERANCE_DAYS
+
+    listings["delisted_date"] = pd.Series(
+        pd.NA, index=listings.index, dtype="object"
+    )
+    listings.loc[gone, "delisted_date"] = (
+        last_seen[gone] + pd.Timedelta(days=1)
+    ).dt.strftime("%Y-%m-%d")
+
+    return listings
 
 
 def save_listings(current_listings, output_path, source=""):
@@ -177,6 +203,8 @@ def save_listings(current_listings, output_path, source=""):
         new_listings = current_listings
         listings = current_listings
 
+    listings = add_delisting_columns(listings, today)
+
     listings = listings.sort_values(
         by=["first_seen_date", "uf_per_m2"],
         ascending=[False, True],
@@ -210,6 +238,8 @@ def save_listings(current_listings, output_path, source=""):
         "source",
         "first_seen_date",
         "last_seen_date",
+        "days_published",
+        "delisted_date",
         "url",
     ]
 
@@ -252,7 +282,7 @@ def recent_mask(listings):
     ).strftime("%Y-%m-%d")
 
     return (
-        (listings["first_seen_date"] >= cutoff)
+        (listings["first_seen_date"] >= max(cutoff, FIRST_SEEN_MIN_DATE))
         & (listings["m2_utiles"] < RECENT_MAX_M2)
     )
 
