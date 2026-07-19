@@ -30,8 +30,8 @@ def make_listings_table(max_rows=MAX_ROWS):
     df = df.head(max_rows)
 
     rows = [
-        "| Listing | UF | CLP | m² | UF/m² | Beds | Parking | Common exp. | First Seen |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|---|",
+        "| Listing | UF | CLP | m² | UF/m² | Zona UF/m² | Beds | Parking | Common exp. | First Seen |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---|",
     ]
 
     for _, listing in df.iterrows():
@@ -40,12 +40,13 @@ def make_listings_table(max_rows=MAX_ROWS):
         title_cell = f"[{title}]({url})" if url else title
 
         rows.append(
-            "| {} | {} | {} | {} | {} | {} | {} | {} | {} |".format(
+            "| {} | {} | {} | {} | {} | {} | {} | {} | {} | {} |".format(
                 title_cell,
                 format_number(listing.get("price_uf")),
                 format_number(listing.get("price_clp"), prefix="$"),
                 format_number(listing.get("m2_utiles")),
                 format_number(listing.get("uf_per_m2"), decimals=2),
+                format_number(listing.get("zona_uf_m2")),
                 format_number(listing.get("bedrooms_n")),
                 format_number(listing.get("parking")),
                 format_number(listing.get("gastos_comunes_clp"), prefix="$"),
