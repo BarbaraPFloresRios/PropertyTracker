@@ -1,10 +1,11 @@
 """Interactive Leaflet map of recent listings, served via GitHub Pages."""
-import branca.colormap
-import folium
+import json
+
 import numpy as np
 import pandas as pd
 
 RAW_CSV = "data/raw/portalinmobiliario_listings.csv"
+TEMPLATE_PATH = "src/map_template.html"
 OUTPUT_HTML = "docs/map.html"
 
 RECENT_DAYS = 7
@@ -21,6 +22,23 @@ SEQ_BLUE = [
     "#0d366b",
 ]
 
+MAP_COLUMNS = [
+    "title",
+    "url",
+    "lat",
+    "lng",
+    "price_uf",
+    "price_clp",
+    "m2_utiles",
+    "uf_per_m2",
+    "zona_uf_m2",
+    "bedrooms_n",
+    "parking",
+    "gastos_comunes_clp",
+    "barrio",
+    "first_seen_date",
+]
+
 
 def load_recent():
     df = pd.read_csv(RAW_CSV)
@@ -34,42 +52,8 @@ def load_recent():
         & (df["m2_utiles"] < RECENT_MAX_M2)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
+        & df["price_clp"].notna()
     ].copy()
-
-
-def format_popup(listing):
-    def number(value, suffix="", prefix="", decimals=0):
-        if pd.isna(value):
-            return None
-        return f"{prefix}{value:,.{decimals}f}{suffix}"
-
-    rows = [
-        ("Precio", number(listing["price_uf"], suffix=" UF")),
-        ("", number(listing["price_clp"], prefix="$")),
-        ("Superficie", number(listing["m2_utiles"], suffix=" m²")),
-        ("UF/m²", number(listing["uf_per_m2"], decimals=1)),
-        ("Zona UF/m²", number(listing.get("zona_uf_m2"))),
-        ("Dormitorios", number(listing["bedrooms_n"])),
-        ("Estacionamientos", number(listing.get("parking"))),
-        ("Gastos comunes", number(listing.get("gastos_comunes_clp"), prefix="$")),
-        ("Barrio", listing.get("barrio") if pd.notna(listing.get("barrio")) else None),
-        ("Publicado desde", listing["first_seen_date"]),
-    ]
-
-    lines = "".join(
-        f"<div><b>{label}:</b> {value}</div>" if label else f"<div>{value}</div>"
-        for label, value in rows
-        if value is not None
-    )
-
-    return (
-        f'<div style="font-family:system-ui,sans-serif;font-size:13px;'
-        f'min-width:220px">'
-        f'<a href="{listing["url"]}" target="_blank" '
-        f'style="font-weight:600">{listing["title"]}</a>'
-        f'<div style="margin-top:6px">{lines}</div>'
-        f"</div>"
-    )
 
 
 def generate_interactive_map():
@@ -81,54 +65,30 @@ def generate_interactive_map():
 
     vmin, vmax = np.percentile(recent["uf_per_m2"], [5, 95])
 
-    colormap = branca.colormap.LinearColormap(
-        SEQ_BLUE,
-        vmin=round(vmin),
-        vmax=round(vmax),
-        caption="UF/m² (útiles)",
+    config = {
+        "colors": SEQ_BLUE,
+        "vmin": round(vmin),
+        "vmax": round(vmax),
+        "recentDays": RECENT_DAYS,
+        "maxM2": RECENT_MAX_M2,
+        "updated": pd.Timestamp.today().strftime("%Y-%m-%d"),
+    }
+
+    # to_json turns NaN into null, which json.loads keeps as None
+    listings = json.loads(recent[MAP_COLUMNS].to_json(orient="records"))
+
+    with open(TEMPLATE_PATH, encoding="utf-8") as f:
+        template = f.read()
+
+    html = (
+        template
+        .replace("__CONFIG__", json.dumps(config))
+        .replace("__LISTINGS__", json.dumps(listings, ensure_ascii=False))
     )
 
-    fmap = folium.Map(
-        location=[recent["lat"].mean(), recent["lng"].mean()],
-        zoom_start=14,
-        tiles="CartoDB positron",
-    )
+    with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+        f.write(html)
 
-    today = pd.Timestamp.today().strftime("%Y-%m-%d")
-
-    title = (
-        '<div style="position:fixed;top:10px;left:50%;transform:translateX(-50%);'
-        'z-index:1000;background:#fcfcfbee;padding:8px 16px;border-radius:8px;'
-        'font-family:system-ui,sans-serif;box-shadow:0 1px 4px rgba(0,0,0,.2)">'
-        '<div style="font-size:15px;font-weight:600;color:#0b0b0b">'
-        "Avisos recientes en Providencia — UF/m²</div>"
-        f'<div style="font-size:12px;color:#52514e">{len(recent)} departamentos '
-        f"&lt;{RECENT_MAX_M2} m² vistos por primera vez en los últimos "
-        f"{RECENT_DAYS} días · {today}</div></div>"
-    )
-    fmap.get_root().html.add_child(folium.Element(title))
-
-    for _, listing in recent.iterrows():
-        value = min(max(listing["uf_per_m2"], vmin), vmax)
-
-        folium.CircleMarker(
-            location=[listing["lat"], listing["lng"]],
-            radius=6,
-            color="#fcfcfb",
-            weight=1,
-            fill=True,
-            fill_color=colormap(value),
-            fill_opacity=0.9,
-            tooltip=(
-                f"{listing['uf_per_m2']:,.1f} UF/m² · "
-                f"{listing['price_uf']:,.0f} UF"
-            ),
-            popup=folium.Popup(format_popup(listing), max_width=320),
-        ).add_to(fmap)
-
-    colormap.add_to(fmap)
-
-    fmap.save(OUTPUT_HTML)
     print(f"Saved {len(recent)} listings to {OUTPUT_HTML}")
 
 

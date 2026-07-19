@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avisos recientes en Providencia — UF/m²</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  html, body { margin: 0; height: 100%; }
+  #map { height: 100%; }
+
+  .panel {
+    position: fixed;
+    z-index: 1000;
+    background: #fcfcfbee;
+    border-radius: 8px;
+    font-family: system-ui, sans-serif;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+    padding: 8px 16px;
+  }
+
+  #title-panel {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  #title-panel .title { font-size: 15px; font-weight: 600; color: #0b0b0b; }
+  #title-panel .subtitle { font-size: 12px; color: #52514e; }
+
+  #filter-panel {
+    top: 70px;
+    right: 10px;
+    width: 210px;
+    padding: 10px 14px 12px;
+    font-size: 12px;
+    color: #0b0b0b;
+  }
+  #filter-panel label { display: block; margin-top: 8px; font-weight: 600; }
+  #filter-panel .range-value { font-weight: 400; color: #52514e; }
+  #filter-panel input[type="range"] { width: 100%; margin: 2px 0; }
+  #filter-panel .checkbox-row { margin-top: 10px; font-weight: 600; }
+  #filter-panel .checkbox-row input { vertical-align: middle; }
+
+  #legend {
+    bottom: 20px;
+    right: 10px;
+    padding: 8px 14px 10px;
+    font-size: 11px;
+    color: #52514e;
+  }
+  #legend .bar { height: 10px; border-radius: 3px; margin: 4px 0 2px; }
+  #legend .labels { display: flex; justify-content: space-between; }
+
+  .popup { font-family: system-ui, sans-serif; font-size: 13px; min-width: 220px; }
+  .popup a { font-weight: 600; }
+  .popup .rows { margin-top: 6px; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div id="title-panel" class="panel">
+  <div class="title">Avisos recientes en Providencia — UF/m²</div>
+  <div class="subtitle" id="subtitle"></div>
+</div>
+
+<div id="filter-panel" class="panel">
+  <label>Precio máx. <span class="range-value" id="price-value"></span>
+    <input type="range" id="price-max" autocomplete="off">
+  </label>
+  <label>m² mín. <span class="range-value" id="m2-min-value"></span>
+    <input type="range" id="m2-min" autocomplete="off">
+  </label>
+  <label>m² máx. <span class="range-value" id="m2-max-value"></span>
+    <input type="range" id="m2-max" autocomplete="off">
+  </label>
+  <div class="checkbox-row">
+    <label><input type="checkbox" id="parking-only" autocomplete="off"> Solo con estacionamiento</label>
+  </div>
+</div>
+
+<div id="legend" class="panel">
+  UF/m² (útiles)
+  <div class="bar" id="legend-bar"></div>
+  <div class="labels"><span id="legend-min"></span><span id="legend-max"></span></div>
+</div>
+
+<script>
+const CONFIG = __CONFIG__;
+const LISTINGS = __LISTINGS__;
+
+const fmt = (value, decimals = 0) =>
+  value == null
+    ? null
+    : Number(value).toLocaleString("es-CL", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      });
+
+function color(value) {
+  const { colors, vmin, vmax } = CONFIG;
+  const t = Math.min(Math.max((value - vmin) / (vmax - vmin), 0), 1);
+  const position = t * (colors.length - 1);
+  const index = Math.min(Math.floor(position), colors.length - 2);
+  const mix = position - index;
+
+  const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16));
+  const [a, b] = [rgb(colors[index]), rgb(colors[index + 1])];
+
+  return `rgb(${a.map((c, i) => Math.round(c + (b[i] - c) * mix)).join(",")})`;
+}
+
+function popupHtml(listing) {
+  const rows = [
+    ["Precio", fmt(listing.price_uf) && fmt(listing.price_uf) + " UF"],
+    ["", fmt(listing.price_clp) && "$" + fmt(listing.price_clp)],
+    ["Superficie", fmt(listing.m2_utiles) && fmt(listing.m2_utiles) + " m²"],
+    ["UF/m²", fmt(listing.uf_per_m2, 1)],
+    ["Zona UF/m²", fmt(listing.zona_uf_m2)],
+    ["Dormitorios", fmt(listing.bedrooms_n)],
+    ["Estacionamientos", fmt(listing.parking)],
+    ["Gastos comunes", fmt(listing.gastos_comunes_clp) && "$" + fmt(listing.gastos_comunes_clp)],
+    ["Barrio", listing.barrio],
+    ["Publicado desde", listing.first_seen_date],
+  ];
+
+  const lines = rows
+    .filter(([, value]) => value != null)
+    .map(([label, value]) =>
+      label ? `<div><b>${label}:</b> ${value}</div>` : `<div>${value}</div>`
+    )
+    .join("");
+
+  return `<div class="popup">
+    <a href="${listing.url}" target="_blank">${listing.title}</a>
+    <div class="rows">${lines}</div>
+  </div>`;
+}
+
+const map = L.map("map");
+
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> ' +
+    '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+}).addTo(map);
+
+map.setView(
+  [
+    LISTINGS.reduce((sum, l) => sum + l.lat, 0) / LISTINGS.length,
+    LISTINGS.reduce((sum, l) => sum + l.lng, 0) / LISTINGS.length,
+  ],
+  14
+);
+
+const markers = LISTINGS.map((listing) => ({
+  listing,
+  marker: L.circleMarker([listing.lat, listing.lng], {
+    radius: 6,
+    color: "#fcfcfb",
+    weight: 1,
+    fill: true,
+    fillColor: color(listing.uf_per_m2),
+    fillOpacity: 0.9,
+  })
+    .bindTooltip(`${fmt(listing.uf_per_m2, 1)} UF/m² · ${fmt(listing.price_uf)} UF`)
+    .bindPopup(popupHtml(listing), { maxWidth: 320 }),
+}));
+
+// filters
+const priceMax = document.getElementById("price-max");
+const m2Min = document.getElementById("m2-min");
+const m2Max = document.getElementById("m2-max");
+const parkingOnly = document.getElementById("parking-only");
+
+const prices = LISTINGS.map((l) => l.price_clp);
+const step = 5_000_000;
+priceMax.min = Math.floor(Math.min(...prices) / step) * step;
+priceMax.max = Math.ceil(Math.max(...prices) / step) * step;
+priceMax.step = step;
+priceMax.value = priceMax.max;
+
+const areas = LISTINGS.map((l) => l.m2_utiles);
+m2Min.min = m2Max.min = Math.floor(Math.min(...areas));
+m2Min.max = m2Max.max = Math.ceil(Math.max(...areas));
+m2Min.value = m2Min.min;
+m2Max.value = m2Max.max;
+
+function applyFilters() {
+  // keep the two m² handles from crossing
+  if (Number(m2Min.value) > Number(m2Max.value)) {
+    if (this === m2Min) m2Max.value = m2Min.value;
+    else m2Min.value = m2Max.value;
+  }
+
+  document.getElementById("price-value").textContent = "$" + fmt(priceMax.value);
+  document.getElementById("m2-min-value").textContent = m2Min.value;
+  document.getElementById("m2-max-value").textContent = m2Max.value;
+
+  let visible = 0;
+
+  for (const { listing, marker } of markers) {
+    const show =
+      listing.price_clp <= Number(priceMax.value) &&
+      listing.m2_utiles >= Number(m2Min.value) &&
+      listing.m2_utiles <= Number(m2Max.value) &&
+      (!parkingOnly.checked || listing.parking >= 1);
+
+    if (show) {
+      marker.addTo(map);
+      visible += 1;
+    } else {
+      marker.remove();
+    }
+  }
+
+  document.getElementById("subtitle").textContent =
+    `${visible} de ${LISTINGS.length} departamentos <${CONFIG.maxM2} m² ` +
+    `vistos por primera vez en los últimos ${CONFIG.recentDays} días · ${CONFIG.updated}`;
+}
+
+for (const input of [priceMax, m2Min, m2Max, parkingOnly]) {
+  input.addEventListener("input", applyFilters);
+}
+
+applyFilters();
+
+// legend
+document.getElementById("legend-bar").style.background =
+  `linear-gradient(to right, ${CONFIG.colors.join(",")})`;
+document.getElementById("legend-min").textContent = fmt(CONFIG.vmin);
+document.getElementById("legend-max").textContent = fmt(CONFIG.vmax);
+</script>
+</body>
+</html>
