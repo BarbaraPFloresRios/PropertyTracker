@@ -44,6 +44,8 @@ ENRICH_VALUE_COLUMNS = [
     "lat",
     "lng",
     "zona_uf_m2",
+    "publicado_hace",
+    "publicado_fecha_est",
 ]
 ENRICH_COLUMNS = ENRICH_VALUE_COLUMNS + ["enriched_date"]
 
@@ -236,6 +238,8 @@ def save_listings(current_listings, output_path, source=""):
         "comuna",
         "listing_id",
         "source",
+        "publicado_hace",
+        "publicado_fecha_est",
         "first_seen_date",
         "last_seen_date",
         "days_published",
@@ -299,7 +303,12 @@ def enrich_recent_listings():
             listings[column] = pd.NA
 
     # text goes into these; an all-NaN column defaults to float
-    for column in ("orientacion", "enriched_date"):
+    for column in (
+        "orientacion",
+        "enriched_date",
+        "publicado_hace",
+        "publicado_fecha_est",
+    ):
         listings[column] = listings[column].astype("object")
 
     candidates = listings.index[

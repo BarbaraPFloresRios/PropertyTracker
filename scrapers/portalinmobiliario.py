@@ -263,6 +263,38 @@ def parse_coordinates(html_text):
     return lat, lng
 
 
+PUBLICADO_UNIT_DAYS = {"día": 1, "mes": 30, "año": 365}
+
+
+def parse_publicado_hace(html_text):
+    """Extract the header's relative "Publicado hace ..." age.
+
+    The site only exposes this human-readable text (no exact date), so the
+    day count is approximate and gets coarser with age. Project pages
+    (property_kind "proyecto") don't show it at all.
+    """
+    match = re.search(
+        r"Publicado (hoy|ayer|hace \d+ (?:días?|mes(?:es)?|años?))",
+        html_text,
+    )
+
+    if not match:
+        return None, None
+
+    text = match.group(1)
+
+    if text == "hoy":
+        return text, 0
+
+    if text == "ayer":
+        return text, 1
+
+    amount = int(re.search(r"\d+", text).group())
+    unit = re.search(r"(día|mes|año)", text).group(1)
+
+    return text, amount * PUBLICADO_UNIT_DAYS[unit]
+
+
 def parse_zona_uf_m2(html_text):
     """Extract the site's "Promedio en la zona" UF/m² from the price comparison widget."""
     start = html_text.find('{"id":"price_comparison"')
@@ -294,10 +326,19 @@ def fetch_listing_details(url):
         return None
 
     lat, lng = parse_coordinates(response.text)
+    publicado_texto, publicado_dias = parse_publicado_hace(response.text)
+
     details = {
         "lat": lat,
         "lng": lng,
         "zona_uf_m2": parse_zona_uf_m2(response.text),
+        "publicado_hace": publicado_texto,
+        "publicado_fecha_est": (
+            (pd.Timestamp.today() - pd.Timedelta(days=publicado_dias))
+            .strftime("%Y-%m-%d")
+            if publicado_dias is not None
+            else None
+        ),
     }
 
     attributes = {}
