@@ -32,7 +32,7 @@
   #filter-panel {
     top: 70px;
     right: 10px;
-    width: 210px;
+    width: 230px;
     padding: 10px 14px 12px;
     font-size: 12px;
     color: #0b0b0b;
@@ -265,7 +265,7 @@ function applyFilters() {
   }
 
   document.getElementById("price-value").textContent =
-    `$${fmt(priceMin.value)} – $${fmt(priceMax.value)}`;
+    `$${fmt(priceMin.value / 1e6)}M – $${fmt(priceMax.value / 1e6)}M`;
   document.getElementById("m2-value").textContent =
     `${m2Min.value} – ${m2Max.value}`;
 
