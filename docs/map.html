@@ -39,9 +39,56 @@
   }
   #filter-panel label { display: block; margin-top: 8px; font-weight: 600; }
   #filter-panel .range-value { font-weight: 400; color: #52514e; }
-  #filter-panel input[type="range"] { width: 100%; margin: 2px 0; }
   #filter-panel .checkbox-row { margin-top: 10px; font-weight: 600; }
   #filter-panel .checkbox-row input { vertical-align: middle; }
+
+  /* two native range inputs overlaid on one shared track */
+  .dual { position: relative; height: 24px; }
+  .dual .track, .dual .fill {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    border-radius: 2px;
+  }
+  .dual .track { width: 100%; background: #d7d5d1; }
+  .dual .fill { background: #2a78d6; }
+  .dual input[type="range"] {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 0;
+    margin: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    pointer-events: none;
+  }
+  .dual input:nth-of-type(1) { z-index: 1; }
+  .dual input:nth-of-type(2) { z-index: 2; }
+  .dual input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: auto;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #2a78d6;
+    border: 2px solid #fcfcfb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    cursor: pointer;
+  }
+  .dual input::-moz-range-thumb {
+    pointer-events: auto;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #2a78d6;
+    border: 2px solid #fcfcfb;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+    cursor: pointer;
+  }
 
   #legend {
     bottom: 20px;
@@ -67,18 +114,18 @@
 </div>
 
 <div id="filter-panel" class="panel">
-  <label>Precio mín. <span class="range-value" id="price-min-value"></span>
+  <label>Precio CLP <span class="range-value" id="price-value"></span></label>
+  <div class="dual">
+    <div class="track"></div><div class="fill" id="price-fill"></div>
     <input type="range" id="price-min" autocomplete="off">
-  </label>
-  <label>Precio máx. <span class="range-value" id="price-max-value"></span>
     <input type="range" id="price-max" autocomplete="off">
-  </label>
-  <label>m² mín. <span class="range-value" id="m2-min-value"></span>
+  </div>
+  <label>Superficie m² <span class="range-value" id="m2-value"></span></label>
+  <div class="dual">
+    <div class="track"></div><div class="fill" id="m2-fill"></div>
     <input type="range" id="m2-min" autocomplete="off">
-  </label>
-  <label>m² máx. <span class="range-value" id="m2-max-value"></span>
     <input type="range" id="m2-max" autocomplete="off">
-  </label>
+  </div>
   <div class="checkbox-row">
     <label><input type="checkbox" id="parking-only" autocomplete="off"> Solo con estacionamiento</label>
   </div>
@@ -193,6 +240,19 @@ m2Min.max = m2Max.max = Math.ceil(Math.max(...areas));
 m2Min.value = m2Min.min;
 m2Max.value = m2Max.max;
 
+function updateDual(minEl, maxEl, fillId) {
+  const bounds = [Number(minEl.min), Number(minEl.max)];
+  const pct = (v) => ((v - bounds[0]) / (bounds[1] - bounds[0])) * 100;
+
+  const fill = document.getElementById(fillId);
+  fill.style.left = pct(Number(minEl.value)) + "%";
+  fill.style.width = pct(Number(maxEl.value)) - pct(Number(minEl.value)) + "%";
+
+  // when both thumbs sit at the top end only the upper input is clickable,
+  // so raise the lower one above it on the upper half of the track
+  minEl.style.zIndex = Number(minEl.value) > (bounds[0] + bounds[1]) / 2 ? 3 : 1;
+}
+
 function applyFilters() {
   // keep min/max handle pairs from crossing
   if (Number(priceMin.value) > Number(priceMax.value)) {
@@ -204,10 +264,13 @@ function applyFilters() {
     else m2Min.value = m2Max.value;
   }
 
-  document.getElementById("price-min-value").textContent = "$" + fmt(priceMin.value);
-  document.getElementById("price-max-value").textContent = "$" + fmt(priceMax.value);
-  document.getElementById("m2-min-value").textContent = m2Min.value;
-  document.getElementById("m2-max-value").textContent = m2Max.value;
+  document.getElementById("price-value").textContent =
+    `$${fmt(priceMin.value)} – $${fmt(priceMax.value)}`;
+  document.getElementById("m2-value").textContent =
+    `${m2Min.value} – ${m2Max.value}`;
+
+  updateDual(priceMin, priceMax, "price-fill");
+  updateDual(m2Min, m2Max, "m2-fill");
 
   let visible = 0;
 
