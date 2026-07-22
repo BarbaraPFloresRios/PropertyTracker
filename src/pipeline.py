@@ -20,6 +20,10 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 RECENT_DAYS = 7
 RECENT_MAX_M2 = 100
 
+# a listing whose real publication date (publicado_fecha_est) is older than
+# this rotated into view long after being posted, so it is not really "new"
+RECENT_MAX_PUBLISHED_DAYS = 30
+
 # runs a listing can miss (partial scrapes) before counting as delisted
 DELIST_TOLERANCE_DAYS = 2
 
@@ -352,6 +356,18 @@ def build_recent_listings():
 
     recent = listings[recent_mask(listings)].copy()
 
+    # drop false-new listings: those whose real publication date is older than
+    # RECENT_MAX_PUBLISHED_DAYS. Listings without the estimate (not yet
+    # enriched) are kept, since their real age is still unknown.
+    if "publicado_fecha_est" in recent.columns:
+        pub_cutoff = (
+            pd.Timestamp.today()
+            - pd.Timedelta(days=RECENT_MAX_PUBLISHED_DAYS)
+        ).strftime("%Y-%m-%d")
+
+        pub = recent["publicado_fecha_est"]
+        recent = recent[pub.isna() | (pub >= pub_cutoff)]
+
     recent = recent.sort_values(
         by="uf_per_m2",
         ascending=True,
@@ -370,6 +386,7 @@ def build_recent_listings():
         "gastos_comunes_clp",
         "barrio",
         "first_seen_date",
+        "publicado_fecha_est",
         "url",
     ]
 

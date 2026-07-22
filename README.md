@@ -11,40 +11,40 @@ The long-term goal is to use this growing dataset to **detect personal real esta
 ## Latest listings
 
 <!-- RECENT_LISTINGS:START -->
-_Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m²). Updated automatically from `data/recent_listings.csv`._
+_Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², published within the last 30 days). Updated automatically from `data/recent_listings.csv`._
 
 | Listing | UF | CLP | m² | UF/m² | Zona UF/m² | Beds | Parking | Common exp. | First Seen |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | [Depto / Metro Los Leones](https://www.portalinmobiliario.com/MLC-4198200752-depto-metro-los-leones-_JM) | 4,500 | $183,801,555 | 93 | 48.39 | 94 | 3 | 0 | $155,000 | 2026-07-18 |
-| [Metro Santa Isabel / 3 Dormitorios 2 Baños](https://www.portalinmobiliario.com/MLC-4198500546-metro-santa-isabel-3-dormitorios-2-banos-_JM) | 4,200 |  | 85 | 49.41 | 73 | 3 | 0 | $30,000 | 2026-07-18 |
 | [Vendo Departamento  Antonio Varas Providencia 2 Dorm](https://www.portalinmobiliario.com/MLC-4105556362-vendo-departamento-antonio-varas-providencia-2-dorm-_JM) | 4,300 |  | 87 | 49.43 | 94 | 2 | 0 | $50,000 | 2026-07-21 |
-| [Metro Pedro De Valdivia A 5 Min - Dpto 4 Dormitorios - 90m2](https://www.portalinmobiliario.com/MLC-1966055801-metro-pedro-de-valdivia-a-5-min-dpto-4-dormitorios-90m2-_JM) | 4,580 |  | 90 | 50.89 | 94 | 4 | 0 | $120,000 | 2026-07-21 |
 | [Depto 4 Dormitorios, 2 Baños, 90 M2 (75040)](https://www.portalinmobiliario.com/MLC-4209724852-depto-4-dormitorios-2-banos-90-m2-75040-_JM) | 4,990 |  | 90 | 55.44 | 94 | 4 | 0 | $120,000 | 2026-07-20 |
-| [Venta Depto 3 Habitaciones 2 Baños - Metro Los Leones (5301)](https://www.portalinmobiliario.com/MLC-4203939854-venta-depto-3-habitaciones-2-banos-metro-los-leones-5301-_JM) | 4,600 |  | 79 | 58.23 | 94 | 3 | 0 | $180,000 | 2026-07-19 |
-| [Departamento En Venta De 4 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4146254574-departamento-en-venta-de-4-dorm-en-providencia-_JM) | 5,400 | $220,561,866 | 92 | 58.70 | 80 | 4 | 0 | $100,000 | 2026-07-20 |
-| [Departamento En Venta De 4 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-3960426866-departamento-en-venta-de-4-dorm-en-providencia-_JM) | 5,500 |  | 90 | 61.11 | 94 | 4 | 0 | $110,000 | 2026-07-19 |
 | [Andrés De Fuenzalida (piso 7)](https://www.portalinmobiliario.com/MLC-4211492140-andres-de-fuenzalida-piso-7-_JM) | 5,200 |  | 85 | 61.18 |  | 3 |  |  | 2026-07-21 |
 | [Andrés De Fuenzalida (remodelado Completo)](https://www.portalinmobiliario.com/MLC-4210790912-andres-de-fuenzalida-remodelado-completo-_JM) | 5,200 |  | 85 | 61.18 | 94 | 3 | 0 | $115,000 | 2026-07-21 |
-| [Duplex Remodelado En Venta En Providencia](https://www.portalinmobiliario.com/MLC-3578657700-duplex-remodelado-en-venta-en-providencia-_JM) | 5,990 |  | 94 | 63.72 | 94 | 3 | 1 | $130,000 | 2026-07-21 |
 | [Primer Piso Con Jardin Propio Ideal Para Remodelar](https://www.portalinmobiliario.com/MLC-4208897282-primer-piso-con-jardin-propio-ideal-para-remodelar-_JM) | 5,600 |  | 86 | 65.12 | 85 | 3 | 1 | $100,000 | 2026-07-20 |
 | [Conectividad Y Confort Garantizados (170733)](https://www.portalinmobiliario.com/MLC-4198492680-conectividad-y-confort-garantizados-170733-_JM) | 4,300 |  | 65 | 66.15 | 84 | 2 | 0 | $0 | 2026-07-17 |
-| [Cercano A Colegios:  Mariano, Sagrados Corazones, Regina Pac](https://www.portalinmobiliario.com/MLC-4198327076-cercano-a-colegios-mariano-sagrados-corazones-regina-pac-_JM) | 4,900 | $200,139,471 | 74 | 66.22 | 84 | 3 | 1 | $57,000 | 2026-07-18 |
-| [Cercano A Colegios:  Mariano, Sagrados Corazones, Regina Pac](https://www.portalinmobiliario.com/MLC-4210801820-cercano-a-colegios-mariano-sagrados-corazones-regina-pac-_JM) | 4,900 |  | 74 | 66.22 | 84 | 3 | 1 | $57,000 | 2026-07-21 |
 | [Espacioso Y Luminoso En Excelente Ubicación (176324)](https://www.portalinmobiliario.com/MLC-2074126301-espacioso-y-luminoso-en-excelente-ubicacion-176324-_JM) | 5,000 |  | 75 | 66.67 | 98 | 3 | 1 | $80,000 | 2026-07-21 |
-| [Departamento En Venta De 3 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-3773172372-departamento-en-venta-de-3-dorm-en-providencia-_JM) | 5,990 |  | 86 | 69.65 | 95 | 3 | 0 | $80,000 | 2026-07-21 |
-| [Venta Depto Santiago Centro 3 Dorm Y 3 Baños Providencia](https://www.portalinmobiliario.com/MLC-4198325742-venta-depto-santiago-centro-3-dorm-y-3-banos-providencia-_JM) | 6,290 |  | 90 | 69.89 | 80 | 3 | 0 | $130,000 | 2026-07-18 |
 | [Lindo Departamento En Juana  De  Lestonac Providencia](https://www.portalinmobiliario.com/MLC-4201707636-lindo-departamento-en-juana-de-lestonac-providencia-_JM) | 4,294 |  | 61 | 70.39 | 82 | 2 | 0 | $50,000 | 2026-07-18 |
 | [Venta Dpto Remodelado 3dormitorios 2baños Estacionamiento](https://www.portalinmobiliario.com/MLC-4201744688-venta-dpto-remodelado-3dormitorios-2banos-estacionamiento-_JM) | 6,690 | $273,251,645 | 94 | 71.17 | 138 | 3 | 1 | $180,000 | 2026-07-18 |
 | [Andres De Fuenzalida, Remodelado](https://www.portalinmobiliario.com/MLC-2068828621-andres-de-fuenzalida-remodelado-_JM) | 6,100 |  | 85 | 71.76 | 94 | 3 | 0 | $100,000 | 2026-07-18 |
-| [Depto 2 Dormitorios 2 Baños Metro Manuel Montt](https://www.portalinmobiliario.com/MLC-4198325300-depto-2-dormitorios-2-banos-metro-manuel-montt-_JM) | 4,550 |  | 63 | 72.22 | 98 | 2 | 0 | $150,000 | 2026-07-18 |
 | [Remodelado 2d/2b \| Barrio Italia \| Metro Parque Bustamante](https://www.portalinmobiliario.com/MLC-2039832321-remodelado-2d2b-barrio-italia-metro-parque-bustamante-_JM) | 5,800 |  | 80 | 72.50 |  | 2 | 1 |  | 2026-07-17 |
-| [Venta Depto. 3 Habitaciones Remodelado J.m. Infante (5172)](https://www.portalinmobiliario.com/MLC-4211499724-venta-depto-3-habitaciones-remodelado-jm-infante-5172-_JM) | 6,175 |  | 85 | 72.65 | 94 | 3 | 0 | $80,000 | 2026-07-21 |
 | [Oportunidad Remodelado A Pasos Del Metro](https://www.portalinmobiliario.com/MLC-4201707202-oportunidad-remodelado-a-pasos-del-metro-_JM) | 6,190 |  | 85 | 72.82 | 94 | 2 | 0 | $140,000 | 2026-07-18 |
-| [Venta Departamento 3hab 2ba Providencia](https://www.portalinmobiliario.com/MLC-4210801150-venta-departamento-3hab-2ba-providencia-_JM) | 6,800 |  | 93 | 73.12 | 85 | 3 | 1 | $200,000 | 2026-07-21 |
 | [Amplio Studio 42m2 Ubicacion Excepcional  (170799)](https://www.portalinmobiliario.com/MLC-4198492614-amplio-studio-42m2-ubicacion-excepcional-170799-_JM) | 3,100 |  | 42 | 73.81 | 112 | 1 | 0 | $50,000 | 2026-07-17 |
 | [Suecia Amplio Depto 70 M2 \| 1d Suite \| 2e + 2b \| Providencia](https://www.portalinmobiliario.com/MLC-2073964391-suecia-amplio-depto-70-m2-1d-suite-2e-2b-providencia-_JM) | 5,200 |  | 70 | 74.29 | 98 | 1 | 2 | $220,000 | 2026-07-21 |
 | [Remodelado De 2 Dormitorios En Clasico Barrio De Providencia](https://www.portalinmobiliario.com/MLC-4211822678-remodelado-de-2-dormitorios-en-clasico-barrio-de-providencia-_JM) | 5,550 |  | 74 | 75.00 | 98 | 2 | 0 | $25,000 | 2026-07-21 |
-| [Depto Remodelado En Calle Dinamarca](https://www.portalinmobiliario.com/MLC-2072646613-depto-remodelado-en-calle-dinamarca-_JM) | 6,690 |  | 89 | 75.17 | 89 | 3 | 1 |  | 2026-07-21 |
+| [Venta De Departamento De 3 Dormitorios.sector Parque Ines De](https://www.portalinmobiliario.com/MLC-4201743910-venta-de-departamento-de-3-dormitoriossector-parque-ines-de-_JM) | 6,500 |  | 84 | 77.38 | 85 | 3 | 1 | $160,000 | 2026-07-18 |
+| [Vive Con Comodidad Y Excelente Ubicación](https://www.portalinmobiliario.com/MLC-4198197136-vive-con-comodidad-y-excelente-ubicacion-_JM) | 4,800 |  | 62 | 77.42 | 68 | 2 | 1 | $200,000 | 2026-07-18 |
+| [Providencia, Buscamos Departamentos](https://www.portalinmobiliario.com/MLC-4201705404-providencia-buscamos-departamentos-_JM) | 5,500 |  | 70 | 78.57 | 112 | 2 | 1 | $11,111 | 2026-07-18 |
+| [Grace Kelm Vende Espacioso Depto Gran Terraza De 3 Dorm Y 3](https://www.portalinmobiliario.com/MLC-4201706426-grace-kelm-vende-espacioso-depto-gran-terraza-de-3-dorm-y-3-_JM) | 7,200 |  | 90 | 80.00 | 94 | 3 | 1 | $125,000 | 2026-07-18 |
+| [Remodelado Duplex De 2d2b A Pasos De Metro Manuel Montt](https://www.portalinmobiliario.com/MLC-2070925703-remodelado-duplex-de-2d2b-a-pasos-de-metro-manuel-montt-_JM) | 7,200 |  | 90 | 80.00 | 94 | 2 | 0 | $40,000 | 2026-07-19 |
+| [Departamento En Venta De 3 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4206489696-departamento-en-venta-de-3-dorm-en-providencia-_JM) | 7,499 |  | 92 | 81.51 | 94 | 3 | 1 | $150,000 | 2026-07-20 |
+| [Excelente Departamento Metro Manuel Montt (171371)](https://www.portalinmobiliario.com/MLC-2071198175-excelente-departamento-metro-manuel-montt-171371-_JM) | 6,290 |  | 76 | 82.76 | 84 | 2 | 1 | $180,000 | 2026-07-19 |
+| [Departamento En Venta De 3 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4143962996-departamento-en-venta-de-3-dorm-en-providencia-_JM) | 7,750 | $316,547,122 | 93 | 83.33 |  | 3 | 1 |  | 2026-07-20 |
+| [Departamento Metro Los Leones 2d 2b Y Estacionamiento](https://www.portalinmobiliario.com/MLC-4209022406-departamento-metro-los-leones-2d-2b-y-estacionamiento-_JM) | 4,850 |  | 58 | 83.62 | 98 | 2 | 1 | $230,000 | 2026-07-20 |
+| [Remodelado, Vista Norte, Dos Dormitorios Estacionamiento](https://www.portalinmobiliario.com/MLC-2068821979-remodelado-vista-norte-dos-dormitorios-estacionamiento-_JM) | 4,950 |  | 59 | 83.90 | 68 | 2 | 1 | $80,000 | 2026-07-19 |
+| [Hermoso Depto En Venta En Providencia](https://www.portalinmobiliario.com/MLC-2069547893-hermoso-depto-en-venta-en-providencia-_JM) | 5,900 |  | 70 | 84.29 | 98 | 2 | 1 | $89,000 | 2026-07-19 |
+| [Metro Ines De Suarez / Providencia](https://www.portalinmobiliario.com/MLC-2074074503-metro-ines-de-suarez-providencia-_JM) | 7,300 |  | 86 | 84.88 | 85 | 2 | 0 | $160,000 | 2026-07-21 |
+| [En Venta \| Departamento Con Gran Potencial En Plaza Las Lila](https://www.portalinmobiliario.com/MLC-4201732136-en-venta-departamento-con-gran-potencial-en-plaza-las-lila-_JM) | 6,800 |  | 80 | 85.00 | 95 | 2 | 1 | $190,000 | 2026-07-18 |
+| [Providencia 3d+2b+dorm. Serv+b+e+bod. Las Lilas](https://www.portalinmobiliario.com/MLC-4155685302-providencia-3d2bdorm-servbebod-las-lilas-_JM) | 7,990 |  | 94 | 85.00 |  | 4 | 1 |  | 2026-07-18 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works

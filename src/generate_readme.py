@@ -64,8 +64,8 @@ def generate_readme():
     section = (
         f"{START_MARKER}\n"
         f"_Top {MAX_ROWS} by UF/m² among listings first seen in the last "
-        "7 days (under 100 m²). Updated automatically from "
-        "`data/recent_listings.csv`._\n\n"
+        "7 days (under 100 m², published within the last 30 days). "
+        "Updated automatically from `data/recent_listings.csv`._\n\n"
         f"{make_listings_table()}\n"
         f"{END_MARKER}"
     )
