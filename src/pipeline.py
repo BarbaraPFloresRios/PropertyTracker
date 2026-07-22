@@ -284,15 +284,28 @@ def recent_mask(listings):
     cutoff = (
         pd.Timestamp.today() - pd.Timedelta(days=RECENT_DAYS)
     ).strftime("%Y-%m-%d")
+    pub_cutoff = (
+        pd.Timestamp.today() - pd.Timedelta(days=RECENT_MAX_PUBLISHED_DAYS)
+    ).strftime("%Y-%m-%d")
 
     # each comuna's first scrape captures a mix of old and new listings all
     # with the same first_seen_date, so that bootstrap cohort is not "new"
     bootstrap_date = listings.groupby("comuna")["first_seen_date"].transform("min")
 
-    return (
+    seen_recently = (
         (listings["first_seen_date"] >= cutoff)
         & (listings["first_seen_date"] > bootstrap_date)
-        & (listings["m2_utiles"] < RECENT_MAX_M2)
+    )
+
+    # rescue genuinely-new listings a comuna's bootstrap would otherwise hide:
+    # if the real publication date is recent, the listing is new regardless of
+    # when we first saw it
+    published_recently = False
+    if "publicado_fecha_est" in listings.columns:
+        published_recently = listings["publicado_fecha_est"] >= pub_cutoff
+
+    return (seen_recently | published_recently) & (
+        listings["m2_utiles"] < RECENT_MAX_M2
     )
 
 

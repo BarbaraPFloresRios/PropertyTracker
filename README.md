@@ -16,35 +16,35 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | Listing | UF | CLP | m² | UF/m² | Zona UF/m² | Beds | Parking | Common exp. | First Seen |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | [Departamento En Venta De 2 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-2050886405-departamento-en-venta-de-2-dorm-en-santiago-_JM) | 1,250 | $51,055,988 | 55 | 22.73 | 84 | 2 | 0 | $60,000 | 2026-07-22 |
+| [Departamento En Venta De 2 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4146269686-departamento-en-venta-de-2-dorm-en-santiago-_JM) | 2,000 | $81,689,580 | 46 | 43.48 | 73 | 2 | 0 | $80,000 | 2026-07-16 |
 | [Vicuña Mackenna Plaza Italia Providencia](https://www.portalinmobiliario.com/MLC-4217921504-vicuna-mackenna-plaza-italia-providencia-_JM) | 3,000 | $122,534,370 | 66 | 45.45 | 68 | 2 | 0 | $68,000 | 2026-07-22 |
 | [Venta Depto., En Torres De Tajamar, Corazón De Providencia](https://www.portalinmobiliario.com/MLC-2020550193-venta-depto-en-torres-de-tajamar-corazon-de-providencia-_JM) | 3,900 | $159,294,681 | 82 | 47.56 | 94 | 2 | 0 | $110,000 | 2026-07-22 |
 | [Depto / Metro Los Leones](https://www.portalinmobiliario.com/MLC-4198200752-depto-metro-los-leones-_JM) | 4,500 | $183,801,555 | 93 | 48.39 | 94 | 3 | 0 | $155,000 | 2026-07-18 |
 | [Gran Departamento Sobre Av. Providencia](https://www.portalinmobiliario.com/MLC-2076883265-gran-departamento-sobre-av-providencia-_JM) | 4,500 | $183,801,555 | 92 | 48.91 | 94 | 2 | 0 | $155,000 | 2026-07-22 |
 | [Vendo Departamento  Antonio Varas Providencia 2 Dorm](https://www.portalinmobiliario.com/MLC-4105556362-vendo-departamento-antonio-varas-providencia-2-dorm-_JM) | 4,300 | $175,632,597 | 87 | 49.43 | 94 | 2 | 0 | $50,000 | 2026-07-21 |
+| [Departamento En Venta De 1d + 2b En Providencia, 75mts.](https://www.portalinmobiliario.com/MLC-4155493916-departamento-en-venta-de-1d-2b-en-providencia-75mts-_JM) | 3,890 | $158,886,233 | 75 | 51.87 | 98 | 1 | 0 | $140,000 | 2026-07-16 |
+| [Vendemos Depto  3 Dorm + 2 Baños  - Providencia](https://www.portalinmobiliario.com/MLC-2046335163-vendemos-depto-3-dorm-2-banos-providencia-_JM) | 4,680 | $191,153,617 | 87 | 53.79 | 85 | 3 | 0 | $95,000 | 2026-07-16 |
 | [Metro Sant Isabel / Seminario](https://www.portalinmobiliario.com/MLC-4202055572-metro-sant-isabel-seminario-_JM) | 4,040 | $165,000,000 | 75 | 53.86 | 65 | 3 | 0 | $65,000 | 2026-07-22 |
 | [Vendo Dpto Remodelado De 3d, 2b En Providencia. Metro](https://www.portalinmobiliario.com/MLC-4155689346-vendo-dpto-remodelado-de-3d-2b-en-providencia-metro-_JM) | 4,700 | $191,970,513 | 86 | 54.65 | 73 | 3 | 0 | $10,000 | 2026-07-22 |
 | [Providencia](https://www.portalinmobiliario.com/MLC-4198493428-providencia-_JM) | 4,500 | $183,801,555 | 82 | 54.88 | 94 | 3 | 0 | $120,000 | 2026-07-22 |
+| [Departamento Oportunidad 4d2b Duplex Metro Pedro Valdivia](https://www.portalinmobiliario.com/MLC-4170191206-departamento-oportunidad-4d2b-duplex-metro-pedro-valdivia-_JM) | 5,200 | $212,392,908 | 94 | 55.32 | 94 | 4 | 0 | $90,000 | 2026-07-16 |
+| [Lindo Departamento En Felix Cabrera / Pedro De Valdivia](https://www.portalinmobiliario.com/MLC-2016417437-lindo-departamento-en-felix-cabrera-pedro-de-valdivia-_JM) | 4,600 |  | 83 | 55.42 | 94 | 3 | 0 | $55,000 | 2026-07-16 |
 | [Depto 4 Dormitorios, 2 Baños, 90 M2 (75040)](https://www.portalinmobiliario.com/MLC-4209724852-depto-4-dormitorios-2-banos-90-m2-75040-_JM) | 4,990 | $203,815,502 | 90 | 55.44 | 94 | 4 | 0 | $120,000 | 2026-07-20 |
 | [Hermoso Departamento Providencia](https://www.portalinmobiliario.com/MLC-2039845269-hermoso-departamento-providencia-_JM) | 3,917 | $160,000,000 | 70 | 55.96 | 98 | 1 | 2 | $140,000 | 2026-07-22 |
 | [Exclusivo Departamento En Barrio Italia](https://www.portalinmobiliario.com/MLC-2042167777-exclusivo-departamento-en-barrio-italia-_JM) | 3,670 | $149,900,379 | 65 | 56.46 | 65 | 2 | 0 | $20,000 | 2026-07-22 |
 | [Miguel Claro / Metro Manuel Montt / Andres Bello](https://www.portalinmobiliario.com/MLC-2055379503-miguel-claro-metro-manuel-montt-andres-bello-_JM) | 3,800 | $155,210,202 | 67 | 56.72 | 98 | 2 | 0 | $100,000 | 2026-07-22 |
 | [Primer Piso Con Patio, Se Aceptan Ofertas!!](https://www.portalinmobiliario.com/MLC-2042155509-primer-piso-con-patio-se-aceptan-ofertas-_JM) | 4,290 | $175,224,149 | 75 | 57.20 |  | 3 | 0 |  | 2026-07-22 |
+| [Oportunidad De Inversión Providencia Lyon](https://www.portalinmobiliario.com/MLC-2018145889-oportunidad-de-inversion-providencia-lyon-_JM) | 4,590 | $187,477,586 | 80 | 57.38 |  | 2 | 0 |  | 2026-07-16 |
 | [Departamento Duplex Antonio Varas](https://www.portalinmobiliario.com/MLC-2076880913-departamento-duplex-antonio-varas-_JM) | 5,400 | $220,561,866 | 94 | 57.45 | 94 | 3 | 0 | $30,000 | 2026-07-22 |
 | [Dpto Alto Potencial En Metro Los Leones (161344)](https://www.portalinmobiliario.com/MLC-4134717372-dpto-alto-potencial-en-metro-los-leones-161344-_JM) | 4,600 | $187,886,034 | 80 | 57.50 | 94 | 2 | 0 | $127,000 | 2026-07-22 |
+| [Ubicación Estratégica Para Renta Corta](https://www.portalinmobiliario.com/MLC-2037612333-ubicacion-estrategica-para-renta-corta-_JM) | 3,893 | $159,000,000 | 66 | 58.98 | 98 | 2 | 0 | $170,000 | 2026-07-16 |
 | [Remodelado En La Unidad Vecinal Providencia (173179)](https://www.portalinmobiliario.com/MLC-2027786989-remodelado-en-la-unidad-vecinal-providencia-173179-_JM) | 5,250 | $214,435,148 | 89 | 58.99 | 94 | 3 |  |  | 2026-07-22 |
 | [Excelente Departamento En Parque Forestal, A Pasos Del Metro](https://www.portalinmobiliario.com/MLC-2076805191-excelente-departamento-en-parque-forestal-a-pasos-del-metro-_JM) | 4,284 | $175,000,000 | 72 | 59.51 | 68 | 3 | 0 | $50,000 | 2026-07-22 |
-| [Andrés De Fuenzalida (remodelado Completo)](https://www.portalinmobiliario.com/MLC-4210790912-andres-de-fuenzalida-remodelado-completo-_JM) | 5,200 | $212,392,908 | 85 | 61.18 | 94 | 3 | 0 | $115,000 | 2026-07-21 |
+| [Venta Departamento 1d 2b - Parque Padre Hurtado](https://www.portalinmobiliario.com/MLC-2076882511-venta-departamento-1d-2b-parque-padre-hurtado-_JM) | 4,850 | $198,097,232 | 80 | 60.62 | 88 | 1 | 0 | $130,000 | 2026-07-22 |
+| [Departamento Andrés De Fuenzalida Id: 44819](https://www.portalinmobiliario.com/MLC-4105566916-departamento-andres-de-fuenzalida-id-44819-_JM) | 5,200 | $212,392,908 | 85 | 61.18 | 94 | 3 | 0 | $115,000 | 2026-07-16 |
 | [Andrés De Fuenzalida (piso 7)](https://www.portalinmobiliario.com/MLC-4211492140-andres-de-fuenzalida-piso-7-_JM) | 5,200 | $212,392,908 | 85 | 61.18 |  | 3 |  |  | 2026-07-21 |
-| [Metro Salvador - Inversion (172024)](https://www.portalinmobiliario.com/MLC-4105688144-metro-salvador-inversion-172024-_JM) | 4,800 | $196,054,992 | 78 | 61.54 | 98 | 3 | 0 | $130,000 | 2026-07-22 |
-| [En Barrio Muy Residencial](https://www.portalinmobiliario.com/MLC-2016095265-en-barrio-muy-residencial-_JM) | 5,925 | $242,000,000 | 96 | 61.72 | 85 | 3 | 1 | $195,000 | 2026-07-22 |
-| [Espacioso Depto 2d/1b A Pasos Del Metro Manuel Montt](https://www.portalinmobiliario.com/MLC-2048440157-espacioso-depto-2d1b-a-pasos-del-metro-manuel-montt-_JM) | 4,407 | $180,000,000 | 71 | 62.07 | 98 | 2 | 0 | $82,000 | 2026-07-22 |
-| [Dúplex Remodelado En Sector Residencial Carlos Antúnez](https://www.portalinmobiliario.com/MLC-4111944222-duplex-remodelado-en-sector-residencial-carlos-antunez-_JM) | 6,000 | $245,068,740 | 94 | 63.83 |  | 3 | 0 |  | 2026-07-22 |
-| [Oportunidad Inversionistas.](https://www.portalinmobiliario.com/MLC-4139156918-oportunidad-inversionistas-_JM) | 6,100 | $249,153,219 | 95 | 64.21 | 94 | 3 | 0 | $150,000 | 2026-07-22 |
-| [Los Leones / Pedro Lautaro Ferrer](https://www.portalinmobiliario.com/MLC-2053530989-los-leones-pedro-lautaro-ferrer-_JM) | 4,500 | $183,801,555 | 70 | 64.29 | 84 | 3 | 1 | $150,000 | 2026-07-22 |
-| [Venta Usado Departamento 2d 1b - Providencia](https://www.portalinmobiliario.com/MLC-2076882417-venta-usado-departamento-2d-1b-providencia-_JM) | 5,600 | $228,730,824 | 86 | 65.12 | 85 | 2 | 0 | $0 | 2026-07-22 |
-| [Primer Piso Con Jardin Propio Ideal Para Remodelar](https://www.portalinmobiliario.com/MLC-4208897282-primer-piso-con-jardin-propio-ideal-para-remodelar-_JM) | 5,600 | $228,730,824 | 86 | 65.12 | 85 | 3 | 1 | $100,000 | 2026-07-20 |
-| [Venta Departamento 3d 2b - Providencia](https://www.portalinmobiliario.com/MLC-2076882389-venta-departamento-3d-2b-providencia-_JM) | 4,350 | $177,674,836 | 66 | 65.91 | 98 | 3 | 0 | $120,000 | 2026-07-22 |
-| [Depto 3d/2b Remodelado A Pasos Del Metro Pedro De Valdivia](https://www.portalinmobiliario.com/MLC-2049069787-depto-3d2b-remodelado-a-pasos-del-metro-pedro-de-valdivia-_JM) | 4,350 | $177,674,836 | 66 | 65.91 | 98 | 3 | 0 | $90,000 | 2026-07-22 |
+| [Andrés De Fuenzalida (remodelado Completo)](https://www.portalinmobiliario.com/MLC-4210790912-andres-de-fuenzalida-remodelado-completo-_JM) | 5,200 | $212,392,908 | 85 | 61.18 | 94 | 3 | 0 | $115,000 | 2026-07-21 |
+| [Gran Oportunidad En El Corazon De Providencia (139579)](https://www.portalinmobiliario.com/MLC-4160975038-gran-oportunidad-en-el-corazon-de-providencia-139579-_JM) | 4,897 | $200,000,000 | 80 | 61.21 | 94 | 4 | 0 | $105,000 | 2026-07-16 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works

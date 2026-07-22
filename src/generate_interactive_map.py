@@ -41,19 +41,13 @@ def comuna_display(slug):
 
 
 def load_recent():
+    # deferred import: pipeline imports this module at load time
+    from src.pipeline import recent_mask
+
     df = pd.read_csv(RAW_CSV)
 
-    cutoff = (
-        pd.Timestamp.today() - pd.Timedelta(days=RECENT_DAYS)
-    ).strftime("%Y-%m-%d")
-
-    # each comuna's first scrape is a bootstrap cohort with meaningless dates
-    bootstrap_date = df.groupby("comuna")["first_seen_date"].transform("min")
-
     return df[
-        (df["first_seen_date"] >= cutoff)
-        & (df["first_seen_date"] > bootstrap_date)
-        & (df["m2_utiles"] < RECENT_MAX_M2)
+        recent_mask(df)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
         & df["price_clp"].notna()
