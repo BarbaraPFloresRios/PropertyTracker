@@ -3,7 +3,7 @@ import time
 
 import pandas as pd
 
-from src.generate_interactive_map import generate_interactive_map
+from src.generate_interactive_map import comuna_display, generate_interactive_map
 from src.generate_readme import generate_readme
 
 from scrapers.portalinmobiliario import (
@@ -368,6 +368,8 @@ def build_recent_listings():
         pub = recent["publicado_fecha_est"]
         recent = recent[pub.isna() | (pub >= pub_cutoff)]
 
+    recent["comuna"] = recent["comuna"].map(comuna_display)
+
     recent = recent.sort_values(
         by="uf_per_m2",
         ascending=True,
@@ -384,6 +386,7 @@ def build_recent_listings():
         "bedrooms_n",
         "parking",
         "gastos_comunes_clp",
+        "comuna",
         "barrio",
         "first_seen_date",
         "publicado_fecha_est",
