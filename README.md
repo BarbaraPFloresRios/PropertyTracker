@@ -42,9 +42,9 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Excelente Departamento En Parque Forestal, A Pasos Del Metro](https://www.portalinmobiliario.com/MLC-2076805191-excelente-departamento-en-parque-forestal-a-pasos-del-metro-_JM) | 4,284 | $175,000,000 | 72 | 59.51 | 68 | 3 | 0 | $50,000 | 2026-07-22 |
 | [Venta Departamento 1d 2b - Parque Padre Hurtado](https://www.portalinmobiliario.com/MLC-2076882511-venta-departamento-1d-2b-parque-padre-hurtado-_JM) | 4,850 | $198,097,232 | 80 | 60.62 | 88 | 1 | 0 | $130,000 | 2026-07-22 |
 | [Departamento Andrés De Fuenzalida Id: 44819](https://www.portalinmobiliario.com/MLC-4105566916-departamento-andres-de-fuenzalida-id-44819-_JM) | 5,200 | $212,392,908 | 85 | 61.18 | 94 | 3 | 0 | $115,000 | 2026-07-16 |
-| [Andrés De Fuenzalida (piso 7)](https://www.portalinmobiliario.com/MLC-4211492140-andres-de-fuenzalida-piso-7-_JM) | 5,200 | $212,392,908 | 85 | 61.18 |  | 3 |  |  | 2026-07-21 |
 | [Andrés De Fuenzalida (remodelado Completo)](https://www.portalinmobiliario.com/MLC-4210790912-andres-de-fuenzalida-remodelado-completo-_JM) | 5,200 | $212,392,908 | 85 | 61.18 | 94 | 3 | 0 | $115,000 | 2026-07-21 |
 | [Gran Oportunidad En El Corazon De Providencia (139579)](https://www.portalinmobiliario.com/MLC-4160975038-gran-oportunidad-en-el-corazon-de-providencia-139579-_JM) | 4,897 | $200,000,000 | 80 | 61.21 | 94 | 4 | 0 | $105,000 | 2026-07-16 |
+| [Metro Salvador - Inversion (172024)](https://www.portalinmobiliario.com/MLC-4105688144-metro-salvador-inversion-172024-_JM) | 4,800 | $196,054,992 | 78 | 61.54 | 98 | 3 | 0 | $130,000 | 2026-07-22 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
