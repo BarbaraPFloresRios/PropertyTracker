@@ -28,6 +28,11 @@ SEARCHES = [
         "property_type": "departamento",
         "location": "providencia-metropolitana",
     },
+    {
+        "operation": "venta",
+        "property_type": "departamento",
+        "location": "las-condes-metropolitana",
+    },
 ]
 
 

@@ -20,10 +20,6 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 RECENT_DAYS = 7
 RECENT_MAX_M2 = 100
 
-# listings captured by the very first scrape may have been published long
-# before tracking started, so their first_seen_date is not a real "new" date
-FIRST_SEEN_MIN_DATE = "2026-07-17"
-
 # runs a listing can miss (partial scrapes) before counting as delisted
 DELIST_TOLERANCE_DAYS = 2
 
@@ -285,8 +281,13 @@ def recent_mask(listings):
         pd.Timestamp.today() - pd.Timedelta(days=RECENT_DAYS)
     ).strftime("%Y-%m-%d")
 
+    # each comuna's first scrape captures a mix of old and new listings all
+    # with the same first_seen_date, so that bootstrap cohort is not "new"
+    bootstrap_date = listings.groupby("comuna")["first_seen_date"].transform("min")
+
     return (
-        (listings["first_seen_date"] >= max(cutoff, FIRST_SEEN_MIN_DATE))
+        (listings["first_seen_date"] >= cutoff)
+        & (listings["first_seen_date"] > bootstrap_date)
         & (listings["m2_utiles"] < RECENT_MAX_M2)
     )
 

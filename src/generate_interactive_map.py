@@ -11,10 +11,6 @@ OUTPUT_HTML = "docs/map.html"
 RECENT_DAYS = 7
 RECENT_MAX_M2 = 100
 
-# listings captured by the very first scrape may have been published long
-# before tracking started, so their first_seen_date is not a real "new" date
-FIRST_SEEN_MIN_DATE = "2026-07-17"
-
 # sequential blue ramp, steps 100 -> 700 (light -> dark)
 SEQ_BLUE = [
     "#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7",
@@ -40,6 +36,10 @@ MAP_COLUMNS = [
 ]
 
 
+def comuna_display(slug):
+    return slug.replace("-metropolitana", "").replace("-", " ").title()
+
+
 def load_recent():
     df = pd.read_csv(RAW_CSV)
 
@@ -47,8 +47,12 @@ def load_recent():
         pd.Timestamp.today() - pd.Timedelta(days=RECENT_DAYS)
     ).strftime("%Y-%m-%d")
 
+    # each comuna's first scrape is a bootstrap cohort with meaningless dates
+    bootstrap_date = df.groupby("comuna")["first_seen_date"].transform("min")
+
     return df[
-        (df["first_seen_date"] >= max(cutoff, FIRST_SEEN_MIN_DATE))
+        (df["first_seen_date"] >= cutoff)
+        & (df["first_seen_date"] > bootstrap_date)
         & (df["m2_utiles"] < RECENT_MAX_M2)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
@@ -64,6 +68,10 @@ def generate_interactive_map():
         return
 
     vmin, vmax = np.percentile(recent["uf_per_m2"], [5, 95])
+
+    comunas = " y ".join(
+        comuna_display(c) for c in sorted(recent["comuna"].dropna().unique())
+    )
 
     config = {
         "colors": SEQ_BLUE,
@@ -82,6 +90,7 @@ def generate_interactive_map():
 
     html = (
         template
+        .replace("__COMUNAS__", comunas)
         .replace("__CONFIG__", json.dumps(config))
         .replace("__LISTINGS__", json.dumps(listings, ensure_ascii=False))
     )
