@@ -31,15 +31,23 @@ SEARCHES = [
 ]
 
 
+# sort by publication date (newest first) so genuinely new listings always
+# land on the first pages, inside the ~2000-result window the site exposes
+SORT_NEWEST = "_OrderId_BEGINS*DESC_NoIndex_True"
+
+
 def build_page_url(search, page):
     url = (
         f"{BASE_URL}/{search['operation']}"
         f"/{search['property_type']}"
         f"/{search['location']}"
+        "/"
     )
 
     if page > 0:
-        url += f"/_Desde_{page * RESULTS_PER_PAGE + 1}"
+        url += f"_Desde_{page * RESULTS_PER_PAGE + 1}"
+
+    url += SORT_NEWEST
 
     return url
 
