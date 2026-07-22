@@ -301,11 +301,21 @@ def recent_mask(listings):
     # if the real publication date is recent, the listing is new regardless of
     # when we first saw it
     published_recently = False
-    if "publicado_fecha_est" in listings.columns:
-        published_recently = listings["publicado_fecha_est"] >= pub_cutoff
 
-    return (seen_recently | published_recently) & (
-        listings["m2_utiles"] < RECENT_MAX_M2
+    # ...and drop listings we KNOW were published too long ago, even if we just
+    # started seeing them (false-new that rotated into view). Listings without
+    # the estimate (not yet enriched) are kept, since their real age is unknown.
+    not_confirmed_old = True
+
+    if "publicado_fecha_est" in listings.columns:
+        pub = listings["publicado_fecha_est"]
+        published_recently = pub >= pub_cutoff
+        not_confirmed_old = pub.isna() | (pub >= pub_cutoff)
+
+    return (
+        (seen_recently | published_recently)
+        & not_confirmed_old
+        & (listings["m2_utiles"] < RECENT_MAX_M2)
     )
 
 
@@ -368,18 +378,6 @@ def build_recent_listings():
     listings = pd.read_csv(PORTALINMOBILIARIO_OUTPUT_PATH)
 
     recent = listings[recent_mask(listings)].copy()
-
-    # drop false-new listings: those whose real publication date is older than
-    # RECENT_MAX_PUBLISHED_DAYS. Listings without the estimate (not yet
-    # enriched) are kept, since their real age is still unknown.
-    if "publicado_fecha_est" in recent.columns:
-        pub_cutoff = (
-            pd.Timestamp.today()
-            - pd.Timedelta(days=RECENT_MAX_PUBLISHED_DAYS)
-        ).strftime("%Y-%m-%d")
-
-        pub = recent["publicado_fecha_est"]
-        recent = recent[pub.isna() | (pub >= pub_cutoff)]
 
     recent["comuna"] = recent["comuna"].map(comuna_display)
 
