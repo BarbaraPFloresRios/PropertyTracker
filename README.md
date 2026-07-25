@@ -22,6 +22,8 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Venta Depto., En Torres De Tajamar, Corazón De Providencia](https://www.portalinmobiliario.com/MLC-2020550193-venta-depto-en-torres-de-tajamar-corazon-de-providencia-_JM) | 3,900 | $159,294,681 | 82 | 47.56 | 94 | 2 | 0 | $110,000 | 2026-07-22 |
 | [Depto / Metro Los Leones](https://www.portalinmobiliario.com/MLC-4198200752-depto-metro-los-leones-_JM) | 4,500 | $183,801,555 | 93 | 48.39 | 94 | 3 | 0 | $155,000 | 2026-07-18 |
 | [Gran Departamento Sobre Av. Providencia](https://www.portalinmobiliario.com/MLC-2076883265-gran-departamento-sobre-av-providencia-_JM) | 4,500 | $183,801,555 | 92 | 48.91 | 94 | 2 | 0 | $155,000 | 2026-07-22 |
+| [Departamento En Venta En Las Condes, Alejandro Fleming 9695](https://www.portalinmobiliario.com/MLC-4234260570-departamento-en-venta-en-las-condes-alejandro-fleming-9695-_JM) | 3,060 | $125,000,000 | 60 | 51.01 | 83 | 3 | 1 | $35,000 | 2026-07-25 |
+| [Amplio Duplex / 94m2 / 4d / Parque Con Laguna](https://www.portalinmobiliario.com/MLC-4234530462-amplio-duplex-94m2-4d-parque-con-laguna-_JM) | 4,800 | $196,054,992 | 94 | 51.06 | 94 | 4 | 0 | $126,000 | 2026-07-25 |
 | [Departamento En Venta De 1d + 2b En Providencia, 75mts.](https://www.portalinmobiliario.com/MLC-4155493916-departamento-en-venta-de-1d-2b-en-providencia-75mts-_JM) | 3,890 | $158,886,233 | 75 | 51.87 | 98 | 1 | 0 | $140,000 | 2026-07-16 |
 | [Vendemos Depto  3 Dorm + 2 Baños  - Providencia](https://www.portalinmobiliario.com/MLC-2046335163-vendemos-depto-3-dorm-2-banos-providencia-_JM) | 4,680 | $191,153,617 | 87 | 53.79 | 85 | 3 | 0 | $95,000 | 2026-07-16 |
 | [Metro Sant Isabel / Seminario](https://www.portalinmobiliario.com/MLC-4202055572-metro-sant-isabel-seminario-_JM) | 4,040 | $165,000,000 | 75 | 53.86 | 65 | 3 | 0 | $65,000 | 2026-07-22 |
@@ -32,19 +34,17 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Hermoso Departamento Providencia](https://www.portalinmobiliario.com/MLC-2039845269-hermoso-departamento-providencia-_JM) | 3,917 | $160,000,000 | 70 | 55.96 | 98 | 1 | 2 | $140,000 | 2026-07-22 |
 | [Exclusivo Departamento En Barrio Italia](https://www.portalinmobiliario.com/MLC-2042167777-exclusivo-departamento-en-barrio-italia-_JM) | 3,670 | $149,900,379 | 65 | 56.46 | 65 | 2 | 0 | $20,000 | 2026-07-22 |
 | [Miguel Claro / Metro Manuel Montt / Andres Bello](https://www.portalinmobiliario.com/MLC-2055379503-miguel-claro-metro-manuel-montt-andres-bello-_JM) | 3,800 | $155,210,202 | 67 | 56.72 | 98 | 2 | 0 | $100,000 | 2026-07-22 |
-| [Primer Piso Con Patio, Se Aceptan Ofertas!!](https://www.portalinmobiliario.com/MLC-2042155509-primer-piso-con-patio-se-aceptan-ofertas-_JM) | 4,290 | $175,224,149 | 75 | 57.20 |  | 3 | 0 |  | 2026-07-22 |
+| [Primer Piso Con Patio !!!](https://www.portalinmobiliario.com/MLC-2042155509-primer-piso-con-patio--_JM) | 4,290 | $175,224,149 | 75 | 57.20 |  | 3 | 0 |  | 2026-07-22 |
 | [Departamento Duplex Antonio Varas](https://www.portalinmobiliario.com/MLC-2076880913-departamento-duplex-antonio-varas-_JM) | 5,400 | $220,561,866 | 94 | 57.45 | 94 | 3 | 0 | $30,000 | 2026-07-22 |
 | [Dpto Alto Potencial En Metro Los Leones (161344)](https://www.portalinmobiliario.com/MLC-4134717372-dpto-alto-potencial-en-metro-los-leones-161344-_JM) | 4,600 | $187,886,034 | 80 | 57.50 | 94 | 2 | 0 | $127,000 | 2026-07-22 |
+| [Departamento En Venta De 4 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-2084194649-departamento-en-venta-de-4-dorm-en-providencia-_JM) | 5,400 | $220,561,866 | 92 | 58.70 | 80 | 4 | 0 | $100,000 | 2026-07-25 |
 | [Ubicación Estratégica Para Renta Corta](https://www.portalinmobiliario.com/MLC-2037612333-ubicacion-estrategica-para-renta-corta-_JM) | 3,893 | $159,000,000 | 66 | 58.98 | 98 | 2 | 0 | $170,000 | 2026-07-16 |
-| [Remodelado En La Unidad Vecinal Providencia (173179)](https://www.portalinmobiliario.com/MLC-2027786989-remodelado-en-la-unidad-vecinal-providencia-173179-_JM) | 5,250 | $214,435,148 | 89 | 58.99 | 94 | 3 |  |  | 2026-07-22 |
+| [Duplex Luminoso Hogar Con Vista A Jardín (173179)](https://www.portalinmobiliario.com/MLC-2027786989-duplex-luminoso-hogar-con-vista-a-jardin-173179-_JM) | 5,250 | $214,435,148 | 89 | 58.99 | 94 | 3 |  |  | 2026-07-22 |
 | [Excelente Departamento En Parque Forestal, A Pasos Del Metro](https://www.portalinmobiliario.com/MLC-2076805191-excelente-departamento-en-parque-forestal-a-pasos-del-metro-_JM) | 4,284 | $175,000,000 | 72 | 59.51 | 68 | 3 | 0 | $50,000 | 2026-07-22 |
+| [Departamento En Venta De 3 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4234027026-departamento-en-venta-de-3-dorm-en-providencia-_JM) | 4,740 | $193,604,305 | 79 | 60.00 | 85 | 3 | 0 | $150,000 | 2026-07-25 |
 | [Venta Departamento 1d 2b - Parque Padre Hurtado](https://www.portalinmobiliario.com/MLC-2076882511-venta-departamento-1d-2b-parque-padre-hurtado-_JM) | 4,850 | $198,097,232 | 80 | 60.62 | 88 | 1 | 0 | $130,000 | 2026-07-22 |
 | [Andrés De Fuenzalida (remodelado Completo)](https://www.portalinmobiliario.com/MLC-4210790912-andres-de-fuenzalida-remodelado-completo-_JM) | 5,200 | $212,392,908 | 85 | 61.18 | 94 | 3 | 0 | $115,000 | 2026-07-21 |
 | [Inversión Segura En Zona De Alta Demanda (176694)](https://www.portalinmobiliario.com/MLC-4229051918-inversion-segura-en-zona-de-alta-demanda-176694-_JM) | 3,672 | $149,990,000 | 60 | 61.20 | 98 | 2 | 0 | $80,000 | 2026-07-24 |
-| [Amplio Y Cómodo Depto. Con Super Ubicación: Vespucio  Esquin](https://www.portalinmobiliario.com/MLC-2079448453-amplio-y-comodo-depto-con-super-ubicacion-vespucio-esquin-_JM) | 5,631 | $230,000,000 | 92 | 61.21 | 95 | 4 | 1 | $120,000 | 2026-07-23 |
-| [Gran Oportunidad En El Corazon De Providencia (139579)](https://www.portalinmobiliario.com/MLC-4160975038-gran-oportunidad-en-el-corazon-de-providencia-139579-_JM) | 4,897 | $200,000,000 | 80 | 61.21 | 94 | 4 | 0 | $105,000 | 2026-07-16 |
-| [Metro Salvador - Inversion (172024)](https://www.portalinmobiliario.com/MLC-4105688144-metro-salvador-inversion-172024-_JM) | 4,800 | $196,054,992 | 78 | 61.54 | 98 | 3 | 0 | $130,000 | 2026-07-22 |
-| [Vista Despejada - Metro Salvaodr (172024)](https://www.portalinmobiliario.com/MLC-4225057096-vista-despejada-metro-salvaodr-172024-_JM) | 4,800 | $196,054,992 | 78 | 61.54 | 98 | 3 | 0 | $130,000 | 2026-07-23 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
