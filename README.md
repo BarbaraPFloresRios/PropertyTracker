@@ -32,6 +32,7 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Primer Piso Con Patio !!!](https://www.portalinmobiliario.com/MLC-2042155509-primer-piso-con-patio--_JM) | 4,290 |  | 75 | 57.20 |  | 3 | 0 |  | 2026-07-22 |
 | [Departamento Duplex Antonio Varas](https://www.portalinmobiliario.com/MLC-2076880913-departamento-duplex-antonio-varas-_JM) | 5,400 |  | 94 | 57.45 | 94 | 3 | 0 | $30,000 | 2026-07-22 |
 | [Dpto Alto Potencial En Metro Los Leones (161344)](https://www.portalinmobiliario.com/MLC-4134717372-dpto-alto-potencial-en-metro-los-leones-161344-_JM) | 4,600 | $187,886,034 | 80 | 57.50 | 94 | 2 | 0 | $127,000 | 2026-07-22 |
+| [Venta Depto 3 Habitaciones 2 Baños - Metro Los Leones (5301)](https://www.portalinmobiliario.com/MLC-4239748584-venta-depto-3-habitaciones-2-banos-metro-los-leones-5301-_JM) | 4,600 |  | 79 | 58.23 | 94 | 3 | 0 | $180,000 | 2026-07-27 |
 | [Departamento En Venta De 4 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-2084194649-departamento-en-venta-de-4-dorm-en-providencia-_JM) | 5,400 |  | 92 | 58.70 | 80 | 4 | 0 | $100,000 | 2026-07-25 |
 | [Duplex Luminoso Hogar Con Vista A Jardín (173179)](https://www.portalinmobiliario.com/MLC-2027786989-duplex-luminoso-hogar-con-vista-a-jardin-173179-_JM) | 5,250 |  | 89 | 58.99 | 94 | 3 |  |  | 2026-07-22 |
 | [Departamento En Venta De 3 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4234027026-departamento-en-venta-de-3-dorm-en-providencia-_JM) | 4,740 |  | 79 | 60.00 | 85 | 3 | 0 | $150,000 | 2026-07-25 |
@@ -44,7 +45,6 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Departamento En Venta Cercano Metro Salvador, Providencia](https://www.portalinmobiliario.com/MLC-2037752803-departamento-en-venta-cercano-metro-salvador-providencia-_JM) | 5,400 |  | 85 | 63.53 | 81 | 3 | 0 | $35,000 | 2026-07-16 |
 | [Departamento Con 3 Dorm. 1 Estacionamiento Providencia](https://www.portalinmobiliario.com/MLC-4229050688-departamento-con-3-dorm-1-estacionamiento-providencia-_JM) | 6,000 |  | 94 | 63.83 | 94 | 3 | 1 | $0 | 2026-07-24 |
 | [Dúplex Remodelado En Sector Residencial Carlos Antúnez](https://www.portalinmobiliario.com/MLC-4229319530-duplex-remodelado-en-sector-residencial-carlos-antunez-_JM) | 6,000 |  | 94 | 63.83 |  | 3 | 0 |  | 2026-07-24 |
-| [Moderno Depto Remodelado A Pasos Del Metro 3d-2b](https://www.portalinmobiliario.com/MLC-2084505355-moderno-depto-remodelado-a-pasos-del-metro-3d-2b-_JM) | 6,100 |  | 95 | 64.21 | 94 | 3 | 0 | $150,000 | 2026-07-25 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
