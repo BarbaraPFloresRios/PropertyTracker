@@ -40,6 +40,13 @@ SEARCHES = [
 # land on the first pages, inside the ~2000-result window the site exposes
 SORT_NEWEST = "_OrderId_BEGINS*DESC_NoIndex_True"
 
+# a removed/expired listing still returns HTTP 200 but its detail page carries
+# this exact modal text (absent on live pages)
+FINISHED_MARKER = '"text":"Publicación finalizada"'
+
+# sentinel returned by fetch_listing_details when the page says finished
+LISTING_FINISHED = object()
+
 
 def build_page_url(search, page):
     url = (
@@ -337,6 +344,9 @@ def fetch_listing_details(url):
     except Exception as e:
         print(f"Detail fetch failed: {url} ({e})")
         return None
+
+    if FINISHED_MARKER in response.text:
+        return LISTING_FINISHED
 
     lat, lng = parse_coordinates(response.text)
     publicado_texto, publicado_dias = parse_publicado_hace(response.text)

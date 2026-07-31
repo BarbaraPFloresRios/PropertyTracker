@@ -7,6 +7,7 @@ from src.generate_interactive_map import comuna_display, generate_interactive_ma
 from src.generate_readme import generate_readme
 
 from scrapers.portalinmobiliario import (
+    LISTING_FINISHED,
     fetch_listing_details,
     scrape_portalinmobiliario,
 )
@@ -19,10 +20,6 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 
 RECENT_DAYS = 7
 RECENT_MAX_M2 = 100
-
-# a listing whose real publication date (publicado_fecha_est) is older than
-# this rotated into view long after being posted, so it is not really "new"
-RECENT_MAX_PUBLISHED_DAYS = 30
 
 # runs a listing can miss (partial scrapes) before counting as delisted
 DELIST_TOLERANCE_DAYS = 2
@@ -189,6 +186,14 @@ def save_listings(current_listings, output_path, source=""):
                     current_listings[dedupe_key].map(old_indexed[column])
                 )
 
+        # finished_date is sticky: once a detail page says "Publicación
+        # finalizada", the flag persists across runs (unlike delisted_date,
+        # which add_delisting_columns recomputes each run)
+        if "finished_date" in old_indexed.columns:
+            current_listings["finished_date"] = (
+                current_listings[dedupe_key].map(old_indexed["finished_date"])
+            )
+
         listings = pd.concat(
             [old_listings, current_listings],
             ignore_index=True,
@@ -281,12 +286,8 @@ def save_listings(current_listings, output_path, source=""):
 
 
 def recent_mask(listings):
-    cutoff = (
-        pd.Timestamp.today() - pd.Timedelta(days=RECENT_DAYS)
-    ).strftime("%Y-%m-%d")
-    pub_cutoff = (
-        pd.Timestamp.today() - pd.Timedelta(days=RECENT_MAX_PUBLISHED_DAYS)
-    ).strftime("%Y-%m-%d")
+    today = pd.Timestamp.today()
+    cutoff = (today - pd.Timedelta(days=RECENT_DAYS)).strftime("%Y-%m-%d")
 
     # each comuna's first scrape captures a mix of old and new listings all
     # with the same first_seen_date, so that bootstrap cohort is not "new"
@@ -297,26 +298,34 @@ def recent_mask(listings):
         & (listings["first_seen_date"] > bootstrap_date)
     )
 
-    # rescue genuinely-new listings a comuna's bootstrap would otherwise hide:
-    # if the real publication date is recent, the listing is new regardless of
-    # when we first saw it
-    published_recently = False
-
-    # ...and drop listings we KNOW were published too long ago, even if we just
-    # started seeing them (false-new that rotated into view). Listings without
-    # the estimate (not yet enriched) are kept, since their real age is unknown.
-    not_confirmed_old = True
-
+    # "recent" means published within the last RECENT_DAYS, by the listing's
+    # real publication date. The site reports exact days under a month, so the
+    # 7-day boundary is precise. first_seen_date only says when WE saw it, which
+    # can lag publication by months (listings rotate into the scrape window).
     if "publicado_fecha_est" in listings.columns:
-        pub = listings["publicado_fecha_est"]
-        published_recently = pub >= pub_cutoff
-        not_confirmed_old = pub.isna() | (pub >= pub_cutoff)
+        pub = pd.to_datetime(listings["publicado_fecha_est"], errors="coerce")
+        published_recently = pub >= (today - pd.Timedelta(days=RECENT_DAYS))
 
-    return (
-        (seen_recently | published_recently)
-        & not_confirmed_old
-        & (listings["m2_utiles"] < RECENT_MAX_M2)
-    )
+        # provisional: a listing we just saw but haven't enriched yet has an
+        # unknown publication date. Show it now; if enrichment (same run,
+        # before the map is built) reveals it is old, it drops out.
+        awaiting_enrichment = pub.isna() & seen_recently
+
+        is_recent = published_recently | awaiting_enrichment
+    else:
+        is_recent = seen_recently
+
+    # exclude listings we know are gone: flagged delisted by the seen/not-seen
+    # heuristic, or confirmed "Publicación finalizada" on the detail page
+    live = pd.Series(True, index=listings.index)
+
+    if "delisted_date" in listings.columns:
+        live &= listings["delisted_date"].isna()
+
+    if "finished_date" in listings.columns:
+        live &= listings["finished_date"].isna()
+
+    return is_recent & live & (listings["m2_utiles"] < RECENT_MAX_M2)
 
 
 def enrich_recent_listings():
@@ -330,12 +339,16 @@ def enrich_recent_listings():
         if column not in listings.columns:
             listings[column] = pd.NA
 
+    if "finished_date" not in listings.columns:
+        listings["finished_date"] = pd.NA
+
     # text goes into these; an all-NaN column defaults to float
     for column in (
         "orientacion",
         "enriched_date",
         "publicado_hace",
         "publicado_fecha_est",
+        "finished_date",
     ):
         listings[column] = listings[column].astype("object")
 
@@ -358,6 +371,13 @@ def enrich_recent_listings():
         if details is None:
             continue
 
+        if details is LISTING_FINISHED:
+            # detail page says "Publicación finalizada": flag it gone now
+            # instead of waiting DELIST_TOLERANCE_DAYS for the not-seen heuristic
+            listings.at[index, "finished_date"] = today
+            listings.at[index, "enriched_date"] = today
+            continue
+
         for column in ENRICH_VALUE_COLUMNS:
             listings.at[index, column] = details.get(column)
 
@@ -367,6 +387,55 @@ def enrich_recent_listings():
             print(f"  {count}/{len(candidates)} enriched")
 
         time.sleep(ENRICH_SLEEP_SECONDS)
+
+    listings.to_csv(PORTALINMOBILIARIO_OUTPUT_PATH, index=False)
+
+
+def verify_recent_listings():
+    """Re-check recent listings already enriched in a prior run.
+
+    Enrichment only visits a listing once, so one that dies after we enriched
+    it keeps showing until the seen/not-seen heuristic catches it. Here we
+    re-fetch the currently-shown recent set and flag any whose detail page now
+    reads "Publicación finalizada".
+    """
+    if not os.path.exists(PORTALINMOBILIARIO_OUTPUT_PATH):
+        return
+
+    listings = pd.read_csv(PORTALINMOBILIARIO_OUTPUT_PATH)
+
+    if "finished_date" not in listings.columns:
+        listings["finished_date"] = pd.NA
+    listings["finished_date"] = listings["finished_date"].astype("object")
+
+    today = pd.Timestamp.today().strftime("%Y-%m-%d")
+
+    # recent_mask already excludes finished ones; skip those enriched this run
+    # (enrich_recent_listings just checked them)
+    candidates = listings.index[
+        recent_mask(listings)
+        & listings["enriched_date"].notna()
+        & (listings["enriched_date"] != today)
+        & listings["url"].notna()
+    ]
+
+    print(f"Re-checking {len(candidates)} recent listings for 'finalizada'")
+
+    gone = 0
+
+    for count, index in enumerate(candidates, start=1):
+        result = fetch_listing_details(listings.at[index, "url"])
+
+        if result is LISTING_FINISHED:
+            listings.at[index, "finished_date"] = today
+            gone += 1
+
+        if count % 50 == 0:
+            print(f"  {count}/{len(candidates)} re-checked")
+
+        time.sleep(ENRICH_SLEEP_SECONDS)
+
+    print(f"Flagged {gone} newly finished listings")
 
     listings.to_csv(PORTALINMOBILIARIO_OUTPUT_PATH, index=False)
 
@@ -425,6 +494,10 @@ def run_pipeline():
     print_phase("Enriching recent listings")
 
     enrich_recent_listings()
+
+    print_phase("Re-checking recent listings")
+
+    verify_recent_listings()
 
     print_phase("Exporting recent listings")
 
