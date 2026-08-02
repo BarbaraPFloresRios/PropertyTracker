@@ -37,7 +37,6 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Excelente Conectividad A Pasos Del Metro (148885)](https://www.portalinmobiliario.com/MLC-4243844812-excelente-conectividad-a-pasos-del-metro-148885-_JM) | 3,910 | $159,703,129 | 60 | 65.17 | 68 | 2 | 1 | $50,000 | 2026-07-27 |
 | [Departamento En Venta De 2 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4248422652-departamento-en-venta-de-2-dorm-en-providencia-_JM) | 5,990 | $244,660,292 | 91 | 65.82 | 80 | 2 | 0 | $90,000 | 2026-07-28 |
 | [Venta Departamento Providencia Tercer Piso Sin Ascensor](https://www.portalinmobiliario.com/MLC-4267988644-venta-departamento-providencia-tercer-piso-sin-ascensor-_JM) | 4,900 | $200,139,471 | 74 | 66.22 | 84 | 3 | 1 | $57,000 | 2026-07-31 |
-| [Primer Piso Duplex Las Condes](https://www.portalinmobiliario.com/MLC-2086658415-primer-piso-duplex-las-condes-_JM) | 4,652 | $190,000,000 | 70 | 66.45 | 111 | 3 | 1 |  | 2026-07-26 |
 | [Departamento En Venta De 3 Dorm.2baños En Las Condes](https://www.portalinmobiliario.com/MLC-4268008526-departamento-en-venta-de-3-dorm2banos-en-las-condes-_JM) | 4,652 | $190,000,000 | 70 | 66.45 | 100 | 3 | 1 | $0 | 2026-07-31 |
 | [Ubicación Privilegiada Y Vista Panorámica En Providencia](https://www.portalinmobiliario.com/MLC-4275274208-ubicacion-privilegiada-y-vista-panoramica-en-providencia-_JM) | 3,672 | $149,982,069 | 55 | 66.76 |  | 2 | 0 |  | 2026-08-01 |
 | [Departamento Con Gran Vista Despejada](https://www.portalinmobiliario.com/MLC-4248044686-departamento-con-gran-vista-despejada-_JM) | 5,800 | $236,899,782 | 85 | 68.24 | 93 | 2 | 1 | $150,000 | 2026-07-28 |
@@ -45,6 +44,7 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Departamento El Golf, Las Condes](https://www.portalinmobiliario.com/MLC-4274550200-departamento-el-golf-las-condes-_JM) | 5,600 | $228,730,824 | 81 | 69.14 | 99 | 1 | 0 | $90,000 | 2026-08-01 |
 | [Depto. Remodelado A Pasos Del Metro Salvador 3d/2b](https://www.portalinmobiliario.com/MLC-2092297381-depto-remodelado-a-pasos-del-metro-salvador-3d2b-_JM) | 5,700 | $232,815,303 | 82 | 69.51 |  | 3 | 0 |  | 2026-07-28 |
 | [Amplio Depto Sin Est Ideal Familia O Inversión Providencia](https://www.portalinmobiliario.com/MLC-2094689161-amplio-depto-sin-est-ideal-familia-o-inversion-providencia-_JM) | 6,290 | $256,913,729 | 90 | 69.89 | 80 | 3 | 0 | $130,000 | 2026-07-29 |
+| [Depa U Oficina Venta Impecable 2 D 2 B Baquedano Ppw](https://www.portalinmobiliario.com/MLC-4259929816-depa-u-oficina-venta-impecable-2-d-2-b-baquedano-ppw-_JM) | 5,900 | $240,984,261 | 84 | 70.24 | 80 | 2 | 0 | $120,000 | 2026-07-30 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
