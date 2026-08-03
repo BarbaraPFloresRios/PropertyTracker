@@ -23,18 +23,20 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Departamento En Venta En Las Condes, Alejandro Fleming 9695](https://www.portalinmobiliario.com/MLC-2092642729-departamento-en-venta-en-las-condes-alejandro-fleming-9695-_JM) | 3,060 | $125,000,000 | 60 | 51.01 | 83 | 3 | 1 | $35,000 | 2026-07-28 |
 | [Departamento En Venta En Las Condes](https://www.portalinmobiliario.com/MLC-4267984348-departamento-en-venta-en-las-condes-_JM) | 2,816 | $115,000,000 | 52 | 54.14 | 126 | 3 | 1 | $0 | 2026-07-31 |
 | [2d  1b En Bosque De La Villa, Las Condes](https://www.portalinmobiliario.com/MLC-2097397397-2d-1b-en-bosque-de-la-villa-las-condes-_JM) | 2,450 | $100,069,736 | 45 | 54.44 | 126 | 2 | 0 | $15,000 | 2026-07-29 |
+| [Departamento En Venta De 2 Dorm. En Las Condes](https://www.portalinmobiliario.com/MLC-2109940269-departamento-en-venta-de-2-dorm-en-las-condes-_JM) | 3,305 | $135,000,000 | 60 | 55.09 | 84 | 2 | 0 | $17,000 | 2026-08-03 |
 | [Departamento 3d / 2d En Venta - Las Condes](https://www.portalinmobiliario.com/MLC-2098657379-departamento-3d-2d-en-venta-las-condes-_JM) | 4,865 | $198,709,903 | 84 | 57.92 | 89 | 3 | 0 | $90,000 | 2026-07-30 |
 | [Venta Depto 3 Habitaciones 2 Baños - Metro Los Leones (5301)](https://www.portalinmobiliario.com/MLC-4268005294-venta-depto-3-habitaciones-2-banos-metro-los-leones-5301-_JM) | 4,600 | $187,886,034 | 79 | 58.23 | 94 | 3 | 0 | $180,000 | 2026-07-31 |
 | [Duplex Luminoso Hogar Con Vista A Jardín (173179)](https://www.portalinmobiliario.com/MLC-4257166980-duplex-luminoso-hogar-con-vista-a-jardin-173179-_JM) | 5,250 | $214,435,148 | 89 | 58.99 | 94 | 3 | 0 | $140,000 | 2026-07-29 |
 | [Metro Salvador 3d, 2b, Amplia Terraza](https://www.portalinmobiliario.com/MLC-2091484649-metro-salvador-3d-2b-amplia-terraza-_JM) | 5,250 | $214,435,148 | 86 | 61.05 | 94 | 3 | 0 | $140,000 | 2026-07-28 |
 | [Departamento En Venta De 3 Dorm. En Las Condes](https://www.portalinmobiliario.com/MLC-4257174920-departamento-en-venta-de-3-dorm-en-las-condes-_JM) | 5,500 | $224,646,345 | 90 | 61.11 | 88 | 3 | 0 | $100,000 | 2026-07-29 |
 | [Oportunidad Para Remodelar Excelente Ubicación](https://www.portalinmobiliario.com/MLC-2092639875-oportunidad-para-remodelar-excelente-ubicacion-_JM) | 4,600 | $187,886,034 | 75 | 61.33 | 98 | 3 | 0 | $50,000 | 2026-07-28 |
+| [Moderno Depto En Corazón De Las Condes (173909)](https://www.portalinmobiliario.com/MLC-4282528264-moderno-depto-en-corazon-de-las-condes-173909-_JM) | 5,600 | $228,730,824 | 90 | 62.22 | 89 | 3 | 1 | $80,000 | 2026-08-03 |
 | [Oportunidad De Remodelar, Invertir Y Realizar Flip...](https://www.portalinmobiliario.com/MLC-4269930986-oportunidad-de-remodelar-invertir-y-realizar-flip-_JM) | 5,000 | $204,223,950 | 80 | 62.50 |  | 4 | 1 |  | 2026-07-31 |
 | [Se Vende Amplio Departamento En Providencia](https://www.portalinmobiliario.com/MLC-4275309782-se-vende-amplio-departamento-en-providencia-_JM) | 3,690 | $150,717,275 | 58 | 63.62 | 98 | 2 | 0 | $80,000 | 2026-08-01 |
+| [Oportunidad Inversionistas!!!](https://www.portalinmobiliario.com/MLC-4282527870-oportunidad-inversionistas-_JM) | 1,910 | $78,000,000 | 30 | 63.66 | 82 | 1 | 0 | $70,000 | 2026-08-03 |
 | [Un Clásico Dúplex Remodelado En El Corazón De Providencia](https://www.portalinmobiliario.com/MLC-4276961740-un-clasico-duplex-remodelado-en-el-corazon-de-providencia-_JM) | 6,000 | $245,068,740 | 94 | 63.83 | 94 | 3 | 1 | $120,000 | 2026-08-01 |
 | [Inversión Segura En Providencia Acepta Oferta (173399)](https://www.portalinmobiliario.com/MLC-4263469070-inversion-segura-en-providencia-acepta-oferta-173399-_JM) | 4,897 | $200,000,000 | 76 | 64.43 | 98 | 4 | 0 | $70,000 | 2026-07-30 |
 | [Primer Piso Remodelar  Con Jardin Exclusivo](https://www.portalinmobiliario.com/MLC-4269928146-primer-piso-remodelar-con-jardin-exclusivo-_JM) | 5,600 | $228,730,824 | 86 | 65.12 | 85 | 3 | 1 | $100,000 | 2026-07-31 |
-| [Excelente Conectividad A Pasos Del Metro (148885)](https://www.portalinmobiliario.com/MLC-4243844812-excelente-conectividad-a-pasos-del-metro-148885-_JM) | 3,910 | $159,703,129 | 60 | 65.17 | 68 | 2 | 1 | $50,000 | 2026-07-27 |
 | [Departamento En Venta De 2 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4248422652-departamento-en-venta-de-2-dorm-en-providencia-_JM) | 5,990 | $244,660,292 | 91 | 65.82 | 80 | 2 | 0 | $90,000 | 2026-07-28 |
 | [Venta Departamento Providencia Tercer Piso Sin Ascensor](https://www.portalinmobiliario.com/MLC-4267988644-venta-departamento-providencia-tercer-piso-sin-ascensor-_JM) | 4,900 | $200,139,471 | 74 | 66.22 | 84 | 3 | 1 | $57,000 | 2026-07-31 |
 | [Departamento En Venta De 3 Dorm.2baños En Las Condes](https://www.portalinmobiliario.com/MLC-4268008526-departamento-en-venta-de-3-dorm2banos-en-las-condes-_JM) | 4,652 | $190,000,000 | 70 | 66.45 | 100 | 3 | 1 | $0 | 2026-07-31 |
@@ -43,8 +45,6 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Venta Departamento Remodelado 2d 2b - Providencia](https://www.portalinmobiliario.com/MLC-4268011160-venta-departamento-remodelado-2d-2b-providencia-_JM) | 5,150 | $210,350,668 | 75 | 68.67 | 84 | 2 | 1 | $75,000 | 2026-07-31 |
 | [Departamento El Golf, Las Condes](https://www.portalinmobiliario.com/MLC-4274550200-departamento-el-golf-las-condes-_JM) | 5,600 | $228,730,824 | 81 | 69.14 | 99 | 1 | 0 | $90,000 | 2026-08-01 |
 | [Depto. Remodelado A Pasos Del Metro Salvador 3d/2b](https://www.portalinmobiliario.com/MLC-2092297381-depto-remodelado-a-pasos-del-metro-salvador-3d2b-_JM) | 5,700 | $232,815,303 | 82 | 69.51 |  | 3 | 0 |  | 2026-07-28 |
-| [Amplio Depto Sin Est Ideal Familia O Inversión Providencia](https://www.portalinmobiliario.com/MLC-2094689161-amplio-depto-sin-est-ideal-familia-o-inversion-providencia-_JM) | 6,290 | $256,913,729 | 90 | 69.89 | 80 | 3 | 0 | $130,000 | 2026-07-29 |
-| [Depa U Oficina Venta Impecable 2 D 2 B Baquedano Ppw](https://www.portalinmobiliario.com/MLC-4259929816-depa-u-oficina-venta-impecable-2-d-2-b-baquedano-ppw-_JM) | 5,900 | $240,984,261 | 84 | 70.24 | 80 | 2 | 0 | $120,000 | 2026-07-30 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
