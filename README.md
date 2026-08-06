@@ -15,14 +15,12 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 
 | Listing | UF | CLP | m² | UF/m² | Zona UF/m² | Beds | Parking | Common exp. | First Seen |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| [Excelente Conectividad Y Entorno Tranquilo (167211)](https://www.portalinmobiliario.com/MLC-2099536331-excelente-conectividad-y-entorno-tranquilo-167211-_JM) | 2,938 | $120,000,000 | 70 | 41.97 | 84 | 4 | 0 | $5,000 | 2026-07-30 |
 | [Departamento Portugal 564 Metro Santa Isabel  (178033)](https://www.portalinmobiliario.com/MLC-2114827717-departamento-portugal-564-metro-santa-isabel-178033-_JM) | 1,861 | $76,000,000 | 41 | 45.38 | 81 | 2 | 0 | $90,000 | 2026-08-05 |
 | [Departamento En Venta De 3 Dorm. En Providencia](https://www.portalinmobiliario.com/MLC-4288411968-departamento-en-venta-de-3-dorm-en-providencia-_JM) | 5,200 | $212,392,908 | 98 | 53.06 | 94 | 3 | 0 | $140,000 | 2026-08-05 |
 | [Departamento En Venta En Las Condes](https://www.portalinmobiliario.com/MLC-4267984348-departamento-en-venta-en-las-condes-_JM) | 2,816 | $115,000,000 | 52 | 54.14 | 126 | 3 | 1 | $0 | 2026-07-31 |
 | [Departamento En Venta De 2 Dorm. En Las Condes](https://www.portalinmobiliario.com/MLC-2109940269-departamento-en-venta-de-2-dorm-en-las-condes-_JM) | 3,305 | $135,000,000 | 60 | 55.09 | 84 | 2 | 0 | $17,000 | 2026-08-03 |
 | [Primer Piso Con Patio !!!](https://www.portalinmobiliario.com/MLC-2116719077-primer-piso-con-patio--_JM) | 4,290 | $175,224,149 | 75 | 57.20 |  | 3 | 0 |  | 2026-08-05 |
 | [En La Mejor Ubicación De Providencia (178133)](https://www.portalinmobiliario.com/MLC-4293357458-en-la-mejor-ubicacion-de-providencia-178133-_JM) | 4,040 | $165,000,000 | 70 | 57.71 | 98 | 3 | 0 | $120,000 | 2026-08-05 |
-| [Departamento 3d / 2d En Venta - Las Condes](https://www.portalinmobiliario.com/MLC-2098657379-departamento-3d-2d-en-venta-las-condes-_JM) | 4,865 | $198,709,903 | 84 | 57.92 | 89 | 3 | 0 | $90,000 | 2026-07-30 |
 | [Providencia 3 Dormitorios Remodelado Impecable](https://www.portalinmobiliario.com/MLC-2116481019-providencia-3-dormitorios-remodelado-impecable-_JM) | 4,990 | $203,815,502 | 85 | 58.71 | 80 |  | 0 | $110,000 | 2026-08-05 |
 | [La Mejor Ubicacion En Providencia](https://www.portalinmobiliario.com/MLC-2112558505-la-mejor-ubicacion-en-providencia-_JM) | 5,141 | $210,000,000 | 84 | 61.21 | 94 | 4 | 0 | $60,000 | 2026-08-04 |
 | [Venta Departamento 1er Piso 3d 2b Y Patio - I.suárez - Prov](https://www.portalinmobiliario.com/MLC-2114829595-venta-departamento-1er-piso-3d-2b-y-patio-isuarez-prov-_JM) | 5,264 | $215,006,975 | 85 | 61.93 | 85 | 3 | 0 | $0 | 2026-08-05 |
@@ -31,7 +29,6 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Se Vende Amplio Departamento En Providencia](https://www.portalinmobiliario.com/MLC-4275309782-se-vende-amplio-departamento-en-providencia-_JM) | 3,690 | $150,717,275 | 58 | 63.62 | 98 | 2 | 0 | $80,000 | 2026-08-01 |
 | [Oportunidad Inversionistas!!!](https://www.portalinmobiliario.com/MLC-4282527870-oportunidad-inversionistas-_JM) | 1,910 | $78,000,000 | 30 | 63.66 | 82 | 1 | 0 | $70,000 | 2026-08-03 |
 | [Un Clásico Dúplex Remodelado En El Corazón De Providencia](https://www.portalinmobiliario.com/MLC-4276961740-un-clasico-duplex-remodelado-en-el-corazon-de-providencia-_JM) | 6,000 | $245,068,740 | 94 | 63.83 | 94 | 3 | 1 | $120,000 | 2026-08-01 |
-| [Inversión Segura En Providencia Acepta Oferta (173399)](https://www.portalinmobiliario.com/MLC-4263469070-inversion-segura-en-providencia-acepta-oferta-173399-_JM) | 4,897 | $200,000,000 | 76 | 64.43 | 98 | 4 | 0 | $70,000 | 2026-07-30 |
 | [Primer Piso Remodelar  Con Jardin Exclusivo](https://www.portalinmobiliario.com/MLC-4269928146-primer-piso-remodelar-con-jardin-exclusivo-_JM) | 5,600 | $228,730,824 | 86 | 65.12 | 85 | 3 | 1 | $100,000 | 2026-07-31 |
 | [Venta Departamento Remodelar 3d 2b - Las Condes](https://www.portalinmobiliario.com/MLC-2111608055-venta-departamento-remodelar-3d-2b-las-condes-_JM) | 4,897 | $200,000,000 | 75 | 65.29 | 107 | 3 | 1 | $110 | 2026-08-04 |
 | [Departamento En Venta De 3 Dorm.2baños En Las Condes](https://www.portalinmobiliario.com/MLC-4268008526-departamento-en-venta-de-3-dorm2banos-en-las-condes-_JM) | 4,652 | $190,000,000 | 70 | 66.45 | 100 | 3 | 1 | $0 | 2026-07-31 |
@@ -41,10 +38,13 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | [Venta Departamento Remodelado 2d 2b - Providencia](https://www.portalinmobiliario.com/MLC-4268011160-venta-departamento-remodelado-2d-2b-providencia-_JM) | 5,150 | $210,350,668 | 75 | 68.67 | 84 | 2 | 1 | $75,000 | 2026-07-31 |
 | [Departamento El Golf, Las Condes](https://www.portalinmobiliario.com/MLC-4274550200-departamento-el-golf-las-condes-_JM) | 5,600 | $228,730,824 | 81 | 69.14 | 99 | 1 | 0 | $90,000 | 2026-08-01 |
 | [Vendo Hermoso Departamento Vintage 3d Y 2b Providencia](https://www.portalinmobiliario.com/MLC-2117553791-vendo-hermoso-departamento-vintage-3d-y-2b-providencia-_JM) | 5,740 | $234,449,095 | 82 | 70.00 | 94 | 3 | 0 | $60,000 | 2026-08-05 |
-| [Depa U Oficina Venta Impecable 2 D 2 B Baquedano Ppw](https://www.portalinmobiliario.com/MLC-4259929816-depa-u-oficina-venta-impecable-2-d-2-b-baquedano-ppw-_JM) | 5,900 | $240,984,261 | 84 | 70.24 | 80 | 2 | 0 | $120,000 | 2026-07-30 |
-| [Lindo Departamento En Juana  De  Lestonac Providencia](https://www.portalinmobiliario.com/MLC-2098660725-lindo-departamento-en-juana-de-lestonac-providencia-_JM) | 4,294 | $175,387,528 | 61 | 70.39 | 82 | 2 | 0 | $50,000 | 2026-07-30 |
 | [Espectacular Loft En Venta Providencia Parque Ines De Suarez](https://www.portalinmobiliario.com/MLC-2112167761-espectacular-loft-en-venta-providencia-parque-ines-de-suarez-_JM) | 4,250 | $173,590,358 | 60 | 70.83 | 84 | 1 | 0 | $140,000 | 2026-08-04 |
+| [Departamento En Venta, 4d - 3b, Las Condes](https://www.portalinmobiliario.com/MLC-4275309884-departamento-en-venta-4d-3b-las-condes-_JM) | 6,900 | $281,829,051 | 97 | 71.13 | 96 | 4 | 1 | $167,000 | 2026-08-01 |
 | [Departamento Remodelado Listo Para Habitar: 3 Dormitorios](https://www.portalinmobiliario.com/MLC-2111604595-departamento-remodelado-listo-para-habitar-3-dormitorios-_JM) | 6,900 | $281,829,051 | 97 | 71.13 | 148 | 3 | 1 | $150,000 | 2026-08-04 |
+| [Departamento En Venta De 3 Dorm. En Las Condes](https://www.portalinmobiliario.com/MLC-2111012337-departamento-en-venta-de-3-dorm-en-las-condes-_JM) | 6,000 | $245,068,740 | 84 | 71.43 | 96 | 3 | 1 | $120,000 | 2026-08-04 |
+| [Venta Departamento Remodelar 3d 2b - Las Condes](https://www.portalinmobiliario.com/MLC-2111011567-venta-departamento-remodelar-3d-2b-las-condes-_JM) | 5,386 | $220,000,000 | 75 | 71.82 | 107 | 3 | 1 | $110 | 2026-08-04 |
+| [Departamento De 2 Dormitorios En Infante Y Eliodoro Yañez !](https://www.portalinmobiliario.com/MLC-4288408906-departamento-de-2-dormitorios-en-infante-y-eliodoro-yanez--_JM) | 4,600 | $187,886,034 | 64 | 71.88 | 98 | 2 | 1 | $0 | 2026-08-05 |
+| [Amplio 4 Dorm + 3 Baños + Est + Bod (174263)](https://www.portalinmobiliario.com/MLC-4287837846-amplio-4-dorm-3-banos-est-bod-174263-_JM) | 5,990 | $244,660,292 | 83 | 72.17 | 93 | 4 | 1 | $120,000 | 2026-08-04 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
