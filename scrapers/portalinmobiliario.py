@@ -33,6 +33,11 @@ SEARCHES = [
         "property_type": "departamento",
         "location": "las-condes-metropolitana",
     },
+    {
+        "operation": "venta",
+        "property_type": "departamento",
+        "location": "santiago-metropolitana",
+    },
 ]
 
 
