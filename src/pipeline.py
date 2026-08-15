@@ -21,6 +21,9 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 RECENT_DAYS = 7
 RECENT_MAX_M2 = 100
 
+# exclude high-end listings above this CLP price from the recent set / map
+RECENT_MAX_PRICE_CLP = 500_000_000
+
 # runs a listing can miss (partial scrapes) before counting as delisted
 DELIST_TOLERANCE_DAYS = 2
 
@@ -325,7 +328,16 @@ def recent_mask(listings):
     if "finished_date" in listings.columns:
         live &= listings["finished_date"].isna()
 
-    return is_recent & live & (listings["m2_utiles"] < RECENT_MAX_M2)
+    # drop high-end listings; >= gives False for NaN, so listings without a
+    # known price_clp (e.g. a failed UF fetch) are kept rather than dropped
+    not_too_expensive = ~(listings["price_clp"] >= RECENT_MAX_PRICE_CLP)
+
+    return (
+        is_recent
+        & live
+        & (listings["m2_utiles"] < RECENT_MAX_M2)
+        & not_too_expensive
+    )
 
 
 def enrich_recent_listings():
