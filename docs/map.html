@@ -197,13 +197,17 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
     '&copy; <a href="https://carto.com/attributions">CARTO</a>',
 }).addTo(map);
 
-map.setView(
-  [
-    LISTINGS.reduce((sum, l) => sum + l.lat, 0) / LISTINGS.length,
-    LISTINGS.reduce((sum, l) => sum + l.lng, 0) / LISTINGS.length,
-  ],
-  14
-);
+// Frame all listings so every comuna is visible on load. A fixed-zoom mean
+// center drifts toward whichever comuna has the most points (e.g. Santiago),
+// pushing the eastern comunas (Providencia, Las Condes) off-screen.
+if (LISTINGS.length) {
+  map.fitBounds(
+    LISTINGS.map((l) => [l.lat, l.lng]),
+    { padding: [30, 30] }
+  );
+} else {
+  map.setView([-33.43, -70.62], 12);
+}
 
 const markers = LISTINGS.map((listing) => ({
   listing,
