@@ -42,6 +42,24 @@
   #filter-panel .checkbox-row { margin-top: 10px; font-weight: 600; }
   #filter-panel .checkbox-row input { vertical-align: middle; }
 
+  #bedrooms-row { display: flex; gap: 5px; margin-top: 4px; }
+  #bedrooms-row button {
+    flex: 1;
+    padding: 4px 0;
+    font: inherit;
+    font-weight: 600;
+    color: #52514e;
+    background: #f2f1ee;
+    border: 1px solid #d7d5d1;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #bedrooms-row button.active {
+    color: #fcfcfb;
+    background: #2a78d6;
+    border-color: #2a78d6;
+  }
+
   /* two native range inputs overlaid on one shared track */
   .dual { position: relative; height: 24px; }
   .dual .track, .dual .fill {
@@ -126,6 +144,13 @@
     <input type="range" id="m2-min" autocomplete="off">
     <input type="range" id="m2-max" autocomplete="off">
   </div>
+  <label>Dormitorios</label>
+  <div id="bedrooms-row">
+    <button type="button" data-beds="1">1</button>
+    <button type="button" data-beds="2">2</button>
+    <button type="button" data-beds="3">3</button>
+    <button type="button" data-beds="4">4+</button>
+  </div>
   <div class="checkbox-row">
     <label><input type="checkbox" id="parking-only" autocomplete="off"> Solo con estacionamiento</label>
   </div>
@@ -200,14 +225,25 @@ L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
 // Frame all listings so every comuna is visible on load. A fixed-zoom mean
 // center drifts toward whichever comuna has the most points (e.g. Santiago),
 // pushing the eastern comunas (Providencia, Las Condes) off-screen.
-if (LISTINGS.length) {
+function frameListings(attempt = 0) {
+  if (!LISTINGS.length) {
+    map.setView([-33.43, -70.62], 12);
+    return;
+  }
+  map.invalidateSize();
+  // fitBounds derives zoom from the container size; if it runs before layout
+  // settles the container reads as 0px and Leaflet slams to max zoom. Wait for
+  // a real size (retry a few frames), and cap the zoom as a safety net.
+  if (map.getSize().x < 1 && attempt < 20) {
+    requestAnimationFrame(() => frameListings(attempt + 1));
+    return;
+  }
   map.fitBounds(
     LISTINGS.map((l) => [l.lat, l.lng]),
-    { padding: [30, 30] }
+    { padding: [30, 30], maxZoom: 14 }
   );
-} else {
-  map.setView([-33.43, -70.62], 12);
 }
+requestAnimationFrame(() => frameListings());
 
 const markers = LISTINGS.map((listing) => ({
   listing,
@@ -229,6 +265,9 @@ const priceMax = document.getElementById("price-max");
 const m2Min = document.getElementById("m2-min");
 const m2Max = document.getElementById("m2-max");
 const parkingOnly = document.getElementById("parking-only");
+const bedroomButtons = [...document.querySelectorAll("#bedrooms-row button")];
+// set of selected bedroom counts (4 means "4 or more"); empty = show all
+const bedroomsSelected = new Set();
 
 const prices = LISTINGS.map((l) => l.price_clp);
 const step = 5_000_000;
@@ -284,7 +323,10 @@ function applyFilters() {
       listing.price_clp <= Number(priceMax.value) &&
       listing.m2_utiles >= Number(m2Min.value) &&
       listing.m2_utiles <= Number(m2Max.value) &&
-      (!parkingOnly.checked || listing.parking >= 1);
+      (!parkingOnly.checked || listing.parking >= 1) &&
+      (bedroomsSelected.size === 0 ||
+        (listing.bedrooms_n != null &&
+          bedroomsSelected.has(Math.min(listing.bedrooms_n, 4))));
 
     if (show) {
       marker.addTo(map);
@@ -301,6 +343,16 @@ function applyFilters() {
 
 for (const input of [priceMin, priceMax, m2Min, m2Max, parkingOnly]) {
   input.addEventListener("input", applyFilters);
+}
+
+for (const btn of bedroomButtons) {
+  btn.addEventListener("click", () => {
+    const beds = Number(btn.dataset.beds);
+    if (bedroomsSelected.has(beds)) bedroomsSelected.delete(beds);
+    else bedroomsSelected.add(beds);
+    btn.classList.toggle("active");
+    applyFilters();
+  });
 }
 
 applyFilters();
