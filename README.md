@@ -16,35 +16,35 @@ _Top 30 by UF/m² among listings first seen in the last 7 days (under 100 m², p
 | Listing | UF | CLP | m² | UF/m² | Zona UF/m² | Beds | Parking | Common exp. | First Seen |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | [Departamento Estudio En Excelente Ubicación](https://www.portalinmobiliario.com/MLC-2170303589-departamento-estudio-en-excelente-ubicacion-_JM) | 1,224 | $50,000,000 | 55 | 22.25 | 54 | 1 | 0 | $50 | 2026-08-18 |
-| [Departamento - Santiago Centro 54 M2](https://www.portalinmobiliario.com/MLC-4380420442-departamento-santiago-centro-54-m2-_JM) | 1,225 | $50,055,840 | 54 | 22.69 | 53 | 2 | 0 |  | 2026-08-21 |
+| [Departamento - Santiago Centro 54 M2](https://www.portalinmobiliario.com/MLC-4380420442-departamento-santiago-centro-54-m2-_JM) | 1,225 | $50,057,457 | 54 | 22.69 | 53 | 2 | 0 |  | 2026-08-21 |
 | [Oportunidad Única Vendo Dpto. Estudio Con Bodega Excelente](https://www.portalinmobiliario.com/MLC-2169832273-oportunidad-unica-vendo-dpto-estudio-con-bodega-excelente-_JM) | 1,150 | $47,000,000 | 50 | 23.00 | 74 | 1 | 0 | $50,000 | 2026-08-18 |
 | [En Venta 2 Dormitorios Contado Calle Zenteno](https://www.portalinmobiliario.com/MLC-4358312720-en-venta-2-dormitorios-contado-calle-zenteno-_JM) | 1,101 | $45,000,000 | 40 | 27.53 | 71 | 2 | 0 | $65,000 | 2026-08-17 |
 | [Venta Departamento Santiago De 3 Dorm 2 Baños Antiguo Piso 1](https://www.portalinmobiliario.com/MLC-4382357728-venta-departamento-santiago-de-3-dorm-2-banos-antiguo-piso-1-_JM) | 2,692 | $110,000,000 | 94 | 28.64 | 55 | 3 | 0 | $68,000 | 2026-08-21 |
 | [Vendo Dpto. Estudio Excelente Ubicación Con Bodega](https://www.portalinmobiliario.com/MLC-2170328349-vendo-dpto-estudio-excelente-ubicacion-con-bodega-_JM) | 1,297 | $53,000,000 | 45 | 28.82 | 74 | 1 | 0 | $50,000 | 2026-08-18 |
-| [A Pasos De Calle Mapocho (171356)](https://www.portalinmobiliario.com/MLC-2177863393-a-pasos-de-calle-mapocho-171356-_JM) | 1,600 | $65,379,056 | 55 | 29.09 | 47 | 3 | 1 | $15,000 | 2026-08-20 |
-| [Cumming 1350 ,excelente Depto 2 D 2 B  (82859)](https://www.portalinmobiliario.com/MLC-2183115821-cumming-1350-excelente-depto-2-d-2-b-82859-_JM) | 2,000 | $81,723,820 | 68 | 29.41 | 47 | 2 | 0 | $90,000 | 2026-08-22 |
-| [Oportunidad Unica Precio Onfire En Santiago Centro](https://www.portalinmobiliario.com/MLC-4362223316-oportunidad-unica-precio-onfire-en-santiago-centro-_JM) | 1,969 | $80,457,101 | 66 | 29.83 | 53 | 3 | 0 | $110,000 | 2026-08-18 |
-| [Departamento Zenteno Id: 17570](https://www.portalinmobiliario.com/MLC-4377606750-departamento-zenteno-id-17570-_JM) | 1,350 | $55,163,579 | 45 | 30.00 | 71 | 2 | 0 | $30,000 | 2026-08-20 |
-| [Departamento 2hab 1ba Cercano A Estación De Metro](https://www.portalinmobiliario.com/MLC-4375123120-departamento-2hab-1ba-cercano-a-estacion-de-metro-_JM) | 1,836 | $75,000,000 | 60 | 30.59 | 65 | 2 | 0 | $70,000 | 2026-08-20 |
-| [Rebajado Por Viaje, 2500uf!](https://www.portalinmobiliario.com/MLC-2179291421-rebajado-por-viaje-2500uf-_JM) | 2,500 | $102,154,775 | 81 | 30.86 |  | 3 | 0 |  | 2026-08-21 |
-| [Departamento En Venta De 2 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4354301522-departamento-en-venta-de-2-dorm-en-santiago-_JM) | 1,909 | $78,000,000 | 61 | 31.29 | 54 | 2 | 0 | $80,000 | 2026-08-16 |
-| [Casco Histórico, Metro Santa Ana](https://www.portalinmobiliario.com/MLC-2169759145-casco-historico-metro-santa-ana-_JM) | 2,700 | $110,327,157 | 84 | 32.14 |  | 2 | 0 |  | 2026-08-18 |
+| [A Pasos De Calle Mapocho (171356)](https://www.portalinmobiliario.com/MLC-2177863393-a-pasos-de-calle-mapocho-171356-_JM) | 1,600 | $65,381,168 | 55 | 29.09 | 47 | 3 | 1 | $15,000 | 2026-08-20 |
+| [Cumming 1350 ,excelente Depto 2 D 2 B  (82859)](https://www.portalinmobiliario.com/MLC-2183115821-cumming-1350-excelente-depto-2-d-2-b-82859-_JM) | 2,000 | $81,726,460 | 68 | 29.41 | 47 | 2 | 0 | $90,000 | 2026-08-22 |
+| [Oportunidad Unica Precio Onfire En Santiago Centro](https://www.portalinmobiliario.com/MLC-4362223316-oportunidad-unica-precio-onfire-en-santiago-centro-_JM) | 1,969 | $80,459,700 | 66 | 29.83 | 53 | 3 | 0 | $110,000 | 2026-08-18 |
+| [Departamento Zenteno Id: 17570](https://www.portalinmobiliario.com/MLC-4377606750-departamento-zenteno-id-17570-_JM) | 1,350 | $55,165,361 | 45 | 30.00 | 71 | 2 | 0 | $30,000 | 2026-08-20 |
+| [Departamento 2hab 1ba Cercano A Estación De Metro](https://www.portalinmobiliario.com/MLC-4375123120-departamento-2hab-1ba-cercano-a-estacion-de-metro-_JM) | 1,835 | $75,000,000 | 60 | 30.59 | 65 | 2 | 0 | $70,000 | 2026-08-20 |
+| [Rebajado Por Viaje, 2500uf!](https://www.portalinmobiliario.com/MLC-2179291421-rebajado-por-viaje-2500uf-_JM) | 2,500 | $102,158,075 | 81 | 30.86 |  | 3 | 0 |  | 2026-08-21 |
+| [Acogedor Departamento Libertad Con Presidente Balmaceda](https://www.portalinmobiliario.com/MLC-4391458976-acogedor-departamento-libertad-con-presidente-balmaceda-_JM) | 2,202 | $90,000,000 | 70 | 31.46 | 47 | 3 | 1 | $95,000 | 2026-08-23 |
+| [Casco Histórico, Metro Santa Ana](https://www.portalinmobiliario.com/MLC-2169759145-casco-historico-metro-santa-ana-_JM) | 2,700 | $110,330,721 | 84 | 32.14 |  | 2 | 0 |  | 2026-08-18 |
 | [Vendo Departamento 2d + 2b, Calle Porvenir, Santiago](https://www.portalinmobiliario.com/MLC-2171595503-vendo-departamento-2d-2b-calle-porvenir-santiago-_JM) | 1,933 | $79,000,000 | 60 | 32.22 | 54 | 2 | 0 | $90,000 | 2026-08-19 |
 | [Departamento Zenteno Id: 136284](https://www.portalinmobiliario.com/MLC-4362613680-departamento-zenteno-id-136284-_JM) | 1,782 | $72,800,000 | 55 | 32.39 | 53 | 2 | 0 | $0 | 2026-08-18 |
-| [Departamento Como Nuevo En Excelente Ubicación](https://www.portalinmobiliario.com/MLC-4352651460-departamento-como-nuevo-en-excelente-ubicacion-_JM) | 3,060 | $125,037,445 | 94 | 32.55 | 56 | 3 | 1 | $0 | 2026-08-16 |
-| [3 Dormitorios Metro Rondizzoni (164475)](https://www.portalinmobiliario.com/MLC-2164064429-3-dormitorios-metro-rondizzoni-164475-_JM) | 1,400 | $57,206,674 | 43 | 32.56 | 71 | 3 | 0 | $80,000 | 2026-08-16 |
-| [Venta Depa 2 Dorm 1 Baño Cocina Americana](https://www.portalinmobiliario.com/MLC-2174729491-venta-depa-2-dorm-1-bano-cocina-americana-_JM) | 1,490 | $60,884,246 | 45 | 33.11 | 71 | 2 | 0 | $0 | 2026-08-20 |
-| [Amplio Y Luminoso, Vendo Depto Stgo (170838)](https://www.portalinmobiliario.com/MLC-2167513311-amplio-y-luminoso-vendo-depto-stgo-170838-_JM) | 1,990 | $81,315,201 | 60 | 33.17 | 54 | 2 | 0 | $20,000 | 2026-08-17 |
+| [Venta Depa 2 Dorm 1 Baño Cocina Americana](https://www.portalinmobiliario.com/MLC-2174729491-venta-depa-2-dorm-1-bano-cocina-americana-_JM) | 1,490 | $60,886,213 | 45 | 33.11 | 71 | 2 | 0 | $0 | 2026-08-20 |
+| [Amplio Y Luminoso, Vendo Depto Stgo (170838)](https://www.portalinmobiliario.com/MLC-2167513311-amplio-y-luminoso-vendo-depto-stgo-170838-_JM) | 1,990 | $81,317,828 | 60 | 33.17 | 54 | 2 | 0 | $20,000 | 2026-08-17 |
 | [Departamento General Gana Id: 148539](https://www.portalinmobiliario.com/MLC-2170328421-departamento-general-gana-id-148539-_JM) | 930 | $38,000,000 | 28 | 33.21 | 71 | 1 | 0 | $38,540 | 2026-08-18 |
-| [Toesca, Bascuñan Con Terraza](https://www.portalinmobiliario.com/MLC-4354897238-toesca-bascunan-con-terraza-_JM) | 2,029 | $82,900,000 | 61 | 33.26 | 48 | 3 | 0 | $160,000 | 2026-08-16 |
-| [Departamento San Pablo Id: 178314](https://www.portalinmobiliario.com/MLC-2179806003-departamento-san-pablo-id-178314-_JM) | 1,670 | $68,239,390 | 50 | 33.40 | 71 | 1 | 0 | $90,000 | 2026-08-21 |
-| [Amplio Departamento Sector Cumming (171236)](https://www.portalinmobiliario.com/MLC-4368445534-amplio-departamento-sector-cumming-171236-_JM) | 2,099 | $85,769,149 | 62 | 33.85 | 47 | 3 | 0 | $60,000 | 2026-08-19 |
+| [Departamento San Pablo Id: 178314](https://www.portalinmobiliario.com/MLC-2179806003-departamento-san-pablo-id-178314-_JM) | 1,670 | $68,241,594 | 50 | 33.40 | 71 | 1 | 0 | $90,000 | 2026-08-21 |
 | [Oportunidad  En El Corazón De Santiago Venta O Arriendo](https://www.portalinmobiliario.com/MLC-2170305383-oportunidad-en-el-corazon-de-santiago-venta-o-arriendo-_JM) | 2,031 | $83,000,000 | 60 | 33.85 | 48 | 2 | 0 | $70,000 | 2026-08-18 |
-| [Departamento 3 Dormitorios Cerca De Futura Estación De Metro](https://www.portalinmobiliario.com/MLC-4381518820-departamento-3-dormitorios-cerca-de-futura-estacion-de-metro-_JM) | 2,200 | $89,896,202 | 65 | 33.85 | 47 | 3 | 0 | $100,000 | 2026-08-21 |
+| [Departamento 3 Dormitorios Cerca De Futura Estación De Metro](https://www.portalinmobiliario.com/MLC-4381518820-departamento-3-dormitorios-cerca-de-futura-estacion-de-metro-_JM) | 2,200 | $89,899,106 | 65 | 33.85 | 47 | 3 | 0 | $100,000 | 2026-08-21 |
+| [Amplio Departamento Sector Cumming (171236)](https://www.portalinmobiliario.com/MLC-4368445534-amplio-departamento-sector-cumming-171236-_JM) | 2,099 | $85,771,920 | 62 | 33.85 | 47 | 3 | 0 | $60,000 | 2026-08-19 |
 | [Atencion! Departamento En Venta Martinez De Rozas N°2375](https://www.portalinmobiliario.com/MLC-4366668686-atencion-departamento-en-venta-martinez-de-rozas-n2375-_JM) | 1,468 | $60,000,000 | 43 | 34.15 | 65 | 1 | 0 |  | 2026-08-19 |
-| [Venta Departamento Santiago Centro, San Pablo (141336)](https://www.portalinmobiliario.com/MLC-4358675422-venta-departamento-santiago-centro-san-pablo-141336-_JM) | 2,360 | $96,434,108 | 69 | 34.20 | 51 | 3 | 1 | $70,000 | 2026-08-17 |
-| [Vendo Amplio Depto  3dorm 2ba Santiago Centro](https://www.portalinmobiliario.com/MLC-4375125666-vendo-amplio-depto-3dorm-2ba-santiago-centro-_JM) | 2,398 | $98,000,000 | 70 | 34.26 | 53 | 3 | 0 | $85,000 | 2026-08-20 |
+| [Venta Departamento Santiago Centro, San Pablo (141336)](https://www.portalinmobiliario.com/MLC-4358675422-venta-departamento-santiago-centro-san-pablo-141336-_JM) | 2,360 | $96,437,223 | 69 | 34.20 | 51 | 3 | 1 | $70,000 | 2026-08-17 |
 | [Oportunidad 2d-2b 52m2](https://www.portalinmobiliario.com/MLC-2180372065-oportunidad-2d-2b-52m2-_JM) | 1,713 | $70,000,000 | 50 | 34.26 | 82 | 2 | 0 | $80,000 | 2026-08-21 |
+| [Vendo Amplio Depto  3dorm 2ba Santiago Centro](https://www.portalinmobiliario.com/MLC-4375125666-vendo-amplio-depto-3dorm-2ba-santiago-centro-_JM) | 2,398 | $98,000,000 | 70 | 34.26 | 53 | 3 | 0 | $85,000 | 2026-08-20 |
+| [Oportunidad De Remodelar, Junto A Metro U. De Chile](https://www.portalinmobiliario.com/MLC-2169840785-oportunidad-de-remodelar-junto-a-metro-u-de-chile-_JM) | 2,300 | $93,985,429 | 67 | 34.33 | 53 | 2 | 0 | $120,000 | 2026-08-18 |
+| [Departamento En Venta - Santiago Centro - Rafael Sotomayor](https://www.portalinmobiliario.com/MLC-2173240103-departamento-en-venta-santiago-centro-rafael-sotomayor-_JM) | 2,250 | $91,942,268 | 65 | 34.62 | 48 | 2 | 1 | $98,000 | 2026-08-19 |
+| [Depto 3d 2b, Cueto 1221, Santiago](https://www.portalinmobiliario.com/MLC-2174695595-depto-3d-2b-cueto-1221-santiago-_JM) | 2,080 | $85,000,000 | 60 | 34.67 | 47 | 3 | 0 | $0 | 2026-08-19 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
