@@ -18,7 +18,7 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
     f"{RAW_DATA_DIR}/portalinmobiliario_listings.csv"
 )
 
-RECENT_DAYS = 7
+RECENT_DAYS = 14
 RECENT_MAX_M2 = 100
 
 # exclude high-end listings above this CLP price from the recent set / map
@@ -303,7 +303,7 @@ def recent_mask(listings):
 
     # "recent" means published within the last RECENT_DAYS, by the listing's
     # real publication date. The site reports exact days under a month, so the
-    # 7-day boundary is precise. first_seen_date only says when WE saw it, which
+    # boundary is precise. first_seen_date only says when WE saw it, which
     # can lag publication by months (listings rotate into the scrape window).
     if "publicado_fecha_est" in listings.columns:
         pub = pd.to_datetime(listings["publicado_fecha_est"], errors="coerce")

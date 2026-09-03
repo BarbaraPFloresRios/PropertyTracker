@@ -8,7 +8,7 @@ RAW_CSV = "data/raw/portalinmobiliario_listings.csv"
 TEMPLATE_PATH = "src/map_template.html"
 OUTPUT_HTML = "docs/map.html"
 
-RECENT_DAYS = 7
+RECENT_DAYS = 14
 RECENT_MAX_M2 = 100
 
 # sequential blue ramp, steps 100 -> 700 (light -> dark)

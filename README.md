@@ -56,7 +56,7 @@ Each run:
 * Reports **truly new listings** and **price changes** since the last run
 * Tracks `first_seen_date`, `last_seen_date` and `first_seen_price` per listing
 * Stores the full history in `data/raw/portalinmobiliario_listings.csv`
-* Exports listings discovered in the last 7 days (under 100 m², sorted by UF/m²) to `data/recent_listings.csv`
+* Exports listings discovered in the last 14 days (under 100 m², sorted by UF/m²) to `data/recent_listings.csv`
 
 ```bash
 python3 main.py
