@@ -22,9 +22,11 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 100 m², 
 | [Departamento Antiguo (176985)](https://www.portalinmobiliario.com/MLC-4418552946-departamento-antiguo-176985-_JM) | 1,100 | $44,964,051 | 44 | 25.00 | 73 | 1 | 0 | $50,000 | 2026-08-28 |
 | [Acogedor Depto. En Condomiino Residencial](https://www.portalinmobiliario.com/MLC-4437185782-acogedor-depto-en-condomiino-residencial-_JM) | 1,290 | $52,730,569 | 49 | 26.33 | 68 | 1 | 0 | $55,000 | 2026-09-01 |
 | [Acogedor Departamento, Piso Doce Incluye Bodega](https://www.portalinmobiliario.com/MLC-4417963028-acogedor-departamento-piso-doce-incluye-bodega-_JM) | 1,761 | $72,000,000 | 65 | 27.10 | 53 | 1 | 0 | $95,000 | 2026-08-28 |
+| [Departamento Completamente Remodelado (144421)](https://www.portalinmobiliario.com/MLC-4445106614-departamento-completamente-remodelado-144421-_JM) | 1,650 | $67,446,076 | 60 | 27.50 | 54 | 2 | 0 | $15,000 | 2026-09-03 |
 | [Venta Departamento Santiago De 3 Dorm 2 Baños Antiguo Piso 1](https://www.portalinmobiliario.com/MLC-4382357728-venta-departamento-santiago-de-3-dorm-2-banos-antiguo-piso-1-_JM) | 2,691 | $110,000,000 | 94 | 28.63 | 55 | 3 | 0 | $68,000 | 2026-08-21 |
 | [Vendo Dpto. Estudio Excelente Ubicación Con Bodega](https://www.portalinmobiliario.com/MLC-2210033561-vendo-dpto-estudio-excelente-ubicacion-con-bodega-_JM) | 1,297 | $53,000,000 | 45 | 28.81 | 74 | 1 | 0 | $50,000 | 2026-09-01 |
 | [Departamento San Francisco Id: 137511](https://www.portalinmobiliario.com/MLC-4423667560-departamento-san-francisco-id-137511-_JM) | 1,590 | $65,000,000 | 55 | 28.91 | 61 | 2 | 0 | $5,000 | 2026-08-29 |
+| [Cueto 1185 (171356)](https://www.portalinmobiliario.com/MLC-4445077636-cueto-1185-171356-_JM) | 1,600 | $65,402,256 | 55 | 29.09 | 47 | 3 | 1 | $15,000 | 2026-09-03 |
 | [Departamento En Santiago Argomedo Remate 24 Septiembre 2026](https://www.portalinmobiliario.com/MLC-4421196724-departamento-en-santiago-argomedo-remate-24-septiembre-2026-_JM) | 905 | $37,006,145 | 31 | 29.20 | 82 | 1 | 0 |  | 2026-08-28 |
 | [Cumming/ Balmaceda 2d 2b Terraza  (82859)](https://www.portalinmobiliario.com/MLC-2183115821-cumming-balmaceda-2d-2b-terraza-82859-_JM) | 2,000 | $81,752,820 | 68 | 29.41 | 47 | 2 | 0 | $90,000 | 2026-08-22 |
 | [Dúplex 87 M², 5 Terrazas, 2d, 2b, Metro O'higgins](https://www.portalinmobiliario.com/MLC-4397551728-duplex-87-m-5-terrazas-2d-2b-metro-ohiggins-_JM) | 2,569 | $105,000,000 | 87 | 29.53 | 55 | 2 | 0 |  | 2026-08-25 |
@@ -43,8 +45,6 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 100 m², 
 | [Departamento San Pablo Id: 178314](https://www.portalinmobiliario.com/MLC-2179806003-departamento-san-pablo-id-178314-_JM) | 1,670 | $68,263,605 | 50 | 33.40 | 71 | 1 | 0 | $90,000 | 2026-08-21 |
 | [Venta Departamento 2d Y 2b Frente A Parque Los Reyes](https://www.portalinmobiliario.com/MLC-2194370419-venta-departamento-2d-y-2b-frente-a-parque-los-reyes-_JM) | 1,775 | $72,555,628 | 53 | 33.49 | 47 | 2 | 0 | $0 | 2026-08-26 |
 | [Único 3 Dormitorios + Bodega Metro Rondizzoni (166664)](https://www.portalinmobiliario.com/MLC-4419209280-unico-3-dormitorios-bodega-metro-rondizzoni-166664-_JM) | 1,450 | $59,270,795 | 43 | 33.72 | 72 | 3 | 0 | $80,000 | 2026-08-28 |
-| [Oportunidad  En El Corazón De Santiago Venta O Arriendo](https://www.portalinmobiliario.com/MLC-4419782700-oportunidad-en-el-corazon-de-santiago-venta-o-arriendo-_JM) | 2,030 | $83,000,000 | 60 | 33.84 | 48 | 2 | 0 | $70,000 | 2026-08-28 |
-| [Departamento 3 Dormitorios Cerca De Futura Estación De Metro](https://www.portalinmobiliario.com/MLC-4381518820-departamento-3-dormitorios-cerca-de-futura-estacion-de-metro-_JM) | 2,200 | $89,928,102 | 65 | 33.85 | 47 | 3 | 0 | $100,000 | 2026-08-21 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
