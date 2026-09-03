@@ -514,11 +514,25 @@ def run_pipeline():
     print_phase("Exporting recent listings")
 
     recent_listings = build_recent_listings()
-    recent_listings.to_csv("data/recent_listings.csv", index=False)
+
+    # safety net: never overwrite a healthy map with a collapsed one. A silent
+    # upstream failure (e.g. the UF conversion dropping every UF-priced listing)
+    # halves the recent set; abort so the previous good map/data stay published.
+    recent_path = "data/recent_listings.csv"
+    if os.path.exists(recent_path):
+        previous_count = len(pd.read_csv(recent_path))
+        if previous_count > 0 and len(recent_listings) < 0.5 * previous_count:
+            raise RuntimeError(
+                f"Recent set collapsed from {previous_count} to "
+                f"{len(recent_listings)}; aborting to avoid publishing a "
+                "broken map. Re-run once the upstream source recovers."
+            )
+
+    recent_listings.to_csv(recent_path, index=False)
 
     print(
         f"Saved {len(recent_listings)} recent listings "
-        "to data/recent_listings.csv"
+        f"to {recent_path}"
     )
 
     print_phase("Updating interactive map")

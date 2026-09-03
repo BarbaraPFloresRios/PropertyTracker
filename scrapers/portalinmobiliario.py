@@ -1,6 +1,7 @@
 import json
 import re
 import time
+from pathlib import Path
 
 import pandas as pd
 import requests
@@ -8,6 +9,9 @@ import requests
 
 BASE_URL = "https://www.portalinmobiliario.com"
 UF_API_URL = "https://mindicador.cl/api/uf"
+
+# last known UF value, committed so a failed API call can fall back to it
+UF_CACHE_PATH = Path("data/uf_value.json")
 
 RESULTS_PER_PAGE = 48
 MAX_PAGES = 100
@@ -424,11 +428,30 @@ def fetch_uf_value():
         response = requests.get(UF_API_URL, timeout=30)
         response.raise_for_status()
         value = response.json()["serie"][0]["valor"]
+
+        UF_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
+        UF_CACHE_PATH.write_text(json.dumps({
+            "date": pd.Timestamp.today().strftime("%Y-%m-%d"),
+            "value": value,
+        }))
+
         print(f"UF value: {value:,.2f} CLP")
         return value
     except Exception as e:
         print(f"UF value fetch failed: {e}")
-        return None
+
+        # the UF moves ~0.01%/day, so yesterday's value is fine for the map.
+        # Far better than dropping every UF-priced listing (~96% of the corpus).
+        if UF_CACHE_PATH.exists():
+            cached = json.loads(UF_CACHE_PATH.read_text())
+            print(
+                f"Using cached UF from {cached['date']}: "
+                f"{cached['value']:,.2f} CLP"
+            )
+            return cached["value"]
+
+        # no API and no cache: die loudly rather than publish an empty map
+        raise RuntimeError("No UF value available (API failed, no cache)") from e
 
 
 def add_price_conversions(df, uf_value):
