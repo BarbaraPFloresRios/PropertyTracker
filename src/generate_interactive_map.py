@@ -11,6 +11,12 @@ OUTPUT_HTML = "docs/map.html"
 RECENT_DAYS = 14
 RECENT_MAX_M2 = 100
 
+# continental Chile bounding box, to drop listings with a corrupt geocode
+# (e.g. a Providencia flat whose lat/lng resolve to Florida). The listing
+# stays in the dataset; it just isn't plotted at the wrong place.
+CHILE_LAT_MIN, CHILE_LAT_MAX = -56.0, -17.3
+CHILE_LNG_MIN, CHILE_LNG_MAX = -76.0, -66.0
+
 # sequential blue ramp, steps 100 -> 700 (light -> dark)
 SEQ_BLUE = [
     "#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7",
@@ -46,11 +52,17 @@ def load_recent():
 
     df = pd.read_csv(RAW_CSV)
 
+    in_chile = (
+        df["lat"].between(CHILE_LAT_MIN, CHILE_LAT_MAX)
+        & df["lng"].between(CHILE_LNG_MIN, CHILE_LNG_MAX)
+    )
+
     return df[
         recent_mask(df)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
         & df["price_clp"].notna()
+        & in_chile
     ].copy()
 
 
