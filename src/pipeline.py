@@ -19,7 +19,7 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 )
 
 RECENT_DAYS = 14
-RECENT_MAX_M2 = 100
+RECENT_MAX_M2 = 150
 
 # exclude high-end listings above this CLP price from the recent set / map
 RECENT_MAX_PRICE_CLP = 500_000_000

@@ -9,7 +9,7 @@ TEMPLATE_PATH = "src/map_template.html"
 OUTPUT_HTML = "docs/map.html"
 
 RECENT_DAYS = 14
-RECENT_MAX_M2 = 100
+RECENT_MAX_M2 = 150
 
 # continental Chile bounding box, to drop listings with a corrupt geocode
 # (e.g. a Providencia flat whose lat/lng resolve to Florida). The listing
