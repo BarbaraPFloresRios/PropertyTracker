@@ -36,7 +36,20 @@ jobs:
 
           if git diff --cached --quiet; then
             echo "No changes to commit"
-          else
-            git commit -m "Update listings data"
-            git push
+            exit 0
           fi
+
+          git commit -m "Update listings data"
+
+          # Retry with rebase to survive concurrent pushes to main
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed successfully"
+              exit 0
+            fi
+            echo "Push rejected, rebasing onto latest main and retrying ($i/5)..."
+            git pull --rebase --autostash origin main
+          done
+
+          echo "Push failed after 5 attempts"
+          exit 1
