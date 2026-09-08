@@ -154,6 +154,9 @@
   <div class="checkbox-row">
     <label><input type="checkbox" id="parking-only" autocomplete="off"> Solo con estacionamiento</label>
   </div>
+  <div class="checkbox-row">
+    <label><input type="checkbox" id="new-only" autocomplete="off"> Solo vistos hoy o ayer</label>
+  </div>
 </div>
 
 <div id="legend" class="panel">
@@ -265,7 +268,20 @@ const priceMax = document.getElementById("price-max");
 const m2Min = document.getElementById("m2-min");
 const m2Max = document.getElementById("m2-max");
 const parkingOnly = document.getElementById("parking-only");
+const newOnly = document.getElementById("new-only");
 const bedroomButtons = [...document.querySelectorAll("#bedrooms-row button")];
+
+// dates counted as "hoy o ayer": the dataset date and the day before,
+// so the filter is stable regardless of when the map is opened
+const newSeenDates = new Set();
+{
+  const base = new Date(CONFIG.updated + "T00:00:00");
+  for (let d = 0; d <= 1; d++) {
+    const dt = new Date(base);
+    dt.setDate(dt.getDate() - d);
+    newSeenDates.add(dt.toISOString().slice(0, 10));
+  }
+}
 // set of selected bedroom counts (4 means "4 or more"); empty = show all
 const bedroomsSelected = new Set();
 
@@ -324,6 +340,8 @@ function applyFilters() {
       listing.m2_utiles >= Number(m2Min.value) &&
       listing.m2_utiles <= Number(m2Max.value) &&
       (!parkingOnly.checked || listing.parking >= 1) &&
+      (!newOnly.checked ||
+        newSeenDates.has(String(listing.first_seen_date).slice(0, 10))) &&
       (bedroomsSelected.size === 0 ||
         (listing.bedrooms_n != null &&
           bedroomsSelected.has(Math.min(listing.bedrooms_n, 4))));
@@ -341,7 +359,7 @@ function applyFilters() {
     `publicados o listados recientemente · ${CONFIG.updated}`;
 }
 
-for (const input of [priceMin, priceMax, m2Min, m2Max, parkingOnly]) {
+for (const input of [priceMin, priceMax, m2Min, m2Max, parkingOnly, newOnly]) {
   input.addEventListener("input", applyFilters);
 }
 
