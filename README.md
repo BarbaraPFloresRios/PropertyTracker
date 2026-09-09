@@ -23,6 +23,7 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento/3d1b/usach/estacion Central/planetario](https://www.portalinmobiliario.com/MLC-2212103597-departamento3d1busachestacion-centralplanetario-_JM) | 1,712 | $70,000,000 | 73 | 23.45 | 48 | 3 | 0 |  | 2026-09-02 |
 | [Departamento Antiguo (176985)](https://www.portalinmobiliario.com/MLC-4418552946-departamento-antiguo-176985-_JM) | 1,100 | $44,972,752 | 44 | 25.00 | 73 | 1 | 0 | $50,000 | 2026-08-28 |
 | [Departamento San Isidro Id: 178800](https://www.portalinmobiliario.com/MLC-4410875824-departamento-san-isidro-id-178800-_JM) | 2,650 | $108,343,448 | 104 | 25.48 | 73 | 4 | 0 | $0 | 2026-08-27 |
+| [Piso Completo Con Estilo Único En Avenida Brasil](https://www.portalinmobiliario.com/MLC-4460679066-piso-completo-con-estilo-unico-en-avenida-brasil-_JM) | 3,750 | $153,316,200 | 147 | 25.51 | 62 | 5 | 0 | $0 | 2026-09-09 |
 | [Departamento Grande Pedro Lagos San Diego  (177976)](https://www.portalinmobiliario.com/MLC-4447964648-departamento-grande-pedro-lagos-san-diego-177976-_JM) | 1,800 | $73,591,776 | 70 | 25.71 | 54 | 2 | 0 | $40,000 | 2026-09-04 |
 | [Se Vende Metro Cumming (90527)](https://www.portalinmobiliario.com/MLC-4457859102-se-vende-metro-cumming-90527-_JM) | 2,617 | $107,000,000 | 100 | 26.17 | 50 | 3 | 0 | $20,000 | 2026-09-08 |
 | [Acogedor Depto. En Condomiino Residencial](https://www.portalinmobiliario.com/MLC-4437185782-acogedor-depto-en-condomiino-residencial-_JM) | 1,290 | $52,740,773 | 49 | 26.33 | 68 | 1 | 0 | $55,000 | 2026-09-01 |
@@ -46,7 +47,6 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Venta Depto  Av Club Hípico  Excte Conectividad Y Entorno](https://www.portalinmobiliario.com/MLC-4451785758-venta-depto-av-club-hipico-excte-conectividad-y-entorno-_JM) | 3,060 | $125,106,019 | 94 | 32.55 | 56 | 3 | 1 | $0 | 2026-09-06 |
 | [Departamento San Antonio Id: 150326](https://www.portalinmobiliario.com/MLC-4441938264-departamento-san-antonio-id-150326-_JM) | 1,957 | $80,000,000 | 60 | 32.61 | 53 | 1 | 0 | $0 | 2026-09-02 |
 | [Oferta (174950)](https://www.portalinmobiliario.com/MLC-2217017499-oferta-174950-_JM) | 1,957 | $80,000,000 | 60 | 32.61 | 48 | 2 | 0 | $93,000 | 2026-09-04 |
-| [Departamento En Venta De 3 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4441913752-departamento-en-venta-de-3-dorm-en-santiago-_JM) | 1,600 | $65,414,912 | 49 | 32.65 | 72 | 3 | 1 | $80,000 | 2026-09-02 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
