@@ -22,7 +22,6 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Metro Santa Ana-metro Plaza De Ar Vendo Depto 4d/3b Balcon](https://www.portalinmobiliario.com/MLC-2213140067-metro-santa-ana-metro-plaza-de-ar-vendo-depto-4d3b-balcon-_JM) | 3,351 | $137,000,000 | 143 | 23.43 | 62 | 4 | 0 | $0 | 2026-09-02 |
 | [Departamento/3d1b/usach/estacion Central/planetario](https://www.portalinmobiliario.com/MLC-2212103597-departamento3d1busachestacion-centralplanetario-_JM) | 1,712 | $70,000,000 | 73 | 23.45 | 48 | 3 | 0 |  | 2026-09-02 |
 | [Departamento Antiguo (176985)](https://www.portalinmobiliario.com/MLC-4418552946-departamento-antiguo-176985-_JM) | 1,100 | $44,974,193 | 44 | 25.00 | 73 | 1 | 0 | $50,000 | 2026-08-28 |
-| [Departamento San Isidro Id: 178800](https://www.portalinmobiliario.com/MLC-4410875824-departamento-san-isidro-id-178800-_JM) | 2,650 | $108,346,920 | 104 | 25.48 | 73 | 4 | 0 | $0 | 2026-08-27 |
 | [Piso Completo Con Estilo Único En Avenida Brasil](https://www.portalinmobiliario.com/MLC-4460679066-piso-completo-con-estilo-unico-en-avenida-brasil-_JM) | 3,750 | $153,321,112 | 147 | 25.51 | 62 | 5 | 0 | $0 | 2026-09-09 |
 | [Departamento Grande Pedro Lagos San Diego  (177976)](https://www.portalinmobiliario.com/MLC-4447964648-departamento-grande-pedro-lagos-san-diego-177976-_JM) | 1,800 | $73,594,134 | 70 | 25.71 | 54 | 2 | 0 | $40,000 | 2026-09-04 |
 | [Se Vende Metro Cumming (90527)](https://www.portalinmobiliario.com/MLC-4457859102-se-vende-metro-cumming-90527-_JM) | 2,617 | $107,000,000 | 100 | 26.17 | 50 | 3 | 0 | $20,000 | 2026-09-08 |
@@ -34,10 +33,7 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento En Santiago Argomedo Remate 24 Septiembre 2026](https://www.portalinmobiliario.com/MLC-4421196724-departamento-en-santiago-argomedo-remate-24-septiembre-2026-_JM) | 905 | $37,006,145 | 31 | 29.20 | 82 | 1 | 0 |  | 2026-08-28 |
 | [Departamento 1 Dormitorio - 1 Baño ( Santa Ana - Santiago )](https://www.portalinmobiliario.com/MLC-4443916618-departamento-1-dormitorio-1-bano-santa-ana-santiago--_JM) | 1,600 | $65,417,008 | 54 | 29.63 |  | 1 | 0 |  | 2026-09-03 |
 | [Venta Departamento 118 M2 En Santiago](https://www.portalinmobiliario.com/MLC-4454839630-venta-departamento-118-m2-en-santiago-_JM) | 3,546 | $145,000,000 | 118 | 30.06 | 62 | 3 | 0 | $100,000 | 2026-09-07 |
-| [Departamento En Venta De 4 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4411457616-departamento-en-venta-de-4-dorm-en-santiago-_JM) | 4,200 | $171,719,646 | 138 | 30.43 | 64 | 4 | 0 | $170,000 | 2026-08-27 |
-| [Departamento En Venta De 4 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4411470812-departamento-en-venta-de-4-dorm-en-santiago-_JM) | 4,200 | $171,719,646 | 138 | 30.43 | 64 | 4 | 0 | $180,000 | 2026-08-27 |
 | [Venta Departamento 2hab 1ba Cercano A Estación De Metro](https://www.portalinmobiliario.com/MLC-4433068006-venta-departamento-2hab-1ba-cercano-a-estacion-de-metro-_JM) | 1,834 | $75,000,000 | 60 | 30.57 | 65 | 2 | 0 | $70,000 | 2026-08-31 |
-| [Vendemos Departamento En Barrio Yungay,piso 17](https://www.portalinmobiliario.com/MLC-4410909834-vendemos-departamento-en-barrio-yungaypiso-17-_JM) | 1,345 | $55,000,000 | 43 | 31.28 | 66 | 1 | 0 | $50,000 | 2026-08-27 |
 | [Oportunidad Para Remodelar Y Rentabilizar](https://www.portalinmobiliario.com/MLC-2213117975-oportunidad-para-remodelar-y-rentabilizar-_JM) | 1,880 | $76,864,984 | 60 | 31.33 | 53 | 2 | 0 | $80,000 | 2026-09-02 |
 | [Departamento De Dos Dormitorios En Condominio Cerrado](https://www.portalinmobiliario.com/MLC-4449886610-departamento-de-dos-dormitorios-en-condominio-cerrado-_JM) | 2,200 | $89,948,386 | 70 | 31.43 | 48 | 2 | 0 | $75,000 | 2026-09-04 |
 | [Departamento En Venta De 3 Dorm. En Santiago, 2 Baños.](https://www.portalinmobiliario.com/MLC-2216002145-departamento-en-venta-de-3-dorm-en-santiago-2-banos-_JM) | 3,791 | $155,000,000 | 120 | 31.59 | 62 | 3 | 0 | $80,000 | 2026-09-04 |
@@ -45,8 +41,12 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Venta Departamento 2hab 2ba Santiago](https://www.portalinmobiliario.com/MLC-4456988782-venta-departamento-2hab-2ba-santiago-_JM) | 2,250 | $92,000,000 | 70 | 32.15 | 51 | 2 | 0 | $80,000 | 2026-09-08 |
 | [Venta Depto. 3d/1b Piso De Parquet Centro Histórico De Stgo](https://www.portalinmobiliario.com/MLC-2219777579-venta-depto-3d1b-piso-de-parquet-centro-historico-de-stgo-_JM) | 2,715 | $111,004,485 | 84 | 32.32 | 53 | 3 | 0 | $30,000 | 2026-09-05 |
 | [Venta Depto  Av Club Hípico  Excte Conectividad Y Entorno](https://www.portalinmobiliario.com/MLC-4451785758-venta-depto-av-club-hipico-excte-conectividad-y-entorno-_JM) | 3,060 | $125,110,028 | 94 | 32.55 | 56 | 3 | 1 | $0 | 2026-09-06 |
-| [Departamento San Antonio Id: 150326](https://www.portalinmobiliario.com/MLC-4441938264-departamento-san-antonio-id-150326-_JM) | 1,957 | $80,000,000 | 60 | 32.61 | 53 | 1 | 0 | $0 | 2026-09-02 |
 | [Oferta (174950)](https://www.portalinmobiliario.com/MLC-2217017499-oferta-174950-_JM) | 1,957 | $80,000,000 | 60 | 32.61 | 48 | 2 | 0 | $93,000 | 2026-09-04 |
+| [Departamento San Antonio Id: 150326](https://www.portalinmobiliario.com/MLC-4441938264-departamento-san-antonio-id-150326-_JM) | 1,957 | $80,000,000 | 60 | 32.61 | 53 | 1 | 0 | $0 | 2026-09-02 |
+| [Departamento En Venta De 3 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4441913752-departamento-en-venta-de-3-dorm-en-santiago-_JM) | 1,600 | $65,417,008 | 49 | 32.65 | 72 | 3 | 1 | $80,000 | 2026-09-02 |
+| [Departamento 2 Dormitorios En Condominio Cerrado. Santiago](https://www.portalinmobiliario.com/MLC-4428241946-departamento-2-dormitorios-en-condominio-cerrado-santiago-_JM) | 1,800 | $73,594,134 | 55 | 32.73 | 47 | 2 | 0 | $55,000 | 2026-08-30 |
+| [Vendo Dpto En Santiago 2d 2b](https://www.portalinmobiliario.com/MLC-2217013745-vendo-dpto-en-santiago-2d-2b-_JM) | 3,277 | $134,000,000 | 100 | 32.77 | 53 | 2 | 0 | $80,000 | 2026-09-04 |
+| [Se Vende Depto. Recién Remodelado](https://www.portalinmobiliario.com/MLC-4454057412-se-vende-depto-recien-remodelado-_JM) | 2,300 | $94,036,949 | 70 | 32.86 | 68 | 3 | 0 | $95,000 | 2026-09-07 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
