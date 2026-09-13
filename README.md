@@ -31,8 +31,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento A Pasos Metro](https://www.portalinmobiliario.com/MLC-4468493482-departamento-a-pasos-metro-_JM) | 2,738 | $112,000,000 | 90 | 30.42 | 55 | 4 | 1 | $75,000 | 2026-09-11 |
 | [Venta Departamento 2hab 1ba Santiago](https://www.portalinmobiliario.com/MLC-4468664726-venta-departamento-2hab-1ba-santiago-_JM) | 1,833 | $75,000,000 | 60 | 30.56 | 65 | 2 | 0 | $70,000 | 2026-09-11 |
 | [Oportunidad Para Remodelar Y Rentabilizar](https://www.portalinmobiliario.com/MLC-2213117975-oportunidad-para-remodelar-y-rentabilizar-_JM) | 1,880 | $76,910,988 | 60 | 31.33 | 53 | 2 | 0 | $80,000 | 2026-09-02 |
-| [Amplio Y Céntrico Departamento](https://www.portalinmobiliario.com/MLC-2235126581-amplio-y-centrico-departamento-_JM) | 2,200 | $90,000,000 | 70 | 31.43 | 53 | 2 | 1 | $70,000 | 2026-09-11 |
 | [Departamento De Dos Dormitorios En Condominio Cerrado](https://www.portalinmobiliario.com/MLC-4449886610-departamento-de-dos-dormitorios-en-condominio-cerrado-_JM) | 2,200 | $90,002,220 | 70 | 31.43 | 48 | 2 | 0 | $75,000 | 2026-09-04 |
+| [Amplio Y Céntrico Departamento](https://www.portalinmobiliario.com/MLC-2235126581-amplio-y-centrico-departamento-_JM) | 2,200 | $90,000,000 | 70 | 31.43 | 53 | 2 | 1 | $70,000 | 2026-09-11 |
 | [Departamento En Venta De 3 Dorm. En Santiago, 2 Baños.](https://www.portalinmobiliario.com/MLC-4467066450-departamento-en-venta-de-3-dorm-en-santiago-2-banos-_JM) | 3,789 | $155,000,000 | 120 | 31.57 | 62 | 3 | 0 | $80,000 | 2026-09-10 |
 | [A 2 Cuadras Metro Los Heroes -barrio Universitario](https://www.portalinmobiliario.com/MLC-2219180467-a-2-cuadras-metro-los-heroes-barrio-universitario-_JM) | 3,178 | $130,000,000 | 100 | 31.78 | 55 | 3 | 0 | $40,000 | 2026-09-05 |
 | [Venta Departamento 2hab 2ba Santiago](https://www.portalinmobiliario.com/MLC-4456988782-venta-departamento-2hab-2ba-santiago-_JM) | 2,249 | $92,000,000 | 70 | 32.13 | 51 | 2 | 0 | $80,000 | 2026-09-08 |
@@ -41,12 +41,12 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento San Antonio Id: 150326](https://www.portalinmobiliario.com/MLC-4441938264-departamento-san-antonio-id-150326-_JM) | 1,956 | $80,000,000 | 60 | 32.59 | 53 | 1 | 0 | $0 | 2026-09-02 |
 | [Oferta (174950)](https://www.portalinmobiliario.com/MLC-4465529118-oferta-174950-_JM) | 1,956 | $80,000,000 | 60 | 32.59 | 48 | 2 | 0 | $93,000 | 2026-09-10 |
 | [Departamento En Venta De 3 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4441913752-departamento-en-venta-de-3-dorm-en-santiago-_JM) | 1,600 | $65,456,160 | 49 | 32.65 | 72 | 3 | 1 | $80,000 | 2026-09-02 |
-| [Departamento 2 Dormitorios En Condominio Cerrado. Santiago](https://www.portalinmobiliario.com/MLC-4428241946-departamento-2-dormitorios-en-condominio-cerrado-santiago-_JM) | 1,800 | $73,638,180 | 55 | 32.73 | 47 | 2 | 0 | $55,000 | 2026-08-30 |
 | [Vendo Dpto En Santiago 2d 2b](https://www.portalinmobiliario.com/MLC-2217013745-vendo-dpto-en-santiago-2d-2b-_JM) | 3,276 | $134,000,000 | 100 | 32.76 | 53 | 2 | 0 | $80,000 | 2026-09-04 |
 | [Se Vende Depto. Recién Remodelado](https://www.portalinmobiliario.com/MLC-4454057412-se-vende-depto-recien-remodelado-_JM) | 2,300 | $94,093,230 | 70 | 32.86 | 68 | 3 | 0 | $95,000 | 2026-09-07 |
 | [Dpto Enventa Manuel De Amat 3d 1b $78.000.000 (139829)](https://www.portalinmobiliario.com/MLC-4462120188-dpto-enventa-manuel-de-amat-3d-1b-78000000-139829-_JM) | 1,907 | $78,000,000 | 58 | 32.87 | 53 | 3 | 0 | $0 | 2026-09-09 |
 | [Oportunidad De Inversión, Excelente Ubicación](https://www.portalinmobiliario.com/MLC-4449884566-oportunidad-de-inversion-excelente-ubicacion-_JM) | 990 | $40,500,999 | 30 | 33.00 | 72 | 1 | 0 | $0 | 2026-09-05 |
 | [Cómodo Departamento 2 Dor 1 Baño Calle Zenteno](https://www.portalinmobiliario.com/MLC-4467059908-comodo-departamento-2-dor-1-bano-calle-zenteno-_JM) | 1,490 | $60,956,049 | 45 | 33.11 | 72 | 2 | 0 | $0 | 2026-09-10 |
+| [Santiago Centro \| Depto 107 M2 Para Remodelar A Tu Gusto](https://www.portalinmobiliario.com/MLC-4449886118-santiago-centro-depto-107-m2-para-remodelar-a-tu-gusto-_JM) | 3,550 | $145,230,855 | 107 | 33.18 | 73 | 3 | 0 |  | 2026-09-04 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
