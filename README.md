@@ -39,8 +39,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Venta Departamento 2hab 2ba Santiago](https://www.portalinmobiliario.com/MLC-4456988782-venta-departamento-2hab-2ba-santiago-_JM) | 2,248 | $92,000,000 | 70 | 32.12 | 51 | 2 | 0 | $80,000 | 2026-09-08 |
 | [Venta Depto. 3d/1b Piso De Parquet Centro Histórico De Stgo](https://www.portalinmobiliario.com/MLC-2219777579-venta-depto-3d1b-piso-de-parquet-centro-historico-de-stgo-_JM) | 2,715 | $111,093,049 | 84 | 32.32 | 53 | 3 | 0 | $30,000 | 2026-09-05 |
 | [Venta Depto  Av Club Hípico  Excte Conectividad Y Entorno](https://www.portalinmobiliario.com/MLC-4451785758-venta-depto-av-club-hipico-excte-conectividad-y-entorno-_JM) | 3,060 | $125,209,845 | 94 | 32.55 | 56 | 3 | 1 | $0 | 2026-09-06 |
-| [Departamento San Antonio Id: 150326](https://www.portalinmobiliario.com/MLC-4441938264-departamento-san-antonio-id-150326-_JM) | 1,955 | $80,000,000 | 60 | 32.58 | 53 | 1 | 0 | $0 | 2026-09-02 |
 | [Oferta (174950)](https://www.portalinmobiliario.com/MLC-4465529118-oferta-174950-_JM) | 1,955 | $80,000,000 | 60 | 32.58 | 48 | 2 | 0 | $93,000 | 2026-09-10 |
+| [Departamento San Antonio Id: 150326](https://www.portalinmobiliario.com/MLC-4441938264-departamento-san-antonio-id-150326-_JM) | 1,955 | $80,000,000 | 60 | 32.58 | 53 | 1 | 0 | $0 | 2026-09-02 |
 | [Departamento En Venta De 3 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4441913752-departamento-en-venta-de-3-dorm-en-santiago-_JM) | 1,600 | $65,469,200 | 49 | 32.65 | 72 | 3 | 1 | $80,000 | 2026-09-02 |
 | [Vendo Dpto En Santiago 2d 2b](https://www.portalinmobiliario.com/MLC-2217013745-vendo-dpto-en-santiago-2d-2b-_JM) | 3,275 | $134,000,000 | 100 | 32.75 | 53 | 2 | 0 | $80,000 | 2026-09-04 |
 | [Se Vende Depto. Recién Remodelado](https://www.portalinmobiliario.com/MLC-4454057412-se-vende-depto-recien-remodelado-_JM) | 2,300 | $94,111,975 | 70 | 32.86 | 68 | 3 | 0 | $95,000 | 2026-09-07 |
