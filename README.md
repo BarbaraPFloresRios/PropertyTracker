@@ -29,7 +29,6 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento 1 Dormitorio - 1 Baño ( Santa Ana - Santiago )](https://www.portalinmobiliario.com/MLC-4443916618-departamento-1-dormitorio-1-bano-santa-ana-santiago--_JM) | 1,600 | $65,495,328 | 54 | 29.63 |  | 1 | 0 |  | 2026-09-03 |
 | [Departamento A Pasos Metro](https://www.portalinmobiliario.com/MLC-4468493482-departamento-a-pasos-metro-_JM) | 2,736 | $112,000,000 | 90 | 30.40 | 55 | 4 | 1 | $75,000 | 2026-09-11 |
 | [Venta Departamento 2hab 1ba Santiago](https://www.portalinmobiliario.com/MLC-4468664726-venta-departamento-2hab-1ba-santiago-_JM) | 1,832 | $75,000,000 | 60 | 30.54 | 65 | 2 | 0 | $70,000 | 2026-09-11 |
-| [Oportunidad Para Remodelar Y Rentabilizar](https://www.portalinmobiliario.com/MLC-2213117975-oportunidad-para-remodelar-y-rentabilizar-_JM) | 1,880 | $76,957,010 | 60 | 31.33 | 53 | 2 | 0 | $80,000 | 2026-09-02 |
 | [Amplio Y Céntrico Departamento](https://www.portalinmobiliario.com/MLC-2235126581-amplio-y-centrico-departamento-_JM) | 2,199 | $90,000,000 | 70 | 31.41 | 53 | 2 | 1 | $70,000 | 2026-09-11 |
 | [Departamento De Dos Dormitorios En Condominio Cerrado](https://www.portalinmobiliario.com/MLC-4449886610-departamento-de-dos-dormitorios-en-condominio-cerrado-_JM) | 2,200 | $90,056,076 | 70 | 31.43 | 48 | 2 | 0 | $75,000 | 2026-09-04 |
 | [Departamento En Venta De 3 Dorm. En Santiago, 2 Baños.](https://www.portalinmobiliario.com/MLC-4467066450-departamento-en-venta-de-3-dorm-en-santiago-2-banos-_JM) | 3,786 | $155,000,000 | 120 | 31.55 | 62 | 3 | 0 | $80,000 | 2026-09-10 |
@@ -39,14 +38,15 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Venta Departamento 2hab 2ba Santiago](https://www.portalinmobiliario.com/MLC-4456988782-venta-departamento-2hab-2ba-santiago-_JM) | 2,248 | $92,000,000 | 70 | 32.11 | 51 | 2 | 0 | $80,000 | 2026-09-08 |
 | [Venta Depto. 3d/1b Piso De Parquet Centro Histórico De Stgo](https://www.portalinmobiliario.com/MLC-2219777579-venta-depto-3d1b-piso-de-parquet-centro-historico-de-stgo-_JM) | 2,715 | $111,137,385 | 84 | 32.32 | 53 | 3 | 0 | $30,000 | 2026-09-05 |
 | [Venta Depto  Av Club Hípico  Excte Conectividad Y Entorno](https://www.portalinmobiliario.com/MLC-4451785758-venta-depto-av-club-hipico-excte-conectividad-y-entorno-_JM) | 3,060 | $125,259,815 | 94 | 32.55 | 56 | 3 | 1 | $0 | 2026-09-06 |
-| [Oferta (174950)](https://www.portalinmobiliario.com/MLC-4465529118-oferta-174950-_JM) | 1,954 | $80,000,000 | 60 | 32.57 | 48 | 2 | 0 | $93,000 | 2026-09-10 |
 | [Departamento San Antonio Id: 150326](https://www.portalinmobiliario.com/MLC-4441938264-departamento-san-antonio-id-150326-_JM) | 1,954 | $80,000,000 | 60 | 32.57 | 53 | 1 | 0 | $0 | 2026-09-02 |
-| [Departamento En Venta De 3 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-4441913752-departamento-en-venta-de-3-dorm-en-santiago-_JM) | 1,600 | $65,495,328 | 49 | 32.65 | 72 | 3 | 1 | $80,000 | 2026-09-02 |
+| [Oferta (174950)](https://www.portalinmobiliario.com/MLC-4465529118-oferta-174950-_JM) | 1,954 | $80,000,000 | 60 | 32.57 | 48 | 2 | 0 | $93,000 | 2026-09-10 |
 | [Vendo Dpto En Santiago 2d 2b](https://www.portalinmobiliario.com/MLC-2217013745-vendo-dpto-en-santiago-2d-2b-_JM) | 3,274 | $134,000,000 | 100 | 32.74 | 53 | 2 | 0 | $80,000 | 2026-09-04 |
 | [Dpto Enventa Manuel De Amat 3d 1b $78.000.000 (139829)](https://www.portalinmobiliario.com/MLC-4462120188-dpto-enventa-manuel-de-amat-3d-1b-78000000-139829-_JM) | 1,906 | $78,000,000 | 58 | 32.85 | 53 | 3 | 0 | $0 | 2026-09-09 |
 | [Se Vende Depto. Recién Remodelado](https://www.portalinmobiliario.com/MLC-4454057412-se-vende-depto-recien-remodelado-_JM) | 2,300 | $94,149,534 | 70 | 32.86 | 68 | 3 | 0 | $95,000 | 2026-09-07 |
 | [Oportunidad De Inversión, Excelente Ubicación](https://www.portalinmobiliario.com/MLC-4449884566-oportunidad-de-inversion-excelente-ubicacion-_JM) | 990 | $40,525,234 | 30 | 33.00 | 72 | 1 | 0 | $0 | 2026-09-05 |
 | [Cómodo Departamento 2 Dor 1 Baño Calle Zenteno](https://www.portalinmobiliario.com/MLC-4467059908-comodo-departamento-2-dor-1-bano-calle-zenteno-_JM) | 1,490 | $60,992,524 | 45 | 33.11 | 72 | 2 | 0 | $0 | 2026-09-10 |
+| [Santiago Centro \| Depto 107 M2 Para Remodelar A Tu Gusto](https://www.portalinmobiliario.com/MLC-4449886118-santiago-centro-depto-107-m2-para-remodelar-a-tu-gusto-_JM) | 3,550 | $145,317,759 | 107 | 33.18 | 73 | 3 | 0 |  | 2026-09-04 |
+| [Departamento General Bulnes Id: 163723](https://www.portalinmobiliario.com/MLC-2219775951-departamento-general-bulnes-id-163723-_JM) | 2,199 | $90,000,000 | 66 | 33.31 | 47 | 3 | 0 | $0 | 2026-09-05 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
