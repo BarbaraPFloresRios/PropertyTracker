@@ -28,6 +28,7 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento En Venta, Barrio Republica, Santiago](https://www.portalinmobiliario.com/MLC-4485738860-departamento-en-venta-barrio-republica-santiago-_JM) | 1,758 | $72,034,771 | 60 | 29.30 | 48 | 1 | 0 | $15,000 | 2026-09-17 |
 | [Departamento A Pasos Metro](https://www.portalinmobiliario.com/MLC-4468493482-departamento-a-pasos-metro-_JM) | 2,733 | $112,000,000 | 90 | 30.37 | 55 | 4 | 1 | $75,000 | 2026-09-11 |
 | [Venta Departamento 2hab 1ba Santiago](https://www.portalinmobiliario.com/MLC-4468664726-venta-departamento-2hab-1ba-santiago-_JM) | 1,830 | $75,000,000 | 60 | 30.51 | 65 | 2 | 0 | $70,000 | 2026-09-11 |
+| [Único 3 Dormitorios + Bodega Metro Rondizzoni (183263)](https://www.portalinmobiliario.com/MLC-2259888161-unico-3-dormitorios-bodega-metro-rondizzoni-183263-_JM) | 1,320 | $54,087,541 | 43 | 30.70 | 72 | 3 | 0 | $80,000 | 2026-09-21 |
 | [Dptos. En Venta Comuna De Santiago 1d Y 1baño](https://www.portalinmobiliario.com/MLC-4484377550-dptos-en-venta-comuna-de-santiago-1d-y-1bano-_JM) | 1,464 | $60,000,000 | 47 | 31.16 | 71 | 1 | 0 | $10,000 | 2026-09-16 |
 | [Amplio Y Céntrico Departamento](https://www.portalinmobiliario.com/MLC-2235126581-amplio-y-centrico-departamento-_JM) | 2,196 | $90,000,000 | 70 | 31.38 | 53 | 2 | 1 | $70,000 | 2026-09-11 |
 | [Departamento En Venta De 3 Dorm. En Santiago, 2 Baños.](https://www.portalinmobiliario.com/MLC-4467066450-departamento-en-venta-de-3-dorm-en-santiago-2-banos-_JM) | 3,783 | $155,000,000 | 120 | 31.52 | 62 | 3 | 0 | $80,000 | 2026-09-10 |
@@ -39,14 +40,13 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento Como Nuevo En Excelente Ubicación](https://www.portalinmobiliario.com/MLC-4484467946-departamento-como-nuevo-en-excelente-ubicacion-_JM) | 3,060 | $125,384,755 | 94 | 32.55 | 56 | 3 | 1 | $0 | 2026-09-16 |
 | [3 Dormitorios Metro Rondizzoni (164475)](https://www.portalinmobiliario.com/MLC-2248192535-3-dormitorios-metro-rondizzoni-164475-_JM) | 1,400 | $57,365,574 | 43 | 32.56 | 72 | 3 | 0 | $80,000 | 2026-09-16 |
 | [Dpto Enventa Manuel De Amat 3d 1b $78.000.000 (139829)](https://www.portalinmobiliario.com/MLC-4462120188-dpto-enventa-manuel-de-amat-3d-1b-78000000-139829-_JM) | 1,904 | $78,000,000 | 58 | 32.82 | 53 | 3 | 0 | $0 | 2026-09-09 |
-| [Se Vende Depto. Recién Remodelado](https://www.portalinmobiliario.com/MLC-4454057412-se-vende-depto-recien-remodelado-_JM) | 2,300 | $94,243,443 | 70 | 32.86 | 68 | 3 | 0 | $95,000 | 2026-09-07 |
 | [Cómodo Departamento 2 Dor 1 Baño Calle Zenteno](https://www.portalinmobiliario.com/MLC-4467059908-comodo-departamento-2-dor-1-bano-calle-zenteno-_JM) | 1,490 | $61,053,361 | 45 | 33.11 | 72 | 2 | 0 | $0 | 2026-09-10 |
 | [Amplio Y Luminoso, Vendo Depto Stgo (170838)](https://www.portalinmobiliario.com/MLC-4487265186-amplio-y-luminoso-vendo-depto-stgo-170838-_JM) | 1,990 | $81,541,066 | 60 | 33.17 | 54 | 2 | 0 | $20,000 | 2026-09-17 |
 | [{ Error : Could Not Find A Suitable Tls Ca Ce (181945)](https://www.portalinmobiliario.com/MLC-4460678322--error-could-not-find-a-suitable-tls-ca-ce-181945-_JM) | 2,001 | $82,000,000 | 60 | 33.35 | 47 | 3 | 0 | $50,000 | 2026-09-09 |
 | [Remodelado, Oportunidad, A Pasos De Metro, Incluye Bodega](https://www.portalinmobiliario.com/MLC-4457860128-remodelado-oportunidad-a-pasos-de-metro-incluye-bodega-_JM) | 1,750 | $71,706,968 | 52 | 33.65 | 54 | 2 | 0 | $77,000 | 2026-09-08 |
-| [Departamento Estilo Mariposa, Excelente Ubicacion!](https://www.portalinmobiliario.com/MLC-2223988779-departamento-estilo-mariposa-excelente-ubicacion-_JM) | 1,650 | $67,609,426 | 49 | 33.67 | 71 | 2 | 0 | $85,000 | 2026-09-07 |
 | [Acogedor Departamento 2d Con Vista Despejada En Santiago](https://www.portalinmobiliario.com/MLC-4485718888-acogedor-departamento-2d-con-vista-despejada-en-santiago-_JM) | 1,660 | $68,000,000 | 49 | 33.87 | 74 | 2 | 0 | $61,000 | 2026-09-16 |
 | [Dpto. 2 Hab-1baño-bodega-piso 22 (82631)](https://www.portalinmobiliario.com/MLC-4457310592-dpto-2-hab-1bano-bodega-piso-22-82631-_JM) | 1,700 | $69,658,197 | 50 | 34.00 | 72 | 2 | 0 | $50,000 | 2026-09-08 |
+| [Vendo Comodo Depto  3dorm 2ba Stgo Centro](https://www.portalinmobiliario.com/MLC-2235088941-vendo-comodo-depto-3dorm-2ba-stgo-centro-_JM) | 2,392 | $98,000,000 | 70 | 34.17 | 53 | 3 | 0 | $85,000 | 2026-09-11 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
