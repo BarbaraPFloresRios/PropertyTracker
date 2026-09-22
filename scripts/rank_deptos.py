@@ -45,7 +45,7 @@ CAIDOS = {
     "4499455338", "2256990123", "4451784562", "4403479822", "4486979384",
 }
 # verificados VIVOS aunque el CSV los marque delisted (falso positivo) -> rescatar
-KEEPALIVE = {"4404154390"}          # Coronel
+KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
 POR_VISITAR = {"4495764082", "4394177382", "4499467526"}
