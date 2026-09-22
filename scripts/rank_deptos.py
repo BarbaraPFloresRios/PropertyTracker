@@ -38,6 +38,7 @@ DESCARTADOS = {
     "2201193555", "4350409898",         # edificio 60 anos
     "4445105284", "2217016181", "2217041959", "4437064058",  # Vecinal (visitada y descartada)
     "4191761666",                       # Tu Hogar Conectado = 4444272012, mismo corredor solo-telefono
+    "4499467526", "2018312425",         # Precioso Dpto Remodelado 1D = Departamento Bucarest (misma unidad, piso5/48m2/UF~3660); edificio muy antiguo por fotos
 }
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
@@ -48,7 +49,7 @@ CAIDOS = {
 KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
-POR_VISITAR = {"4495764082", "4394177382", "4499467526"}
+POR_VISITAR = {"4495764082", "4394177382"}
 
 EXCLUIR = DESCARTADOS | CAIDOS
 
