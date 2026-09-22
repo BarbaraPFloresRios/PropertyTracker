@@ -37,6 +37,7 @@ DESCARTADOS = {
     "4404451594",                       # studio confirmado
     "2201193555", "4350409898",         # edificio 60 anos
     "4445105284", "2217016181", "2217041959", "4437064058",  # Vecinal (visitada y descartada)
+    "4191761666",                       # Tu Hogar Conectado = 4444272012, mismo corredor solo-telefono
 }
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
