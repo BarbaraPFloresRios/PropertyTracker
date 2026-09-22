@@ -44,12 +44,13 @@ DESCARTADOS = {
 CAIDOS = {
     "4450271144", "2228842067", "2187517135", "4427322334",
     "4499455338", "2256990123", "4451784562", "4403479822", "4486979384",
+    "4394177382",                       # El Golf Centro Financiero: pausada sin ficha 2026-09-22, misma unidad = 4495764082 (esa sigue viva)
 }
 # verificados VIVOS aunque el CSV los marque delisted (falso positivo) -> rescatar
 KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
-POR_VISITAR = {"4495764082", "4394177382"}
+POR_VISITAR = {"4495764082"}
 
 EXCLUIR = DESCARTADOS | CAIDOS
 
