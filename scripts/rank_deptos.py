@@ -39,6 +39,7 @@ DESCARTADOS = {
     "4445105284", "2217016181", "2217041959", "4437064058",  # Vecinal (visitada y descartada)
     "4191761666",                       # Tu Hogar Conectado = 4444272012, mismo corredor solo-telefono
     "4499467526", "2018312425",         # Precioso Dpto Remodelado 1D = Departamento Bucarest (misma unidad, piso5/48m2/UF~3660); edificio muy antiguo por fotos
+    "4490288254",                       # Departamento Estudio En Barrio El Golf - Cbg: es studio (titulo lo dice)
 }
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
