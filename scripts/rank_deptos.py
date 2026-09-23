@@ -41,6 +41,7 @@ DESCARTADOS = {
     "4499467526", "2018312425",         # Precioso Dpto Remodelado 1D = Departamento Bucarest (misma unidad, piso5/48m2/UF~3660); edificio muy antiguo por fotos
     "4490288254",                       # Departamento Estudio En Barrio El Golf - Cbg: es studio (titulo lo dice)
     "4495764082",                       # El Golf Centro Financiero: 38 anos + GC 150k al tope + 0 estacionamiento
+    "4502089232",                       # Av. Nueva Providencia/Los Leones: zona muy concurrida + edificio muy viejo (64 anos)
 }
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
