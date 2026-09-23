@@ -40,6 +40,7 @@ DESCARTADOS = {
     "4191761666",                       # Tu Hogar Conectado = 4444272012, mismo corredor solo-telefono
     "4499467526", "2018312425",         # Precioso Dpto Remodelado 1D = Departamento Bucarest (misma unidad, piso5/48m2/UF~3660); edificio muy antiguo por fotos
     "4490288254",                       # Departamento Estudio En Barrio El Golf - Cbg: es studio (titulo lo dice)
+    "4495764082",                       # El Golf Centro Financiero: 38 anos + GC 150k al tope + 0 estacionamiento
 }
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
@@ -51,7 +52,7 @@ CAIDOS = {
 KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
-POR_VISITAR = {"4495764082"}
+POR_VISITAR = set()
 
 EXCLUIR = DESCARTADOS | CAIDOS
 
