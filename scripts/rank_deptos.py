@@ -53,7 +53,7 @@ CAIDOS = {
 KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
-POR_VISITAR = set()
+POR_VISITAR = {"2214549601"}        # Luminoso Y Amplio (El Golf): visita agendada lunes 2026-09-28
 
 EXCLUIR = DESCARTADOS | CAIDOS
 
