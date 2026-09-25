@@ -20,8 +20,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Se Vende Cesión De Promesa](https://www.portalinmobiliario.com/MLC-4510326138-se-vende-cesion-de-promesa-_JM) | 405 | $16,608,280 | 21 | 19.29 | 153 | 1 | 1 | $60,000 | 2026-09-24 |
 | [Rosas -morande Departamento 4hab 3ba 147m2 Piso Parquet](https://www.portalinmobiliario.com/MLC-2268780533-rosas-morande-departamento-4hab-3ba-147m2-piso-parquet-_JM) | 3,097 | $127,000,099 | 143 | 21.66 | 62 | 4 | 0 | $60,000 | 2026-09-23 |
 | [Departamento Estudio En Excelente Ubicación](https://www.portalinmobiliario.com/MLC-4502771604-departamento-estudio-en-excelente-ubicacion-_JM) | 1,219 | $50,000,000 | 55 | 22.17 | 54 | 1 | 0 | $50 | 2026-09-22 |
-| [Oportunidad Única Vendo Dpto. Estudio Con Bodega Excelente](https://www.portalinmobiliario.com/MLC-2267397959-oportunidad-unica-vendo-dpto-estudio-con-bodega-excelente-_JM) | 1,146 | $47,000,000 | 50 | 22.92 | 74 | 1 | 0 | $50,000 | 2026-09-23 |
 | [Vendo Dpto. Estudio Con Bodega Excelente Ubicación](https://www.portalinmobiliario.com/MLC-2267436743-vendo-dpto-estudio-con-bodega-excelente-ubicacion-_JM) | 1,146 | $47,000,000 | 50 | 22.92 | 74 | 1 | 0 | $50,000 | 2026-09-23 |
+| [Oportunidad Única Vendo Dpto. Estudio Con Bodega Excelente](https://www.portalinmobiliario.com/MLC-2267397959-oportunidad-unica-vendo-dpto-estudio-con-bodega-excelente-_JM) | 1,146 | $47,000,000 | 50 | 22.92 | 74 | 1 | 0 | $50,000 | 2026-09-23 |
 | [Venta Departamento De 1 Dormitorio Cercano Metro Santa Ana](https://www.portalinmobiliario.com/MLC-2267423261-venta-departamento-de-1-dormitorio-cercano-metro-santa-ana-_JM) | 1,300 | $53,310,530 | 55 | 23.64 | 53 | 2 | 0 | $70,000 | 2026-09-23 |
 | [Venta Departamento 1d, Metro Santa Ana, Santiago](https://www.portalinmobiliario.com/MLC-4506396540-venta-departamento-1d-metro-santa-ana-santiago-_JM) | 1,341 | $55,000,000 | 48 | 27.94 | 73 | 1 | 0 | $62,000 | 2026-09-23 |
 | [Departamento San Pablo Id: 49821](https://www.portalinmobiliario.com/MLC-4487268130-departamento-san-pablo-id-49821-_JM) | 2,856 | $117,120,000 | 100 | 28.56 | 53 | 3 | 0 | $85,000 | 2026-09-17 |
@@ -30,12 +30,10 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Excelente Departamento En Venta De 3 Dorm.c/ Serv. Santiago](https://www.portalinmobiliario.com/MLC-2237931549-excelente-departamento-en-venta-de-3-dormc-serv-santiago-_JM) | 4,316 | $177,000,000 | 148 | 29.16 | 64 | 3 | 0 | $0 | 2026-09-12 |
 | [Departamento En Venta, Barrio Republica, Santiago](https://www.portalinmobiliario.com/MLC-4485738860-departamento-en-venta-barrio-republica-santiago-_JM) | 1,758 | $72,092,240 | 60 | 29.30 | 48 | 1 | 0 | $15,000 | 2026-09-17 |
 | [Depto 2 Dormitorios 2 Baños Vista Despejada Parque Los Reyes](https://www.portalinmobiliario.com/MLC-4499466432-depto-2-dormitorios-2-banos-vista-despejada-parque-los-reyes-_JM) | 1,780 | $72,994,418 | 60 | 29.67 | 47 | 2 | 0 | $0 | 2026-09-21 |
-| [Departamento A Pasos Metro](https://www.portalinmobiliario.com/MLC-4468493482-departamento-a-pasos-metro-_JM) | 2,731 | $112,000,000 | 90 | 30.35 | 55 | 4 | 1 | $75,000 | 2026-09-11 |
-| [Venta Departamento 2hab 1ba Santiago](https://www.portalinmobiliario.com/MLC-4468664726-venta-departamento-2hab-1ba-santiago-_JM) | 1,829 | $75,000,000 | 60 | 30.48 | 65 | 2 | 0 | $70,000 | 2026-09-11 |
+| [Departamento 2hab 1ba Cercano A Estación De Metro](https://www.portalinmobiliario.com/MLC-4513393944-departamento-2hab-1ba-cercano-a-estacion-de-metro-_JM) | 1,829 | $75,000,000 | 60 | 30.48 | 65 | 2 | 0 | $70,000 | 2026-09-25 |
 | [Único 3 Dormitorios + Bodega Metro Rondizzoni (183263)](https://www.portalinmobiliario.com/MLC-2259888161-unico-3-dormitorios-bodega-metro-rondizzoni-183263-_JM) | 1,320 | $54,130,692 | 43 | 30.70 | 72 | 3 | 0 | $80,000 | 2026-09-21 |
 | [Depto. Gran Oportunidad, Precio Rebajado. Id. 41205](https://www.portalinmobiliario.com/MLC-2271027351-depto-gran-oportunidad-precio-rebajado-id-41205-_JM) | 1,710 | $70,123,851 | 55 | 31.09 | 65 | 2 | 0 |  | 2026-09-24 |
 | [Dptos. En Venta Comuna De Santiago 1d Y 1baño](https://www.portalinmobiliario.com/MLC-4484377550-dptos-en-venta-comuna-de-santiago-1d-y-1bano-_JM) | 1,463 | $60,000,000 | 47 | 31.13 | 71 | 1 | 0 | $10,000 | 2026-09-16 |
-| [Amplio Y Céntrico Departamento](https://www.portalinmobiliario.com/MLC-2235126581-amplio-y-centrico-departamento-_JM) | 2,195 | $90,000,000 | 70 | 31.35 | 53 | 2 | 1 | $70,000 | 2026-09-11 |
 | [Amplio Departamento Sector Cumming (171236)](https://www.portalinmobiliario.com/MLC-2256985533-amplio-departamento-sector-cumming-171236-_JM) | 1,960 | $80,375,876 | 62 | 31.61 | 47 | 3 | 0 | $60,000 | 2026-09-19 |
 | [Departamento Versátil En Ubicación Estratégica Santiago](https://www.portalinmobiliario.com/MLC-2241157623-departamento-versatil-en-ubicacion-estrategica-santiago-_JM) | 3,800 | $155,830,780 | 120 | 31.67 | 62 | 3 | 1 | $165,000 | 2026-09-14 |
 | [Cuarto Piso Con Bodega 2 Dormitorios (183695)](https://www.portalinmobiliario.com/MLC-4510325552-cuarto-piso-con-bodega-2-dormitorios-183695-_JM) | 1,200 | $49,209,720 | 37 | 32.43 | 72 | 2 | 0 | $65,000 | 2026-09-24 |
@@ -47,6 +45,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Amplio Y Luminoso, Vendo Depto Stgo (170838)](https://www.portalinmobiliario.com/MLC-4487265186-amplio-y-luminoso-vendo-depto-stgo-170838-_JM) | 1,990 | $81,606,119 | 60 | 33.17 | 54 | 2 | 0 | $20,000 | 2026-09-17 |
 | [Amplio Depto De 110 Mt2 Con Gran Potencial](https://www.portalinmobiliario.com/MLC-4510758772-amplio-depto-de-110-mt2-con-gran-potencial-_JM) | 3,660 | $150,089,646 | 110 | 33.27 | 55 | 4 | 0 | $60,000 | 2026-09-24 |
 | [Venta Departamento 2d Y 2b Cerca De Futura Metro Línea 7](https://www.portalinmobiliario.com/MLC-4506283356-venta-departamento-2d-y-2b-cerca-de-futura-metro-linea-7-_JM) | 1,780 | $72,994,418 | 53 | 33.58 | 47 | 2 | 0 | $90,000 | 2026-09-23 |
+| [Departamento En Venta De 3d, Cercano A Av Matta, En Santiago](https://www.portalinmobiliario.com/MLC-2268753325-departamento-en-venta-de-3d-cercano-a-av-matta-en-santiago-_JM) | 2,400 | $98,419,440 | 71 | 33.80 | 54 | 3 | 0 | $0 | 2026-09-23 |
+| [Acogedor Departamento 2d Con Vista Despejada En Santiago](https://www.portalinmobiliario.com/MLC-4485718888-acogedor-departamento-2d-con-vista-despejada-en-santiago-_JM) | 1,658 | $68,000,000 | 49 | 33.84 | 74 | 2 | 0 | $61,000 | 2026-09-16 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
