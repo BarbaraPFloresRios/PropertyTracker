@@ -35,13 +35,18 @@ DESCARTADOS = {
     "4444442422", "2215990417", "2219776375", "4444272012", "2039845269",
     "2181858637", "4421808944", "4233323866", "4173826972", "4361692300",
     "4404451594",                       # studio confirmado
-    "2201193555", "4350409898",         # edificio 60 anos
+    "2201193555", "4350409898", "2268778815",  # edificio 60 anos (2268778815 = republicacion 23-sep, mismas coords/piso/precio, mismo corredor Binexxos)
     "4445105284", "2217016181", "2217041959", "4437064058",  # Vecinal (visitada y descartada)
     "4191761666",                       # Tu Hogar Conectado = 4444272012, mismo corredor solo-telefono
     "4499467526", "2018312425",         # Precioso Dpto Remodelado 1D = Departamento Bucarest (misma unidad, piso5/48m2/UF~3660); edificio muy antiguo por fotos
     "4490288254",                       # Departamento Estudio En Barrio El Golf - Cbg: es studio (titulo lo dice)
     "4495764082",                       # El Golf Centro Financiero: 38 anos + GC 150k al tope + 0 estacionamiento
+    "4510792888",                       # = 4495764082 republicado (mismas coords/piso/m2/precio/GC/antiguedad/0 est)
     "4502089232",                       # Av. Nueva Providencia/Los Leones: zona muy concurrida + edificio muy viejo (64 anos)
+    "2275685999",                       # Hernando de Aguirre: descripcion dice "departamento estudio" (marcado 1D en dataset)
+    "4513678986",                       # Av. Providencia: zona muy concurrida + edificio viejo (57 anos), 0 estacionamiento
+    "4514087776", "4510772796",         # Av. Nueva Providencia (misma unidad, 2 IDs): zona muy concurrida + edificio viejo (57 anos) + solo "Contactar" (sin WhatsApp visible)
+    "4509167238",                       # Dario Urzua: confirmado 2 veces (22-sep y 26-sep) solo "Contactar", sin WhatsApp -> contacto solo telefonico
 }
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
