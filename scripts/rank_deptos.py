@@ -44,8 +44,9 @@ DESCARTADOS = {
     "4510792888",                       # = 4495764082 republicado (mismas coords/piso/m2/precio/GC/antiguedad/0 est)
     "4502089232",                       # Av. Nueva Providencia/Los Leones: zona muy concurrida + edificio muy viejo (64 anos) -- NOTA 26-sep: Barbara dice que "avenida transitada" lo debe juzgar ELLA con fotos/calle exacta, no un filtro automatico. Este caso queda como esta (ya asumido hace dias) pero NO repetir el patron para nuevos candidatos -- ver 4513678986/4514087776 abajo, restaurados al ranking.
     "2275685999",                       # Hernando de Aguirre: descripcion dice "departamento estudio" (marcado 1D en dataset)
-    "4509167238",                       # Dario Urzua: confirmado 2 veces (22-sep y 26-sep) solo "Contactar", sin WhatsApp -> contacto solo telefonico
 }
+# NOTA 26-sep: NO tener boton WhatsApp visible (solo "Contactar") NO es motivo de descarte por
+# si solo -- Barbara lo aclaro explicitamente. 4509167238 (Dario Urzua) vuelve al ranking.
 # NOTA 26-sep: 4513678986 y 4514087776=4510772796 (Av. Providencia/Nueva Providencia, 57 anos,
 # 0 est) NO se descartan automaticamente por "avenida transitada" -- Barbara evalua eso ella
 # misma con fotos y la ubicacion exacta en la calle. Quedan en el ranking (banda C) con flag.
