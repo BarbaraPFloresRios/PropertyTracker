@@ -42,12 +42,13 @@ DESCARTADOS = {
     "4490288254",                       # Departamento Estudio En Barrio El Golf - Cbg: es studio (titulo lo dice)
     "4495764082",                       # El Golf Centro Financiero: 38 anos + GC 150k al tope + 0 estacionamiento
     "4510792888",                       # = 4495764082 republicado (mismas coords/piso/m2/precio/GC/antiguedad/0 est)
-    "4502089232",                       # Av. Nueva Providencia/Los Leones: zona muy concurrida + edificio muy viejo (64 anos)
+    "4502089232",                       # Av. Nueva Providencia/Los Leones: zona muy concurrida + edificio muy viejo (64 anos) -- NOTA 26-sep: Barbara dice que "avenida transitada" lo debe juzgar ELLA con fotos/calle exacta, no un filtro automatico. Este caso queda como esta (ya asumido hace dias) pero NO repetir el patron para nuevos candidatos -- ver 4513678986/4514087776 abajo, restaurados al ranking.
     "2275685999",                       # Hernando de Aguirre: descripcion dice "departamento estudio" (marcado 1D en dataset)
-    "4513678986",                       # Av. Providencia: zona muy concurrida + edificio viejo (57 anos), 0 estacionamiento
-    "4514087776", "4510772796",         # Av. Nueva Providencia (misma unidad, 2 IDs): zona muy concurrida + edificio viejo (57 anos) + solo "Contactar" (sin WhatsApp visible)
     "4509167238",                       # Dario Urzua: confirmado 2 veces (22-sep y 26-sep) solo "Contactar", sin WhatsApp -> contacto solo telefonico
 }
+# NOTA 26-sep: 4513678986 y 4514087776=4510772796 (Av. Providencia/Nueva Providencia, 57 anos,
+# 0 est) NO se descartan automaticamente por "avenida transitada" -- Barbara evalua eso ella
+# misma con fotos y la ubicacion exacta en la calle. Quedan en el ranking (banda C) con flag.
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
     "4450271144", "2228842067", "2187517135", "4427322334",
