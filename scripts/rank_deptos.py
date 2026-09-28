@@ -44,12 +44,16 @@ DESCARTADOS = {
     "4510792888",                       # = 4495764082 republicado (mismas coords/piso/m2/precio/GC/antiguedad/0 est)
     "4502089232",                       # Av. Nueva Providencia/Los Leones: zona muy concurrida + edificio muy viejo (64 anos) -- NOTA 26-sep: Barbara dice que "avenida transitada" lo debe juzgar ELLA con fotos/calle exacta, no un filtro automatico. Este caso queda como esta (ya asumido hace dias) pero NO repetir el patron para nuevos candidatos -- ver 4513678986/4514087776 abajo, restaurados al ranking.
     "2275685999",                       # Hernando de Aguirre: descripcion dice "departamento estudio" (marcado 1D en dataset)
+    "4513678986",                       # Torres Carlos Antunez, Av. Providencia: 57 anos, DESCARTADO por Barbara
+                                         # 2026-09-27 -- edificio demasiado antiguo, teme problemas de canerias/estilo.
+                                         # (Distinto del caso 4514087776: ese lo evalua ella con fotos, no se
+                                         # descarto solo por la avenida; este lo descarto ella misma por la edad.)
 }
 # NOTA 26-sep: NO tener boton WhatsApp visible (solo "Contactar") NO es motivo de descarte por
 # si solo -- Barbara lo aclaro explicitamente. 4509167238 (Dario Urzua) vuelve al ranking.
-# NOTA 26-sep: 4513678986 y 4514087776=4510772796 (Av. Providencia/Nueva Providencia, 57 anos,
-# 0 est) NO se descartan automaticamente por "avenida transitada" -- Barbara evalua eso ella
-# misma con fotos y la ubicacion exacta en la calle. Quedan en el ranking (banda C) con flag.
+# NOTA 26-sep: 4514087776=4510772796 (Av. Nueva Providencia, 57 anos, 0 est) NO se descarta
+# automaticamente por "avenida transitada" -- Barbara evalua eso ella misma con fotos y la
+# ubicacion exacta en la calle. Queda en el ranking (banda C) con flag.
 # 🚫 caidos verificados (link muerto / redirectedFromVip / corredor dice no disponible)
 CAIDOS = {
     "4450271144", "2228842067", "2187517135", "4427322334",
@@ -60,7 +64,16 @@ CAIDOS = {
 KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
-POR_VISITAR = {"2214549601"}        # Luminoso Y Amplio (El Golf): visita agendada lunes 2026-09-28
+POR_VISITAR = {"2214549601"}        # Luminoso Y Amplio (El Golf): visita SOLICITADA p/lunes 2026-09-28, sin confirmar (corredor no ha respondido)
+# excepciones de tamano confirmadas por Barbara caso a caso (no bajar el tope global)
+INCLUIR_AUNQUE_FALLE_M2 = {
+    "4299060012",   # Andres De Fuenzalida 166, Los Leones: 39m2 (1m2 bajo el tope), edificio confirmado
+                     # NUEVO por fotos 2026-09-27 (no confundir con los 2 viejos de la misma calle,
+                     # ya descartados) -- Barbara pidio incluirlo igual.
+    "2267442371",    # Los Leones / Pio X (Mardoqueo Fernandez): exactamente 40m2 utiles (no ">40"),
+                     # GC real 85k, WhatsApp, sin arriendo vigente, calle tranquila -- Barbara pidio
+                     # incluirlo 2026-09-27.
+}
 
 EXCLUIR = DESCARTADOS | CAIDOS
 
@@ -97,7 +110,7 @@ def main():
     f = df[df["property_type"].astype(str).str.lower().eq("departamento")].copy()
     f = f[~f["title"].astype(str).str.lower().str.contains("oficina", na=False)]
     f = f[f["bedrooms_n"] >= 1]
-    f = f[f["m2_utiles"] > MIN_M2_UTILES]
+    f = f[(f["m2_utiles"] > MIN_M2_UTILES) | f["id"].isin(INCLUIR_AUNQUE_FALLE_M2)]
     f = f[f["dist"] <= MAX_DIST_M]
     activo = f["delisted_date"].isna() & f["finished_date"].isna()
     f = f[activo | f["id"].isin(KEEPALIVE)]
