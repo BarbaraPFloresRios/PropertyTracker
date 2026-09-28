@@ -44,6 +44,24 @@ SEARCHES = [
     },
 ]
 
+SEARCHES_ARRIENDO = [
+    {
+        "operation": "arriendo",
+        "property_type": "departamento",
+        "location": "providencia-metropolitana",
+    },
+    {
+        "operation": "arriendo",
+        "property_type": "departamento",
+        "location": "las-condes-metropolitana",
+    },
+    {
+        "operation": "arriendo",
+        "property_type": "departamento",
+        "location": "santiago-metropolitana",
+    },
+]
+
 
 # sort by publication date (newest first) so genuinely new listings always
 # land on the first pages, inside the ~2000-result window the site exposes
@@ -470,10 +488,10 @@ def add_price_conversions(df, uf_value):
     return df
 
 
-def scrape_portalinmobiliario():
+def scrape_portalinmobiliario(searches=SEARCHES):
     listings = []
 
-    for search in SEARCHES:
+    for search in searches:
         listings.extend(scrape_search(search))
 
     df = pd.DataFrame(listings)

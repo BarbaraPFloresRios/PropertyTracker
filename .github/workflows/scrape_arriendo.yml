@@ -1,0 +1,57 @@
+name: Scrape Rentals
+
+on:
+  schedule:
+    # Friday 22:00 Chile time (UTC-3 in summer/DST) = Saturday 01:00 UTC.
+    # Fixed UTC cron, so local time shifts by 1h when Chile's DST changes.
+    - cron: "0 1 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run rental scraper
+        run: python main_arriendo.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add data/raw/portalinmobiliario_rentals.csv
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Update rental listings data"
+
+          # Retry with rebase to survive concurrent pushes to main
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Pushed successfully"
+              exit 0
+            fi
+            echo "Push rejected, rebasing onto latest main and retrying ($i/5)..."
+            git pull --rebase --autostash origin main
+          done
+
+          echo "Push failed after 5 attempts"
+          exit 1
