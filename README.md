@@ -25,10 +25,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Venta Departamento De 1 Dormitorio Cercano Metro Santa Ana](https://www.portalinmobiliario.com/MLC-2267423261-venta-departamento-de-1-dormitorio-cercano-metro-santa-ana-_JM) | 1,300 | $53,363,713 | 55 | 23.64 | 53 | 2 | 0 | $70,000 | 2026-09-23 |
 | [Departamento Grande Pedro Lagos San Diego  (184015)](https://www.portalinmobiliario.com/MLC-2275517211-departamento-grande-pedro-lagos-san-diego-184015-_JM) | 1,800 | $73,888,218 | 70 | 25.71 | 53 | 2 | 0 | $45,000 | 2026-09-26 |
 | [Venta Departamento 1d, Metro Santa Ana, Santiago](https://www.portalinmobiliario.com/MLC-4506396540-venta-departamento-1d-metro-santa-ana-santiago-_JM) | 1,340 | $55,000,000 | 48 | 27.91 | 73 | 1 | 0 | $62,000 | 2026-09-23 |
-| [Departamento San Pablo Id: 49821](https://www.portalinmobiliario.com/MLC-4487268130-departamento-san-pablo-id-49821-_JM) | 2,853 | $117,120,000 | 100 | 28.53 | 53 | 3 | 0 | $85,000 | 2026-09-17 |
 | [Vendo Dpto. Estudio Excelente Ubicación Con Bodega](https://www.portalinmobiliario.com/MLC-4502661944-vendo-dpto-estudio-excelente-ubicacion-con-bodega-_JM) | 1,291 | $53,000,000 | 45 | 28.69 | 74 | 1 | 0 | $50,000 | 2026-09-22 |
 | [Venta Departamento 4d Centro Histórico - Santiago](https://www.portalinmobiliario.com/MLC-2256976743-venta-departamento-4d-centro-historico-santiago-_JM) | 3,338 | $137,000,000 | 116 | 28.77 | 62 | 4 | 0 | $150,000 | 2026-09-20 |
-| [Departamento En Venta, Barrio Republica, Santiago](https://www.portalinmobiliario.com/MLC-4485738860-departamento-en-venta-barrio-republica-santiago-_JM) | 1,758 | $72,164,160 | 60 | 29.30 | 48 | 1 | 0 | $15,000 | 2026-09-17 |
 | [Depto 2 Dormitorios 2 Baños Vista Despejada Parque Los Reyes](https://www.portalinmobiliario.com/MLC-4499466432-depto-2-dormitorios-2-banos-vista-despejada-parque-los-reyes-_JM) | 1,780 | $73,067,238 | 60 | 29.67 | 47 | 2 | 0 | $0 | 2026-09-21 |
 | [Inersion ,comercial O Habutacional 2d/1b Maciver (180206)](https://www.portalinmobiliario.com/MLC-4513700244-inersion-comercial-o-habutacional-2d1b-maciver-180206-_JM) | 1,827 | $75,000,000 | 61 | 29.95 | 53 | 2 | 0 | $75,000 | 2026-09-25 |
 | [Oportunidad Única, San Isidro 635, 3dor 2b, Sin Comisión](https://www.portalinmobiliario.com/MLC-2282587525-oportunidad-unica-san-isidro-635-3dor-2b-sin-comision-_JM) | 1,590 | $65,267,926 | 53 | 30.00 | 65 | 3 | 0 | $170,000 | 2026-09-29 |
@@ -47,6 +45,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Excelente Ubicacion, Departamento En Venta En Santiago](https://www.portalinmobiliario.com/MLC-2274591097-excelente-ubicacion-departamento-en-venta-en-santiago-_JM) | 3,060 | $125,609,971 | 94 | 32.55 | 57 | 3 | 1 | $0 | 2026-09-25 |
 | [Vendo Dpto En Santiago 2d 2b](https://www.portalinmobiliario.com/MLC-4520030362-vendo-dpto-en-santiago-2d-2b-_JM) | 3,264 | $134,000,000 | 100 | 32.64 | 53 | 2 | 0 | $80,000 | 2026-09-28 |
 | [Venta Depa 2 Dorm 1 Baño Cocina Americana](https://www.portalinmobiliario.com/MLC-4500847080-venta-depa-2-dorm-1-bano-cocina-americana-_JM) | 1,490 | $61,163,025 | 45 | 33.11 | 72 | 2 | 0 | $0 | 2026-09-21 |
+| [Departamento En Venta En Meiggs Santiago](https://www.portalinmobiliario.com/MLC-2267423375-departamento-en-venta-en-meiggs-santiago-_JM) | 2,020 | $82,900,000 | 61 | 33.11 | 48 | 3 | 1 | $122,000 | 2026-09-23 |
+| [Amplio Depto De 110 Mt2 Con Gran Potencial](https://www.portalinmobiliario.com/MLC-4510758772-amplio-depto-de-110-mt2-con-gran-potencial-_JM) | 3,660 | $150,239,377 | 110 | 33.27 | 55 | 4 | 0 | $60,000 | 2026-09-24 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
