@@ -251,12 +251,16 @@ def scrape_search(search):
         state = extract_state(response.text)
 
         if state is None:
-            print(f"Portalinmobiliario page {page + 1}: no embedded state")
+            print(
+                f"Portalinmobiliario page {page + 1}: no embedded state "
+                f"(status={response.status_code}, len={len(response.text)})"
+            )
             break
 
         page_listings = []
+        raw_cards = list(iter_polycards(state))
 
-        for card in iter_polycards(state):
+        for card in raw_cards:
             listing = parse_card(card, search)
 
             if listing and listing["listing_id"] not in seen_ids:
@@ -264,6 +268,10 @@ def scrape_search(search):
                 page_listings.append(listing)
 
         if not page_listings:
+            print(
+                f"Portalinmobiliario page {page + 1}: 0 usable listings "
+                f"(status={response.status_code}, raw_cards={len(raw_cards)})"
+            )
             break
 
         print(
