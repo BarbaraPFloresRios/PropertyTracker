@@ -48,6 +48,16 @@ DESCARTADOS = {
                                          # 2026-09-27 -- edificio demasiado antiguo, teme problemas de canerias/estilo.
                                          # (Distinto del caso 4514087776: ese lo evalua ella con fotos, no se
                                          # descarto solo por la avenida; este lo descarto ella misma por la edad.)
+    "4509220410",                       # Hdo De Aguirre - Eleodoro Yanez, Las Lilas: DESCARTADO por Barbara 2026-09-28.
+    "4409958494",                       # Luis Thayer Ojeda 133, Providencia: DESCARTADO por Barbara 2026-09-28 (ya
+                                         # fallaba los topes de precio/GC; ademas sin ascensor piso 6, estacionamiento
+                                         # tandem compartido, arriendo vigente).
+    "4523773982",                       # Las Condes Nor Poniente: es studio, DESCARTADO por Barbara 2026-09-29.
+    "4420575658",                       # Departamento Inversion En Providencia: DESCARTADO por Barbara 2026-09-30
+                                         # -- edificio se ve muy antiguo por fotos + sin estacionamiento.
+    "2285739487",                       # Dpto Con Ubicacion Inmejorable (L. Thayer Ojeda 0127): DESCARTADO 2026-10-03
+                                         # -- edificio confirmado 1977 (49 anos, SII), muy a la pasada, Barbara
+                                         # desconfia de la liquidez de ese segmento de mercado.
 }
 # NOTA 26-sep: NO tener boton WhatsApp visible (solo "Contactar") NO es motivo de descarte por
 # si solo -- Barbara lo aclaro explicitamente. 4509167238 (Dario Urzua) vuelve al ranking.
