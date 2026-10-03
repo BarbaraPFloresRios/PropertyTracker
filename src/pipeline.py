@@ -394,6 +394,14 @@ def enrich_recent_listings():
             listings.at[index, "enriched_date"] = today
             continue
 
+        if all(details.get(column) is None for column in ENRICH_VALUE_COLUMNS):
+            # every field empty means the detail page came back stripped
+            # (seen when the source blocks the request's IP) rather than a
+            # listing that genuinely has none of these fields. Leave
+            # enriched_date unset so it's retried next run instead of
+            # permanently stuck with no coordinates/attributes.
+            continue
+
         for column in ENRICH_VALUE_COLUMNS:
             listings.at[index, column] = details.get(column)
 
@@ -545,6 +553,10 @@ def enrich_new_rentals():
         if details is LISTING_FINISHED:
             listings.at[index, "finished_date"] = today
             listings.at[index, "enriched_date"] = today
+            continue
+
+        if all(details.get(column) is None for column in ENRICH_VALUE_COLUMNS):
+            # stripped page (likely a blocked fetch) -- retry next run
             continue
 
         for column in ENRICH_VALUE_COLUMNS:
