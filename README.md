@@ -19,8 +19,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | [Se Vende Cesión De Promesa](https://www.portalinmobiliario.com/MLC-4510326138-se-vende-cesion-de-promesa-_JM) | 405 | $16,638,113 | 21 | 19.29 | 153 | 1 | 1 | $60,000 | 2026-09-24 |
 | [Rosas -morande Departamento 4hab 3ba 147m2 Piso Parquet](https://www.portalinmobiliario.com/MLC-4534638388-rosas-morande-departamento-4hab-3ba-147m2-piso-parquet-_JM) | 3,091 | $127,000,099 | 143 | 21.62 | 62 | 4 | 0 | $60,000 | 2026-10-02 |
-| [Vendo Dpto. Estudio Con Bodega Excelente Ubicación](https://www.portalinmobiliario.com/MLC-2267436743-vendo-dpto-estudio-con-bodega-excelente-ubicacion-_JM) | 1,144 | $47,000,000 | 50 | 22.88 | 74 | 1 | 0 | $50,000 | 2026-09-23 |
 | [Oportunidad Única Vendo Dpto. Estudio Con Bodega Excelente](https://www.portalinmobiliario.com/MLC-2267397959-oportunidad-unica-vendo-dpto-estudio-con-bodega-excelente-_JM) | 1,144 | $47,000,000 | 50 | 22.88 | 74 | 1 | 0 | $50,000 | 2026-09-23 |
+| [Vendo Dpto. Estudio Con Bodega Excelente Ubicación](https://www.portalinmobiliario.com/MLC-2267436743-vendo-dpto-estudio-con-bodega-excelente-ubicacion-_JM) | 1,144 | $47,000,000 | 50 | 22.88 | 74 | 1 | 0 | $50,000 | 2026-09-23 |
 | [Venta Departamento De 1 Dormitorio Calle Mario Kreutzberger](https://www.portalinmobiliario.com/MLC-2267423261-venta-departamento-de-1-dormitorio-calle-mario-kreutzberger-_JM) | 1,300 | $53,406,288 | 55 | 23.64 | 53 | 2 | 0 | $70,000 | 2026-09-23 |
 | [Departamento Grande Pedro Lagos San Diego  (184015)](https://www.portalinmobiliario.com/MLC-2275517211-departamento-grande-pedro-lagos-san-diego-184015-_JM) | 1,800 | $73,947,168 | 70 | 25.71 | 53 | 2 | 0 | $45,000 | 2026-09-26 |
 | [Excelente Departamento 2 Dormitorios/barrio Yungay](https://www.portalinmobiliario.com/MLC-4534638246-excelente-departamento-2-dormitoriosbarrio-yungay-_JM) | 1,300 | $53,406,288 | 50 | 26.00 | 66 | 2 | 0 | $50,000 | 2026-10-02 |
@@ -35,11 +35,9 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento 2hab 1ba Cercano A Estación De Metro](https://www.portalinmobiliario.com/MLC-4513393944-departamento-2hab-1ba-cercano-a-estacion-de-metro-_JM) | 1,826 | $75,000,000 | 60 | 30.43 | 65 | 2 | 0 | $70,000 | 2026-09-25 |
 | [Se Vende Departamento En Arturo Prat/alameda](https://www.portalinmobiliario.com/MLC-4534632972-se-vende-departamento-en-arturo-pratalameda-_JM) | 1,826 | $75,000,000 | 60 | 30.43 | 54 | 2 | 1 | $90,000 | 2026-10-02 |
 | [Departamento En Venta En Santiago](https://www.portalinmobiliario.com/MLC-4516303766-departamento-en-venta-en-santiago-_JM) | 3,660 | $150,359,242 | 120 | 30.50 | 64 | 4 | 0 | $0 | 2026-09-26 |
-| [Único 3 Dormitorios + Bodega Metro Rondizzoni (183263)](https://www.portalinmobiliario.com/MLC-2259888161-unico-3-dormitorios-bodega-metro-rondizzoni-183263-_JM) | 1,320 | $54,217,112 | 43 | 30.70 | 72 | 3 | 0 | $80,000 | 2026-09-21 |
 | [Venta Departamento Santiago Centro San Antonio - Monjitas](https://www.portalinmobiliario.com/MLC-2285758297-venta-departamento-santiago-centro-san-antonio-monjitas-_JM) | 2,312 | $95,000,000 | 75 | 30.83 | 53 | 3 | 0 | $0 | 2026-10-01 |
 | [Departamento Stgo Miguel León Prado Remate 15 Octubre 2026](https://www.portalinmobiliario.com/MLC-4525972044-departamento-stgo-miguel-leon-prado-remate-15-octubre-2026-_JM) | 992 | $40,767,020 | 32 | 31.01 | 83 | 1 | 0 |  | 2026-10-01 |
 | [Depto. Gran Oportunidad, Precio Rebajado. Id. 41205](https://www.portalinmobiliario.com/MLC-2271027351-depto-gran-oportunidad-precio-rebajado-id-41205-_JM) | 1,710 | $70,249,810 | 55 | 31.09 | 65 | 2 | 0 |  | 2026-09-24 |
-| [Departamento Lord Cochrane Id: 133796](https://www.portalinmobiliario.com/MLC-2261827245-departamento-lord-cochrane-id-133796-_JM) | 1,400 | $57,502,998 | 45 | 31.11 | 72 | 2 | 1 | $54,000 | 2026-09-21 |
 | [Departamento En Venta  Calle Porvenir, Santiago  3d 1b + E](https://www.portalinmobiliario.com/MLC-2293358745-departamento-en-venta-calle-porvenir-santiago-3d-1b-e-_JM) | 2,133 | $87,627,394 | 68 | 31.37 | 54 | 3 | 1 | $68,000 | 2026-10-02 |
 | [Departamento En Venta De 3 Dorm. En Santiago, 2 Baños.](https://www.portalinmobiliario.com/MLC-2290654451-departamento-en-venta-de-3-dorm-en-santiago-2-banos-_JM) | 3,773 | $155,000,000 | 120 | 31.44 | 62 | 3 | 0 | $80,000 | 2026-10-01 |
 | [Departamento En Zocalo (181014)](https://www.portalinmobiliario.com/MLC-4531671308-departamento-en-zocalo-181014-_JM) | 1,582 | $65,000,000 | 50 | 31.64 | 74 | 1 | 0 | $1 | 2026-10-01 |
@@ -47,6 +45,8 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Venta Departamento 2hab 2ba Santiago](https://www.portalinmobiliario.com/MLC-4519049306-venta-departamento-2hab-2ba-santiago-_JM) | 2,239 | $92,000,000 | 70 | 31.99 | 51 | 2 | 0 | $80,000 | 2026-09-27 |
 | [Remate Propiedad Departamento  U Oficina Santiago Centro](https://www.portalinmobiliario.com/MLC-4522144566-remate-propiedad-departamento-u-oficina-santiago-centro-_JM) | 3,286 | $135,000,000 | 102 | 32.22 | 55 | 3 | 0 | $150,000 | 2026-09-28 |
 | [Cuarto Piso Con Bodega 2 Dormitorios (183695)](https://www.portalinmobiliario.com/MLC-4510325552-cuarto-piso-con-bodega-2-dormitorios-183695-_JM) | 1,200 | $49,298,112 | 37 | 32.43 | 72 | 2 | 0 | $65,000 | 2026-09-24 |
+| [Venta Departamento Santiago Sector Balmaceda 2 Dorm 1 Baño](https://www.portalinmobiliario.com/MLC-4517584670-venta-departamento-santiago-sector-balmaceda-2-dorm-1-bano-_JM) | 1,460 | $60,000,000 | 45 | 32.46 | 66 | 2 | 0 | $55,000 | 2026-09-27 |
+| [Luminoso Y Amplio Departamento Santiago](https://www.portalinmobiliario.com/MLC-2278340959-luminoso-y-amplio-departamento-santiago-_JM) | 3,060 | $125,710,186 | 94 | 32.55 | 57 | 3 | 1 | $0 | 2026-09-27 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
