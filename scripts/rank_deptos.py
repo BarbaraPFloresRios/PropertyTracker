@@ -67,6 +67,12 @@ DESCARTADOS = {
     "2268753681",                       # Departamento En Venta De 2 Dorm. En Providencia: DESCARTADO 2026-10-04
                                          # -- Barbara: edificio se ve muy viejo. Tenia el mejor adj (68) de toda
                                          # la banda C, pero era justamente por la antiguedad (patron ya conocido).
+    "2299440261",                       # Depart. Para Remodelar Providencia (Antonio Bellet 226): es la MISMA
+                                         # unidad de 4444272012/4191761666 republicada 2026-10-05 -- 45m2 utiles,
+                                         # piso 3, 2 estacionamientos + 1 bodega, UF 3.869 vs 3.868 del aviso
+                                         # anterior, misma direccion. Descartada desde el 16/21-sep porque el
+                                         # corredor solo acepta llamadas telefonicas (sin WhatsApp). Escapo al
+                                         # dedup por coords porque lat/lng difieren en el 4to decimal (~80 m).
 }
 # NOTA 26-sep: NO tener boton WhatsApp visible (solo "Contactar") NO es motivo de descarte por
 # si solo -- Barbara lo aclaro explicitamente. 4509167238 (Dario Urzua) vuelve al ranking.
