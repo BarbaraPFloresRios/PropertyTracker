@@ -58,6 +58,15 @@ DESCARTADOS = {
     "2285739487",                       # Dpto Con Ubicacion Inmejorable (L. Thayer Ojeda 0127): DESCARTADO 2026-10-03
                                          # -- edificio confirmado 1977 (49 anos, SII), muy a la pasada, Barbara
                                          # desconfia de la liquidez de ese segmento de mercado.
+    "4299060012",                       # Nueva De Lyon 170 Dp 1502 (Andres De Fuenzalida 166): DESCARTADO 2026-10-04
+                                         # -- informe Propiedata/SII (rol 130-226) confirma superficie construida
+                                         # real de 31m2, vs 39m2 utiles / 45m2 totales publicados (m2 inflados).
+                                         # Pedido 4.600 UF; modelo Propiedata estima 2.842 UF (rango 2.295-3.194) y
+                                         # la venta real mas comparable del mismo edificio (31m2 + estac., 2024-25)
+                                         # fue 3.448-3.600 UF. Sobreprecio de 23% a 62% segun el benchmark.
+    "2268753681",                       # Departamento En Venta De 2 Dorm. En Providencia: DESCARTADO 2026-10-04
+                                         # -- Barbara: edificio se ve muy viejo. Tenia el mejor adj (68) de toda
+                                         # la banda C, pero era justamente por la antiguedad (patron ya conocido).
 }
 # NOTA 26-sep: NO tener boton WhatsApp visible (solo "Contactar") NO es motivo de descarte por
 # si solo -- Barbara lo aclaro explicitamente. 4509167238 (Dario Urzua) vuelve al ranking.
@@ -69,6 +78,9 @@ CAIDOS = {
     "4450271144", "2228842067", "2187517135", "4427322334",
     "4499455338", "2256990123", "4451784562", "4403479822", "4486979384",
     "4394177382",                       # El Golf Centro Financiero: pausada sin ficha 2026-09-22, misma unidad = 4495764082 (esa sigue viva)
+    "4510779996",                       # Quillay 2541 (Carmen Silva): corredora Kutt le dijo a Barbara 2026-10-04
+                                         # que se vendio (ella habia pedido visita dias antes). El aviso en el
+                                         # portal sigue activo (Portal no lo actualizo) -- excluir igual.
 }
 # verificados VIVOS aunque el CSV los marque delisted (falso positivo) -> rescatar
 KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
@@ -77,9 +89,6 @@ FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
 POR_VISITAR = {"2214549601"}        # Luminoso Y Amplio (El Golf): visita SOLICITADA p/lunes 2026-09-28, sin confirmar (corredor no ha respondido)
 # excepciones de tamano confirmadas por Barbara caso a caso (no bajar el tope global)
 INCLUIR_AUNQUE_FALLE_M2 = {
-    "4299060012",   # Andres De Fuenzalida 166, Los Leones: 39m2 (1m2 bajo el tope), edificio confirmado
-                     # NUEVO por fotos 2026-09-27 (no confundir con los 2 viejos de la misma calle,
-                     # ya descartados) -- Barbara pidio incluirlo igual.
     "2267442371",    # Los Leones / Pio X (Mardoqueo Fernandez): exactamente 40m2 utiles (no ">40"),
                      # GC real 85k, WhatsApp, sin arriendo vigente, calle tranquila -- Barbara pidio
                      # incluirlo 2026-09-27.
