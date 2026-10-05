@@ -83,7 +83,13 @@ CAIDOS = {
                                          # portal sigue activo (Portal no lo actualizo) -- excluir igual.
 }
 # verificados VIVOS aunque el CSV los marque delisted (falso positivo) -> rescatar
-KEEPALIVE = set()                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
+KEEPALIVE = {
+    "2214549601",                       # Luminoso Y Amplio (El Golf, San Sebastian): el CSV lo marco
+                                         # delisted_date=2026-09-30, pero verificado VIVO en el navegador
+                                         # 2026-10-05 ("Publicado hace 2 meses", UF 4.800 sin cambios, GC 150k,
+                                         # est 1 + bodega 1, 35 anos, corredora Mobylia, WhatsApp activo).
+                                         # Falso positivo del flag -> rescatado al ranking (banda A, 10 min).
+}                                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
 POR_VISITAR = {"2214549601"}        # Luminoso Y Amplio (El Golf): visita SOLICITADA p/lunes 2026-09-28, sin confirmar (corredor no ha respondido)
