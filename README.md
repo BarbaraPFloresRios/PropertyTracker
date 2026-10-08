@@ -28,7 +28,6 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Cesión De Promesa De Cv De Depto Nuevo Entrega En Dic-2026](https://www.portalinmobiliario.com/MLC-4536724996-cesion-de-promesa-de-cv-de-depto-nuevo-entrega-en-dic-2026-_JM) | 1,800 | $73,991,430 | 64 | 28.12 | 111 | 2 | 1 |  | 2026-10-03 |
 | [Oportunidad De Inversión En El Corazón De Santiago $65 Mm](https://www.portalinmobiliario.com/MLC-2293289251-oportunidad-de-inversion-en-el-corazon-de-santiago-65-mm-_JM) | 1,581 | $65,000,000 | 56 | 28.24 | 53 | 2 | 0 |  | 2026-10-02 |
 | [Venta Departamento 4d Centro Histórico - Santiago](https://www.portalinmobiliario.com/MLC-4543942130-venta-departamento-4d-centro-historico-santiago-_JM) | 3,333 | $137,000,000 | 116 | 28.73 |  | 4 | 0 | $150,000 | 2026-10-05 |
-| [Inersion ,comercial O Habutacional 2d/1b Maciver (180206)](https://www.portalinmobiliario.com/MLC-4513700244-inersion-comercial-o-habutacional-2d1b-maciver-180206-_JM) | 1,824 | $75,000,000 | 61 | 29.91 | 53 | 2 | 0 | $75,000 | 2026-09-25 |
 | [Oportunidad Única, San Isidro 635, 3dor 2b, Sin Comisión](https://www.portalinmobiliario.com/MLC-2282587525-oportunidad-unica-san-isidro-635-3dor-2b-sin-comision-_JM) | 1,590 | $65,359,096 | 53 | 30.00 | 65 | 3 | 0 | $170,000 | 2026-09-29 |
 | [Departamento 3d/2b/ Terraza/ Piscina, En Santiago Centro](https://www.portalinmobiliario.com/MLC-2295043679-departamento-3d2b-terraza-piscina-en-santiago-centro-_JM) | 1,590 | $65,359,096 | 53 | 30.00 | 65 | 3 | 0 | $117,000 | 2026-10-04 |
 | [Se Vende Departamento En Arturo Prat/alameda](https://www.portalinmobiliario.com/MLC-4534632972-se-vende-departamento-en-arturo-pratalameda-_JM) | 1,824 | $75,000,000 | 60 | 30.41 | 54 | 2 | 1 | $90,000 | 2026-10-02 |
@@ -42,11 +41,12 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Venta Departamento 2hab 2ba Santiago](https://www.portalinmobiliario.com/MLC-4519049306-venta-departamento-2hab-2ba-santiago-_JM) | 2,238 | $92,000,000 | 70 | 31.97 | 51 | 2 | 0 | $80,000 | 2026-09-27 |
 | [Vendo Departamento 2d + 2b, Calle Porvenir, Santiago](https://www.portalinmobiliario.com/MLC-4543829842-vendo-departamento-2d-2b-calle-porvenir-santiago-_JM) | 1,922 | $79,000,000 | 60 | 32.03 | 54 | 2 | 0 | $90,000 | 2026-10-05 |
 | [Remate Propiedad Departamento  U Oficina Santiago Centro](https://www.portalinmobiliario.com/MLC-4522144566-remate-propiedad-departamento-u-oficina-santiago-centro-_JM) | 3,284 | $135,000,000 | 102 | 32.20 | 55 | 3 | 0 | $150,000 | 2026-09-28 |
-| [Venta Departamento Santiago Sector Balmaceda 2 Dorm 1 Baño](https://www.portalinmobiliario.com/MLC-4517584670-venta-departamento-santiago-sector-balmaceda-2-dorm-1-bano-_JM) | 1,460 | $60,000,000 | 45 | 32.44 | 66 | 2 | 0 | $55,000 | 2026-09-27 |
 | [Plaza Yungay Oportunidad](https://www.portalinmobiliario.com/MLC-4545940608-plaza-yungay-oportunidad-_JM) | 1,752 | $72,000,000 | 54 | 32.44 | 47 | 3 | 0 | $67,000 | 2026-10-06 |
+| [Venta Departamento Santiago Sector Balmaceda 2 Dorm 1 Baño](https://www.portalinmobiliario.com/MLC-4517584670-venta-departamento-santiago-sector-balmaceda-2-dorm-1-bano-_JM) | 1,460 | $60,000,000 | 45 | 32.44 | 66 | 2 | 0 | $55,000 | 2026-09-27 |
 | [Luminoso Y Amplio Departamento Santiago](https://www.portalinmobiliario.com/MLC-2278340959-luminoso-y-amplio-departamento-santiago-_JM) | 3,060 | $125,785,431 | 94 | 32.55 | 57 | 3 | 1 | $0 | 2026-09-27 |
 | [Excelente Ubicacion, Departamento En Venta En Santiago](https://www.portalinmobiliario.com/MLC-4534651350-excelente-ubicacion-departamento-en-venta-en-santiago-_JM) | 3,060 | $125,785,431 | 94 | 32.55 | 57 | 3 | 1 | $0 | 2026-10-02 |
 | [Vendo Dpto En Santiago 2d 2b](https://www.portalinmobiliario.com/MLC-4520030362-vendo-dpto-en-santiago-2d-2b-_JM) | 3,260 | $134,000,000 | 100 | 32.60 | 53 | 2 | 0 | $80,000 | 2026-09-28 |
+| [Oportunidad Inversionistas Dpto 2d Y 1 B Santiago Centro](https://www.portalinmobiliario.com/MLC-2291497169-oportunidad-inversionistas-dpto-2d-y-1-b-santiago-centro-_JM) | 1,350 | $55,493,572 | 41 | 32.93 | 75 | 2 | 0 | $60,000 | 2026-10-02 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
