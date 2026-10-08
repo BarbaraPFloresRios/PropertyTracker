@@ -164,19 +164,27 @@ CAIDOS = {
     "4510779996",                       # Quillay 2541 (Carmen Silva): corredora Kutt le dijo a Barbara 2026-10-04
                                          # que se vendio (ella habia pedido visita dias antes). El aviso en el
                                          # portal sigue activo (Portal no lo actualizo) -- excluir igual.
+    "2214549601",                       # "Luminoso Y Amplio" (El Golf, San Sebastian 2700-3000): CAIDO
+                                         # confirmado 2026-10-06 -- Barbara aviso que no lo veia publicado y el
+                                         # navegador lo confirmo (la VIP redirige con #redirectedFromVip= al
+                                         # listado de El Golf). CSV coherente: last_seen=2026-09-29,
+                                         # delisted_date=2026-09-30. Estaba en KEEPALIVE desde un rescate por
+                                         # falso positivo, pero esta vez la caida es REAL -> movido aca.
+                                         # OJO: es la 2a vez que esta unidad se cae sin venderse (antes fue
+                                         # MLC-4182777778, mismo edificio/m2/precio ~196M, caida 2026-08-05) y
+                                         # la visita nunca se concreto en ninguno de los 2 ciclos -> si vuelve
+                                         # a aparecer, es republicacion, no un aviso nuevo.
 }
 # verificados VIVOS aunque el CSV los marque delisted (falso positivo) -> rescatar
-KEEPALIVE = {
-    "2214549601",                       # Luminoso Y Amplio (El Golf, San Sebastian): el CSV lo marco
-                                         # delisted_date=2026-09-30, pero verificado VIVO en el navegador
-                                         # 2026-10-05 ("Publicado hace 2 meses", UF 4.800 sin cambios, GC 150k,
-                                         # est 1 + bodega 1, 35 anos, corredora Mobylia, WhatsApp activo).
-                                         # Falso positivo del flag -> rescatado al ranking (banda A, 10 min).
-}                                   # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
+KEEPALIVE = set()                   # (vacio) 2214549601 "Luminoso Y Amplio" estuvo aca por un falso
+                                    # positivo del flag delisted, pero el 2026-10-06 se confirmo CAIDO de
+                                    # verdad (ver CAIDOS) -> removido. Leccion: un rescate por KEEPALIVE hay
+                                    # que re-verificarlo, no es permanente; mantiene vivo en el ranking un
+                                    # aviso que puede haber muerto despues.
+                                    # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
 FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
 POR_VISITAR = {
-    "2214549601",    # Luminoso Y Amplio (El Golf): visita SOLICITADA p/lunes 2026-09-28, nunca confirmada
     "2267442371",    # Pio X (Mardoqueo Fernandez 171): visita AGENDADA miercoles 2026-10-07 18:00
     "4541838686",    # San Pio X 2425 "Remodelado a 2 cuadras / Precio Final": le GUSTA, visita martes
                      # 2026-10-06 (dicho por Barbara el 5-oct: "lo voy a visitar manana, me gusta")
