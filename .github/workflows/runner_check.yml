@@ -1,0 +1,31 @@
+# Workflow temporal de diagnostico: valida que el runner self-hosted pueda
+# hacer checkout, instalar Python y las dependencias. NO toca el portal y NO
+# commitea nada. Se borra una vez verificado.
+name: Runner check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Report environment
+        run: |
+          echo "runner: $RUNNER_NAME  os: $RUNNER_OS  arch: $RUNNER_ARCH"
+          echo "python: $(python --version)  en $(which python)"
+          python -c "import pandas, numpy, requests; print('pandas', pandas.__version__, '| numpy', numpy.__version__, '| requests', requests.__version__)"
+          echo "import del pipeline:"
+          python -c "from src.pipeline import run_pipeline, run_arriendo_pipeline; print('OK')"
