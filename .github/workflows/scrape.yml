@@ -3,8 +3,8 @@ name: Scrape Listings
 on:
   schedule:
     # 23:00 UTC = 20:00 Chile en verano (UTC-3), 19:00 en invierno (UTC-4).
-    # Elegido asi a proposito: el runner self-hosted vive en el Mac de Barbara,
-    # que esta despierto aprox. entre las 19:00 y 22:00. Un cron de madrugada o
+    # Elegido asi a proposito: el runner self-hosted vive en una maquina personal,
+    # esta despierto aprox. entre las 19:00 y 22:00. Un cron de madrugada o
     # de manana queda encolado hasta que abre la tapa, asi que no sirve de nada
     # tener dos pasadas al dia. Con una alcanza: el scrape relee la ventana
     # completa (~2.000 por comuna, varios dias de holgura), no es incremental.
@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   scrape:
-    # Runner self-hosted en el Mac de Barbara: desde 2026-09-29 el portal
+    # Runner self-hosted: desde 2026-09-29 el portal
     # responde HTTP 200 sin contenido a las IPs de datacenter de GitHub
     # (busqueda Y fichas de detalle), asi que el scrape solo funciona
     # desde una IP residencial chilena. Si el Mac esta dormido a la hora
