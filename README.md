@@ -33,9 +33,9 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Oportunidad De Inversión En El Corazón De Santiago $65 Mm](https://www.portalinmobiliario.com/MLC-2293289251-oportunidad-de-inversion-en-el-corazon-de-santiago-65-mm-_JM) | 1,581 | $65,000,000 | 56 | 28.22 | 53 | 2 | 0 |  | 2026-10-02 |
 | [Venta Departamento 4d Centro Histórico - Santiago](https://www.portalinmobiliario.com/MLC-4543942130-venta-departamento-4d-centro-historico-santiago-_JM) | 3,332 | $137,000,000 | 116 | 28.72 |  | 4 | 0 | $150,000 | 2026-10-05 |
 | [Se Remata Departamento Santiago Centro](https://www.portalinmobiliario.com/MLC-4552202306-se-remata-departamento-santiago-centro-_JM) | 1,581 | $65,000,000 | 55 | 28.74 | 54 | 2 | 0 | $75,000 | 2026-10-08 |
-| [Departamento 3d/2b/ Terraza/ Piscina, En Santiago Centro](https://www.portalinmobiliario.com/MLC-2295043679-departamento-3d2b-terraza-piscina-en-santiago-centro-_JM) | 1,590 | $65,385,157 | 53 | 30.00 | 65 | 3 | 0 | $117,000 | 2026-10-04 |
-| [Oportunidad Única, San Isidro 635, 3dor 2b, Sin Comisión](https://www.portalinmobiliario.com/MLC-2282587525-oportunidad-unica-san-isidro-635-3dor-2b-sin-comision-_JM) | 1,590 | $65,385,157 | 53 | 30.00 | 65 | 3 | 0 | $170,000 | 2026-09-29 |
 | [(185419)](https://www.portalinmobiliario.com/MLC-4552189244-185419-_JM) | 1,500 | $61,684,110 | 50 | 30.00 | 74 | 1 | 0 | $60,000 | 2026-10-08 |
+| [Oportunidad Única, San Isidro 635, 3dor 2b, Sin Comisión](https://www.portalinmobiliario.com/MLC-2282587525-oportunidad-unica-san-isidro-635-3dor-2b-sin-comision-_JM) | 1,590 | $65,385,157 | 53 | 30.00 | 65 | 3 | 0 | $170,000 | 2026-09-29 |
+| [Departamento 3d/2b/ Terraza/ Piscina, En Santiago Centro](https://www.portalinmobiliario.com/MLC-2295043679-departamento-3d2b-terraza-piscina-en-santiago-centro-_JM) | 1,590 | $65,385,157 | 53 | 30.00 | 65 | 3 | 0 | $117,000 | 2026-10-04 |
 | [Se Vende Departamento En Arturo Prat/alameda](https://www.portalinmobiliario.com/MLC-4534632972-se-vende-departamento-en-arturo-pratalameda-_JM) | 1,824 | $75,000,000 | 60 | 30.40 | 54 | 2 | 1 | $90,000 | 2026-10-02 |
 | [Venta Departamento Santiago Centro San Antonio - Monjitas](https://www.portalinmobiliario.com/MLC-2285758297-venta-departamento-santiago-centro-san-antonio-monjitas-_JM) | 2,310 | $95,000,000 | 75 | 30.80 | 53 | 3 | 0 | $0 | 2026-10-01 |
 | [Departamento Stgo Miguel León Prado Remate 15 Octubre 2026](https://www.portalinmobiliario.com/MLC-4525972044-departamento-stgo-miguel-leon-prado-remate-15-octubre-2026-_JM) | 991 | $40,767,020 | 32 | 30.98 | 83 | 1 | 0 |  | 2026-10-01 |
@@ -43,10 +43,10 @@ _Top 30 by UF/m² among listings first seen in the last 14 days (under 150 m², 
 | [Departamento En Venta De 3 Dorm. En Santiago, 2 Baños.](https://www.portalinmobiliario.com/MLC-2290654451-departamento-en-venta-de-3-dorm-en-santiago-2-banos-_JM) | 3,770 | $155,000,000 | 120 | 31.42 | 62 | 3 | 0 | $80,000 | 2026-10-01 |
 | [Departamento En Zocalo (181014)](https://www.portalinmobiliario.com/MLC-4531671308-departamento-en-zocalo-181014-_JM) | 1,581 | $65,000,000 | 50 | 31.61 | 74 | 1 | 0 | $1 | 2026-10-01 |
 | [Departamento En Venta De 3 Dorm. En Santiago](https://www.portalinmobiliario.com/MLC-2293134947-departamento-en-venta-de-3-dorm-en-santiago-_JM) | 2,990 | $122,956,993 | 94 | 31.81 | 55 | 3 | 0 | $60,000 | 2026-10-02 |
-| [Venta Departamento 2hab 2ba Santiago](https://www.portalinmobiliario.com/MLC-4519049306-venta-departamento-2hab-2ba-santiago-_JM) | 2,237 | $92,000,000 | 70 | 31.96 | 51 | 2 | 0 | $80,000 | 2026-09-27 |
 | [Vendo Departamento 2d + 2b, Calle Porvenir, Santiago](https://www.portalinmobiliario.com/MLC-4543829842-vendo-departamento-2d-2b-calle-porvenir-santiago-_JM) | 1,921 | $79,000,000 | 60 | 32.02 | 54 | 2 | 0 | $90,000 | 2026-10-05 |
 | [Remate Propiedad Departamento  U Oficina Santiago Centro](https://www.portalinmobiliario.com/MLC-4522144566-remate-propiedad-departamento-u-oficina-santiago-centro-_JM) | 3,283 | $135,000,000 | 102 | 32.19 | 55 | 3 | 0 | $150,000 | 2026-09-28 |
 | [Plaza Yungay Oportunidad](https://www.portalinmobiliario.com/MLC-4545940608-plaza-yungay-oportunidad-_JM) | 1,751 | $72,000,000 | 54 | 32.42 | 47 | 3 | 0 | $67,000 | 2026-10-06 |
+| [Excelente Ubicacion, Departamento En Venta En Santiago](https://www.portalinmobiliario.com/MLC-4534651350-excelente-ubicacion-departamento-en-venta-en-santiago-_JM) | 3,060 | $125,835,584 | 94 | 32.55 | 57 | 3 | 1 | $0 | 2026-10-02 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
