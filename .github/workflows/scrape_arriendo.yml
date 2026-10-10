@@ -24,13 +24,26 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
+      # No se usa actions/setup-python: en un runner self-hosted de macOS el
+      # paquete que baja trae la ruta /Users/runner/hostedtoolcache hardcodeada
+      # en su script de instalacion (los binarios de Python llevan rutas
+      # absolutas embebidas), falla con "mkdir: /Users/runner: Permission
+      # denied" y ninguna variable de entorno lo redirige. En su lugar: un venv
+      # persistente con el Python de la maquina, que ademas se reusa entre runs.
+      - name: Set up Python venv
+        run: |
+          VENV="$HOME/.venvs/propertytracker"
+          if [ ! -x "$VENV/bin/python" ]; then
+            PY=""
+            for c in python3.11 /usr/local/bin/python3 /opt/homebrew/bin/python3 python3; do
+              if command -v "$c" >/dev/null 2>&1; then PY="$c"; break; fi
+            done
+            if [ -z "$PY" ]; then echo "No encontre un python3"; exit 1; fi
+            echo "Creando venv con $PY ($($PY --version 2>&1))"
+            "$PY" -m venv "$VENV"
+          fi
+          "$VENV/bin/pip" install -q --disable-pip-version-check -r requirements.txt
+          echo "$VENV/bin" >> "$GITHUB_PATH"
 
       - name: Run rental scraper
         run: python main_arriendo.py
