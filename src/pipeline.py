@@ -583,6 +583,15 @@ def run_arriendo_pipeline():
     print_section("Portalinmobiliario (arriendo)")
     listings = scrape_portalinmobiliario(SEARCHES_ARRIENDO)
 
+    # mismo criterio que en run_pipeline(): vacio = fuente bloqueada, no
+    # "sin novedades". Aca no hay mapa que proteger, pero igual queremos
+    # que el run falle en vez de pasar en silencio.
+    if listings.empty:
+        raise RuntimeError(
+            "Scrape de arriendo vacio (0 listings): la fuente respondio sin "
+            "contenido. Revisar si la IP del runner esta bloqueada."
+        )
+
     print_phase("Processing results")
 
     save_listings(
@@ -604,6 +613,20 @@ def run_pipeline():
 
     print_section("Portalinmobiliario")
     listings = scrape_portalinmobiliario()
+
+    # Un scrape vacio no es "cero avisos nuevos": es la fuente devolviendo
+    # HTTP 200 sin contenido, que es como se ve el bloqueo por IP de datacenter
+    # (visto desde los runners de GitHub desde 2026-09-29). Si seguimos, el run
+    # reconstruye recent_listings/mapa/README desde un CSV congelado y, como la
+    # ventana de RECENT_DAYS igual avanza, PUBLICA UN MAPA QUE SE VACIA SOLO
+    # mientras el badge queda verde. Abortar deja publicado el ultimo mapa bueno
+    # y pone el run en rojo, que es la senal que queremos.
+    if listings.empty:
+        raise RuntimeError(
+            "Scrape vacio (0 listings): la fuente respondio sin contenido. "
+            "No se reconstruyen recent_listings/mapa/README para no publicar "
+            "datos decaidos. Revisar si la IP del runner esta bloqueada."
+        )
 
     print_phase("Processing results")
 

@@ -174,6 +174,11 @@ CAIDOS = {
                                          # MLC-4182777778, mismo edificio/m2/precio ~196M, caida 2026-08-05) y
                                          # la visita nunca se concreto en ninguno de los 2 ciclos -> si vuelve
                                          # a aparecer, es republicacion, no un aviso nuevo.
+    "4545915510",                       # "Depto Para Remodelar 2 Dorm" (P. de Valdivia / Av. Nueva Providencia,
+                                         # Orbis, 70 anos, est 0): CAIDO confirmado en navegador 2026-10-09
+                                         # (#redirectedFromVip= -> aviso eliminado). Coherente con el CSV:
+                                         # last_seen_date=2026-10-08, no aparecio en el scrape del 9-oct.
+                                         # Solo estuvo 3 dias en el ranking (entro el 6-oct, adj 70).
 }
 # verificados VIVOS aunque el CSV los marque delisted (falso positivo) -> rescatar
 KEEPALIVE = set()                   # (vacio) 2214549601 "Luminoso Y Amplio" estuvo aca por un falso
@@ -183,11 +188,19 @@ KEEPALIVE = set()                   # (vacio) 2214549601 "Luminoso Y Amplio" est
                                     # aviso que puede haber muerto despues.
                                     # Coronel (4404154390) sacada 2026-09-22: pagina ahora sin ficha (posible vendida)
 # ⭐ favoritas / visitadas y 👀 por visitar (solo para marcar el estado)
-FAV = {"4404154390", "2231564131", "4441100684", "2246908357"}
+# 🏠 COMPRADA: oferta aceptada, en tramitacion. Se deja en el ranking a proposito -- Barbara quiere
+# seguir mirando el mercado y esta fila es el BENCHMARK contra el que se compara el resto (UF 4.100,
+# adj 95, 7 min). Ver memoria depto-compra-san-pio-x-2425.
+COMPRADA = {"4541838686"}   # San Pio X 2425 Dp 303: oferto UF 4.100 el miercoles 2026-10-07 (el
+                            # precio pedido, sin regatear) y el vendedor acepto; en tramitacion
+FAV = {"4404154390", "2231564131", "4441100684",
+       "2246908357",    # Carmencita 220 Dp 703: gano el analisis de sept pero NO se concreto; la
+                        # negociacion (5.100/5.300) quedo abierta y hay que cerrarla con la corredora
+       } | COMPRADA
 POR_VISITAR = {
-    "2267442371",    # Pio X (Mardoqueo Fernandez 171): visita AGENDADA miercoles 2026-10-07 18:00
-    "4541838686",    # San Pio X 2425 "Remodelado a 2 cuadras / Precio Final": le GUSTA, visita martes
-                     # 2026-10-06 (dicho por Barbara el 5-oct: "lo voy a visitar manana, me gusta")
+    "2267442371",    # Pio X (Mardoqueo Fernandez 171): visita agendada el miercoles 2026-10-07 18:00,
+                     # el mismo dia en que Barbara oferto por San Pio X -> resultado nunca registrado,
+                     # probablemente quedo sin desenlace por eso (no confirmado)
 }
 # excepciones de tamano confirmadas por Barbara caso a caso (para los que miden MENOS de 40m2;
 # los de 40m2 exactos ya pasan solos desde que el filtro quedo inclusivo el 2026-10-05)
@@ -321,6 +334,8 @@ def main():
     f = f.sort_values("adj").reset_index(drop=True)
 
     def estado(i):
+        if i in COMPRADA:
+            return "COMPRADA"
         return "*fav" if i in FAV else ("o vis" if i in POR_VISITAR else "")
 
     def fmt(r):

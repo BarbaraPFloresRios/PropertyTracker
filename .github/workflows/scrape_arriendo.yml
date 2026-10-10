@@ -2,9 +2,10 @@ name: Scrape Rentals
 
 on:
   schedule:
-    # Friday 22:00 Chile time (UTC-3 in summer/DST) = Saturday 01:00 UTC.
-    # Fixed UTC cron, so local time shifts by 1h when Chile's DST changes.
-    - cron: "0 1 * * 6"
+    # Viernes 23:00 UTC = 20:00 Chile en verano (UTC-3), 19:00 en invierno.
+    # Mismo criterio que scrape.yml: el runner es el Mac de Barbara y hay que
+    # caer en su ventana despierta (19-22), no de madrugada.
+    - cron: "0 23 * * 5"
   workflow_dispatch:
 
 permissions:
@@ -12,7 +13,12 @@ permissions:
 
 jobs:
   scrape:
-    runs-on: ubuntu-latest
+    # Runner self-hosted en el Mac de Barbara: desde 2026-09-29 el portal
+    # responde HTTP 200 sin contenido a las IPs de datacenter de GitHub
+    # (busqueda Y fichas de detalle), asi que el scrape solo funciona
+    # desde una IP residencial chilena. Si el Mac esta dormido a la hora
+    # del cron, el job queda encolado y corre al despertar.
+    runs-on: self-hosted
 
     steps:
       - name: Checkout repo
