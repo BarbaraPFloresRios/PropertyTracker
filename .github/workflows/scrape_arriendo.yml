@@ -2,10 +2,21 @@ name: Scrape Rentals
 
 on:
   schedule:
-    # Viernes 23:00 UTC = 20:00 Chile en verano (UTC-3), 19:00 en invierno.
-    # Mismo criterio que scrape.yml: el runner corre en una maquina personal y hay que
-    # caer en su ventana despierta (19-22), no de madrugada.
-    - cron: "0 23 * * 5"
+    # 23:00 UTC todos los dias = 20:00 Chile en verano (UTC-3), 19:00 en
+    # invierno. Mismo horario que scrape.yml a proposito: el runner self-hosted
+    # corre UN job a la vez, asi que arriendos queda encolado y arranca cuando
+    # ventas termina. La serializacion separa las dos rafagas de fetches sin
+    # tener que inventar un horario aparte (y un horario mas tarde arriesgaria
+    # caer fuera de la ventana en que la maquina esta despierta).
+    #
+    # Paso de semanal a DIARIO el 2026-10-11: entran ~1.850 arriendos nuevos por
+    # semana, asi que una sola pasada semanal pedia ~1.940 fetches de golpe y,
+    # sumada a los ~2.200 de ventas esa misma noche, caia en la zona donde el
+    # portal estrangula (medido: ~4.000 fetches acumulados en un dia -> 429).
+    # Diario son ~264 avisos nuevos por run (~356 fetches): el total de la noche
+    # queda en ~2.550, cerca de los 2.192 que corrieron limpios, y la cola de
+    # enriquecimiento no se forma nunca.
+    - cron: "0 23 * * *"
   workflow_dispatch:
 
 permissions:
