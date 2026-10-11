@@ -16,13 +16,6 @@ ARRIENDO_CSV = "data/raw/portalinmobiliario_rentals.csv"
 TEMPLATE_PATH = "src/map_template.html"
 OUTPUT_HTML = "docs/map.html"
 
-# The map's own window, deliberately wider than the pipeline's RECENT_DAYS
-# (14), which governs the curated recent_listings.csv export. The map answers
-# "what does the market hold right now", the export answers "what came on
-# lately" -- and the rental layer already shows the whole live market, so a
-# fortnight-wide sale layer made the two halves of the same map inconsistent.
-# Only the view widens: nothing changes in what gets stored or exported.
-MAP_DAYS = 90
 
 # The map drops the export's size and price ceilings (150 m2 / $500M): those
 # came from one buyer's criteria and the map is about the market. What it adds
@@ -33,8 +26,6 @@ MAP_DAYS = 90
 # values become $2,777M and 608 UF/m2, and the colour ramp barely moves
 # (p5-p95 goes 42-134 -> 42-137) because it is percentile-based anyway.
 MAP_MIN_M2 = 15
-
-RECENT_MAX_M2 = 150
 
 # continental Chile bounding box, to drop listings with a corrupt geocode
 # (e.g. a Providencia flat whose lat/lng resolve to Florida). The listing
@@ -136,7 +127,7 @@ def load_recent():
     df = pd.read_csv(VENTA_CSV, low_memory=False)
 
     df = df[
-        recent_mask(df, days=MAP_DAYS, max_m2=None, max_price_clp=None)
+        recent_mask(df)
         & (df["m2_utiles"] >= MAP_MIN_M2)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
@@ -166,7 +157,6 @@ def load_arriendos():
         & df["price_clp"].notna()
         & df["m2_utiles"].notna()
         & (df["m2_utiles"] >= ARRIENDO_MIN_M2)
-        & (df["m2_utiles"] < RECENT_MAX_M2)
         & (df["price_clp"] <= ARRIENDO_MAX_CLP)
         & in_chile(df)
     ].copy()
@@ -199,14 +189,16 @@ def generate_interactive_map():
 
     arriendo = load_arriendos()
 
+    # deferred import: pipeline_venta imports this module at load time
+    from src.pipeline_venta import RECENT_DAYS
+
     comunas = " y ".join(
         comuna_display(c) for c in sorted(venta["comuna"].dropna().unique())
     )
 
     config = {
         "updated": pd.Timestamp.today().strftime("%Y-%m-%d"),
-        "recentDays": MAP_DAYS,
-        "maxM2": RECENT_MAX_M2,
+        "recentDays": RECENT_DAYS,
         "markets": {
             "venta": market_payload(
                 venta, VENTA_COLUMNS, "uf_per_m2", SEQ_BLUE

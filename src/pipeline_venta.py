@@ -30,17 +30,26 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
     f"{RAW_DATA_DIR}/portalinmobiliario_listings.csv"
 )
 
-# Window for the curated export: data/recent_listings.csv and the README
-# table. Stays narrow on purpose -- that export answers "what came on the
-# market lately". The map asks a different question and uses its own, wider
-# window (MAP_DAYS in generate_interactive_map.py); recent_mask takes `days`
-# so the two can diverge without duplicating the filter logic.
-RECENT_DAYS = 14
+# One definition of "recent" for everything this repo publishes: the export
+# (data/recent_listings.csv), the README table and the map all read it.
+RECENT_DAYS = 90
 
-RECENT_MAX_M2 = 150
+# No size or price ceiling. These used to be 150 m2 and $500M CLP, which were
+# not a description of the market -- they were one buyer's purchase criteria,
+# the same personal layer that came out of this repo along with the ranking.
+# recent_mask still takes both, so a caller that genuinely wants a bounded
+# slice can pass one without the filter logic being duplicated.
+RECENT_MAX_M2 = None
+RECENT_MAX_PRICE_CLP = None
 
-# exclude high-end listings above this CLP price from the recent set / map
-RECENT_MAX_PRICE_CLP = 500_000_000
+# The 'finalizada' re-check keeps its OWN, narrower window, because unlike the
+# others it costs one request per listing and is not capped. Following
+# RECENT_DAYS would take a run from ~2,030 re-checks to ~5,886, and the source
+# starts answering 429 somewhere past ~4,000 cumulative requests in a day (32
+# of them already showed up in the 2026-10-11 run at ~2,000). Listings outside
+# this window still lose their delisted_date through the not-seen heuristic,
+# just a few days later.
+VERIFY_DAYS = 14
 
 ENRICH_MAX_PER_RUN = 300
 
@@ -205,20 +214,15 @@ def verify_recent_listings():
     # recent_mask already excludes finished ones; skip those enriched this run
     # (enrich_recent_listings just checked them)
     candidates = listings.index[
-        recent_mask(listings)
+        recent_mask(listings, days=VERIFY_DAYS)
         & listings["enriched_date"].notna()
         & (listings["enriched_date"] != today)
         & listings["url"].notna()
     ]
 
-    # Follows the narrow RECENT_DAYS, not the map's wider window: the
-    # re-check costs one request per listing, and following the map would take
-    # a run from ~1,750 to ~4,970 re-checks, pushing the night past the ~4,000
-    # requests where the source starts answering 429. Listings outside this
-    # window still lose their delisted_date through the not-seen heuristic.
     print(
         f"Re-checking {len(candidates)} listings published in the last "
-        f"{RECENT_DAYS} days for 'finalizada'"
+        f"{VERIFY_DAYS} days for 'finalizada'"
     )
 
     gone = 0

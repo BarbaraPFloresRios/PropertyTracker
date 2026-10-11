@@ -68,12 +68,16 @@ def generate_readme():
     # one would be circular.
     from src.pipeline_venta import RECENT_DAYS, RECENT_MAX_M2, RECENT_MAX_PRICE_CLP
 
-    criterios = (
-        f"published in the last {RECENT_DAYS} days, "
-        f"under {RECENT_MAX_M2} m², "
-        f"under ${RECENT_MAX_PRICE_CLP / 1e6:,.0f}M CLP, "
-        "still live"
-    )
+    # The ceilings are optional: they default to None since the size and price
+    # caps came out, so the caption has to describe whatever is actually set
+    # rather than assume both exist.
+    parts = [f"published in the last {RECENT_DAYS} days"]
+    if RECENT_MAX_M2 is not None:
+        parts.append(f"under {RECENT_MAX_M2} m²")
+    if RECENT_MAX_PRICE_CLP is not None:
+        parts.append(f"under ${RECENT_MAX_PRICE_CLP / 1e6:,.0f}M CLP")
+    parts.append("still live")
+    criterios = ", ".join(parts)
 
     section = (
         f"{START_MARKER}\n"
