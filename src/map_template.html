@@ -60,6 +60,30 @@
     border-color: #2a78d6;
   }
 
+  /* market toggle: same visual language as the bedroom buttons, but the
+     active colour matches the market's ramp so the switch and the legend
+     always agree on what you're looking at */
+  #market-row { display: flex; gap: 5px; margin-top: 6px; }
+  #market-row button {
+    flex: 1;
+    padding: 4px 0;
+    font: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: #52514e;
+    background: #f2f1ee;
+    border: 1px solid #d7d5d1;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #market-row button.active[data-market="venta"] {
+    color: #fcfcfb; background: #2a78d6; border-color: #2a78d6;
+  }
+  #market-row button.active[data-market="arriendo"] {
+    color: #fcfcfb; background: #8352c4; border-color: #8352c4;
+  }
+  #market-row button[disabled] { opacity: .45; cursor: default; }
+
   /* two native range inputs overlaid on one shared track */
   .dual { position: relative; height: 24px; }
   .dual .track, .dual .fill {
@@ -127,12 +151,16 @@
 <div id="map"></div>
 
 <div id="title-panel" class="panel">
-  <div class="title">Avisos recientes en __COMUNAS__ — UF/m²</div>
+  <div class="title" id="title"></div>
   <div class="subtitle" id="subtitle"></div>
+  <div id="market-row">
+    <button type="button" data-market="venta">Venta</button>
+    <button type="button" data-market="arriendo">Arriendo</button>
+  </div>
 </div>
 
 <div id="filter-panel" class="panel">
-  <label>Precio CLP <span class="range-value" id="price-value"></span></label>
+  <label><span id="price-label">Precio</span> <span class="range-value" id="price-value"></span></label>
   <div class="dual">
     <div class="track"></div><div class="fill" id="price-fill"></div>
     <input type="range" id="price-min" autocomplete="off">
@@ -160,14 +188,14 @@
 </div>
 
 <div id="legend" class="panel">
-  UF/m² (útiles)
+  <span id="legend-title"></span>
   <div class="bar" id="legend-bar"></div>
   <div class="labels"><span id="legend-min"></span><span id="legend-max"></span></div>
 </div>
 
 <script>
 const CONFIG = __CONFIG__;
-const LISTINGS = __LISTINGS__;
+const COMUNAS = "__COMUNAS__";
 
 const fmt = (value, decimals = 0) =>
   value == null
@@ -177,8 +205,51 @@ const fmt = (value, decimals = 0) =>
         maximumFractionDigits: decimals,
       });
 
-function color(value) {
-  const { colors, vmin, vmax } = CONFIG;
+// Per-market presentation. The DATA differences live in CONFIG.markets (its
+// rows, its ramp, which field the ramp reads); this holds only how to label and
+// format them. The filters are deliberately shared: both markets carry
+// price_clp, m2_utiles, bedrooms_n, parking and first_seen_date, so only the
+// price slider's scale has to change.
+const MARKET_UI = {
+  venta: {
+    title: (comunas) => `Avisos recientes en ${comunas} — venta, UF/m²`,
+    legend: "UF/m² (útiles)",
+    priceLabel: "Precio CLP",
+    priceStep: 5000000,
+    priceText: (lo, hi) => `$${fmt(lo / 1e6)}M – $${fmt(hi / 1e6)}M`,
+    tooltip: (l) => `${fmt(l.uf_per_m2, 1)} UF/m² · ${fmt(l.price_uf)} UF`,
+    rows: (l) => [
+      ["Precio", fmt(l.price_uf) && fmt(l.price_uf) + " UF"],
+      ["", fmt(l.price_clp) && "$" + fmt(l.price_clp)],
+      ["Superficie", fmt(l.m2_utiles) && fmt(l.m2_utiles) + " m²"],
+      ["UF/m²", fmt(l.uf_per_m2, 1)],
+    ],
+    subtitle: (visible, total) =>
+      `${visible} de ${total} en venta <${CONFIG.maxM2} m² · publicados en ` +
+      `los últimos ${CONFIG.recentDays} días · ${CONFIG.updated}`,
+  },
+  arriendo: {
+    title: (comunas) => `Avisos recientes en ${comunas} — arriendo, CLP/m²`,
+    legend: "CLP/m² mensual (útiles)",
+    priceLabel: "Arriendo mensual CLP",
+    priceStep: 50000,
+    priceText: (lo, hi) => `$${fmt(lo)} – $${fmt(hi)}`,
+    tooltip: (l) => `$${fmt(l.clp_m2)}/m² · $${fmt(l.price_clp)}/mes`,
+    rows: (l) => [
+      ["Arriendo", fmt(l.price_clp) && "$" + fmt(l.price_clp) + "/mes"],
+      ["Superficie", fmt(l.m2_utiles) && fmt(l.m2_utiles) + " m²"],
+      ["CLP/m²", fmt(l.clp_m2) && "$" + fmt(l.clp_m2)],
+    ],
+    // No recency window on this side: only ~68% of rentals expose a
+    // publication date, so the rental layer is the whole live market.
+    subtitle: (visible, total) =>
+      `${visible} de ${total} en arriendo <${CONFIG.maxM2} m² · ` +
+      `disponibles hoy · ${CONFIG.updated}`,
+  },
+};
+
+function color(value, market) {
+  const { colors, vmin, vmax } = market;
   const t = Math.min(Math.max((value - vmin) / (vmax - vmin), 0), 1);
   const position = t * (colors.length - 1);
   const index = Math.min(Math.floor(position), colors.length - 2);
@@ -190,12 +261,9 @@ function color(value) {
   return `rgb(${a.map((c, i) => Math.round(c + (b[i] - c) * mix)).join(",")})`;
 }
 
-function popupHtml(listing) {
+function popupHtml(listing, marketUi) {
   const rows = [
-    ["Precio", fmt(listing.price_uf) && fmt(listing.price_uf) + " UF"],
-    ["", fmt(listing.price_clp) && "$" + fmt(listing.price_clp)],
-    ["Superficie", fmt(listing.m2_utiles) && fmt(listing.m2_utiles) + " m²"],
-    ["UF/m²", fmt(listing.uf_per_m2, 1)],
+    ...marketUi.rows(listing),
     ["Dormitorios", fmt(listing.bedrooms_n)],
     ["Estacionamientos", fmt(listing.parking)],
     ["Gastos comunes", fmt(listing.gastos_comunes_clp) && "$" + fmt(listing.gastos_comunes_clp)],
@@ -225,11 +293,11 @@ L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_L
   maxZoom: 16,
 }).addTo(map);
 
-// Frame all listings so every comuna is visible on load. A fixed-zoom mean
-// center drifts toward whichever comuna has the most points (e.g. Santiago),
-// pushing the eastern comunas (Providencia, Las Condes) off-screen.
-function frameListings(attempt = 0) {
-  if (!LISTINGS.length) {
+// Frame all listings so every comuna is visible. A fixed-zoom mean center
+// drifts toward whichever comuna has the most points (e.g. Santiago), pushing
+// the eastern comunas (Providencia, Las Condes) off-screen.
+function frameListings(points, attempt = 0) {
+  if (!points.length) {
     map.setView([-33.43, -70.62], 12);
     return;
   }
@@ -238,29 +306,11 @@ function frameListings(attempt = 0) {
   // settles the container reads as 0px and Leaflet slams to max zoom. Wait for
   // a real size (retry a few frames), and cap the zoom as a safety net.
   if (map.getSize().x < 1 && attempt < 20) {
-    requestAnimationFrame(() => frameListings(attempt + 1));
+    requestAnimationFrame(() => frameListings(points, attempt + 1));
     return;
   }
-  map.fitBounds(
-    LISTINGS.map((l) => [l.lat, l.lng]),
-    { padding: [30, 30], maxZoom: 14 }
-  );
+  map.fitBounds(points, { padding: [30, 30], maxZoom: 14 });
 }
-requestAnimationFrame(() => frameListings());
-
-const markers = LISTINGS.map((listing) => ({
-  listing,
-  marker: L.circleMarker([listing.lat, listing.lng], {
-    radius: 6,
-    color: "#fcfcfb",
-    weight: 1,
-    fill: true,
-    fillColor: color(listing.uf_per_m2),
-    fillOpacity: 0.9,
-  })
-    .bindTooltip(`${fmt(listing.uf_per_m2, 1)} UF/m² · ${fmt(listing.price_uf)} UF`)
-    .bindPopup(popupHtml(listing), { maxWidth: 320 }),
-}));
 
 // filters
 const priceMin = document.getElementById("price-min");
@@ -270,6 +320,7 @@ const m2Max = document.getElementById("m2-max");
 const parkingOnly = document.getElementById("parking-only");
 const newOnly = document.getElementById("new-only");
 const bedroomButtons = [...document.querySelectorAll("#bedrooms-row button")];
+const marketButtons = [...document.querySelectorAll("#market-row button")];
 
 // dates counted as "hoy o ayer": the dataset date and the day before,
 // so the filter is stable regardless of when the map is opened
@@ -285,19 +336,18 @@ const newSeenDates = new Set();
 // set of selected bedroom counts (4 means "4 or more"); empty = show all
 const bedroomsSelected = new Set();
 
-const prices = LISTINGS.map((l) => l.price_clp);
-const step = 5_000_000;
-priceMin.min = priceMax.min = Math.floor(Math.min(...prices) / step) * step;
-priceMin.max = priceMax.max = Math.ceil(Math.max(...prices) / step) * step;
-priceMin.step = priceMax.step = step;
-priceMin.value = priceMin.min;
-priceMax.value = priceMax.max;
+// current market, set by renderMarket()
+let active = null;
+let ui = null;
+let markers = [];
 
-const areas = LISTINGS.map((l) => l.m2_utiles);
-m2Min.min = m2Max.min = Math.floor(Math.min(...areas));
-m2Min.max = m2Max.max = Math.ceil(Math.max(...areas));
-m2Min.value = m2Min.min;
-m2Max.value = m2Max.max;
+function setRange(minEl, maxEl, lo, hi, step) {
+  minEl.min = maxEl.min = Math.floor(lo / step) * step;
+  minEl.max = maxEl.max = Math.ceil(hi / step) * step;
+  minEl.step = maxEl.step = step;
+  minEl.value = minEl.min;
+  maxEl.value = maxEl.max;
+}
 
 function updateDual(minEl, maxEl, fillId) {
   const bounds = [Number(minEl.min), Number(minEl.max)];
@@ -324,7 +374,7 @@ function applyFilters() {
   }
 
   document.getElementById("price-value").textContent =
-    `$${fmt(priceMin.value / 1e6)}M – $${fmt(priceMax.value / 1e6)}M`;
+    ui.priceText(Number(priceMin.value), Number(priceMax.value));
   document.getElementById("m2-value").textContent =
     `${m2Min.value} – ${m2Max.value}`;
 
@@ -355,8 +405,52 @@ function applyFilters() {
   }
 
   document.getElementById("subtitle").textContent =
-    `${visible} de ${LISTINGS.length} departamentos <${CONFIG.maxM2} m² ` +
-    `publicados o listados recientemente · ${CONFIG.updated}`;
+    ui.subtitle(visible, markers.length);
+}
+
+function renderMarket(key) {
+  active = CONFIG.markets[key];
+  ui = MARKET_UI[key];
+
+  for (const { marker } of markers) marker.remove();
+
+  markers = active.listings.map((listing) => ({
+    listing,
+    marker: L.circleMarker([listing.lat, listing.lng], {
+      radius: 6,
+      color: "#fcfcfb",
+      weight: 1,
+      fill: true,
+      fillColor: color(listing[active.metric], active),
+      fillOpacity: 0.9,
+    })
+      .bindTooltip(ui.tooltip(listing))
+      .bindPopup(popupHtml(listing, ui), { maxWidth: 320 }),
+  }));
+
+  // Each market gets its own slider bounds: sale prices run in the hundreds of
+  // millions and monthly rents in the hundreds of thousands, so one shared
+  // scale would leave either market unusable.
+  const prices = markers.map(({ listing }) => listing.price_clp);
+  setRange(priceMin, priceMax, Math.min(...prices), Math.max(...prices), ui.priceStep);
+
+  const areas = markers.map(({ listing }) => listing.m2_utiles);
+  setRange(m2Min, m2Max, Math.min(...areas), Math.max(...areas), 1);
+
+  document.getElementById("title").textContent = ui.title(COMUNAS);
+  document.getElementById("price-label").textContent = ui.priceLabel;
+  document.getElementById("legend-title").textContent = ui.legend;
+  document.getElementById("legend-bar").style.background =
+    `linear-gradient(to right, ${active.colors.join(",")})`;
+  document.getElementById("legend-min").textContent = fmt(active.vmin);
+  document.getElementById("legend-max").textContent = fmt(active.vmax);
+
+  for (const btn of marketButtons) {
+    btn.classList.toggle("active", btn.dataset.market === key);
+  }
+
+  applyFilters();
+  frameListings(markers.map(({ listing }) => [listing.lat, listing.lng]));
 }
 
 for (const input of [priceMin, priceMax, m2Min, m2Max, parkingOnly, newOnly]) {
@@ -373,13 +467,18 @@ for (const btn of bedroomButtons) {
   });
 }
 
-applyFilters();
+for (const btn of marketButtons) {
+  // A market with no data (e.g. the rental CSV not scraped yet) is disabled
+  // rather than hidden, so the map still works and the reason is visible.
+  if (!CONFIG.markets[btn.dataset.market]) {
+    btn.disabled = true;
+    continue;
+  }
+  btn.addEventListener("click", () => renderMarket(btn.dataset.market));
+}
 
-// legend
-document.getElementById("legend-bar").style.background =
-  `linear-gradient(to right, ${CONFIG.colors.join(",")})`;
-document.getElementById("legend-min").textContent = fmt(CONFIG.vmin);
-document.getElementById("legend-max").textContent = fmt(CONFIG.vmax);
+requestAnimationFrame(() => renderMarket("venta"));
 </script>
+
 </body>
 </html>

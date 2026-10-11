@@ -1,10 +1,18 @@
-"""Interactive Leaflet map of recent listings, served via GitHub Pages."""
+"""Interactive Leaflet map of recent listings, served via GitHub Pages.
+
+Two markets on one map, switched with a toggle: sales (blue, UF/m²) and
+rentals (orange, CLP/m² per month). Each keeps its own sequential ramp and its
+own filter ranges instead of sharing one, because the two metrics differ by
+orders of magnitude and comparing lightness across hues is unreliable -- so
+only one market is drawn at a time.
+"""
 import json
 
 import numpy as np
 import pandas as pd
 
-RAW_CSV = "data/raw/portalinmobiliario_listings.csv"
+VENTA_CSV = "data/raw/portalinmobiliario_listings.csv"
+ARRIENDO_CSV = "data/raw/portalinmobiliario_rentals.csv"
 TEMPLATE_PATH = "src/map_template.html"
 OUTPUT_HTML = "docs/map.html"
 
@@ -17,78 +25,179 @@ RECENT_MAX_M2 = 150
 CHILE_LAT_MIN, CHILE_LAT_MAX = -56.0, -17.3
 CHILE_LNG_MIN, CHILE_LNG_MAX = -76.0, -66.0
 
-# sequential blue ramp, steps 100 -> 700 (light -> dark)
+# Sanity bounds for the rental layer. Sale listings leak into the rental
+# search -- titles like "Depto Venta 3d+3b" priced at UF 8,900, which converts
+# to "$366,000,000 per month" -- and a handful of listings carry a typo'd
+# surface (a 1-bedroom flat recorded as 1 m²). Both wreck the sliders and the
+# ramp. A currency rule would be wrong here: 889 genuine rentals are quoted in
+# UF. These cut 17 and 29 rows respectively out of ~4,100 (p99.5 of monthly
+# rent is $4.2M, so the ceiling clears every plausible listing).
+ARRIENDO_MAX_CLP = 6_000_000
+ARRIENDO_MIN_M2 = 15
+
+# Sequential ramps, light -> dark. Blue for sales, purple for rentals: the hue
+# says which market you're looking at, the lightness says the value. Purple
+# over orange because orange muddies against the grey base map, and over green
+# because green and blue collide in the mid tones.
 SEQ_BLUE = [
     "#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7",
     "#3987e5", "#2a78d6", "#256abf", "#1c5cab", "#184f95", "#104281",
     "#0d366b",
 ]
+SEQ_PURPLE = [
+    "#e9ddf6", "#ddcbf1", "#d0b8ec", "#c2a4e6", "#b390e0", "#a37bd8",
+    "#9366cf", "#8352c4", "#7342b2", "#63369c", "#542d85", "#45246e",
+    "#371c58",
+]
 
-MAP_COLUMNS = [
+BASE_COLUMNS = [
     "title",
     "url",
     "lat",
     "lng",
-    "price_uf",
     "price_clp",
     "m2_utiles",
-    "uf_per_m2",
     "bedrooms_n",
     "parking",
     "gastos_comunes_clp",
     "barrio",
     "first_seen_date",
 ]
+VENTA_COLUMNS = BASE_COLUMNS + ["price_uf", "uf_per_m2"]
+ARRIENDO_COLUMNS = BASE_COLUMNS + ["clp_m2"]
 
 
 def comuna_display(slug):
     return slug.replace("-metropolitana", "").replace("-", " ").title()
 
 
-def load_recent():
-    # deferred import: pipeline imports this module at load time
-    from src.pipeline_venta import recent_mask
+# A listing further than this from the median of its own dataset is treated as
+# a geocoding error. The Chile bounding box above is too coarse to catch these:
+# two sale listings sat 46 and 77 km out while the 99.9th percentile of real
+# distances was 22.6 km, and fitBounds then zoomed out so far that the actual
+# city became a dot. Derived from the data's own centre rather than a hardcoded
+# city box, so adding a comuna somewhere else still works.
+MAX_KM_FROM_CENTER = 30
 
-    df = pd.read_csv(RAW_CSV)
 
-    in_chile = (
+def in_chile(df):
+    return (
         df["lat"].between(CHILE_LAT_MIN, CHILE_LAT_MAX)
         & df["lng"].between(CHILE_LNG_MIN, CHILE_LNG_MAX)
     )
 
-    return df[
+
+def drop_far_outliers(df, label):
+    """Drop points absurdly far from the dataset's own centre."""
+    if df.empty:
+        return df
+
+    center_lat, center_lng = df["lat"].median(), df["lng"].median()
+
+    km = np.sqrt(
+        ((df["lat"] - center_lat) * 111.32) ** 2
+        + ((df["lng"] - center_lng) * 111.32
+           * np.cos(np.radians(center_lat))) ** 2
+    )
+
+    keep = km <= MAX_KM_FROM_CENTER
+
+    if (~keep).any():
+        print(
+            f"  {label}: dropped {(~keep).sum()} listing(s) over "
+            f"{MAX_KM_FROM_CENTER} km from the centre (bad geocode)"
+        )
+
+    return df[keep].copy()
+
+
+def load_recent():
+    """Sale listings: the published recent set, same filter as the CSV export."""
+    # deferred import: pipeline_venta imports this module at load time
+    from src.pipeline_venta import recent_mask
+
+    df = pd.read_csv(VENTA_CSV, low_memory=False)
+
+    df = df[
         recent_mask(df)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
         & df["price_clp"].notna()
-        & in_chile
+        & in_chile(df)
     ].copy()
+
+    return drop_far_outliers(df, "venta")
+
+
+def load_arriendos():
+    """Rental listings: the whole live market, not a recency window.
+
+    Deliberately different from the sale side. Rentals turn over fast and only
+    ~68% of them expose a publication date at all, so a 14-day window would
+    silently drop a third of the market for no gain -- what's useful here is
+    what's currently available. The m² cap is kept so both markets cover
+    comparable apartments.
+    """
+    df = pd.read_csv(ARRIENDO_CSV, low_memory=False)
+
+    live = df["delisted_date"].isna() & df["finished_date"].isna()
+
+    df = df[
+        live
+        & df["lat"].notna()
+        & df["price_clp"].notna()
+        & df["m2_utiles"].notna()
+        & (df["m2_utiles"] >= ARRIENDO_MIN_M2)
+        & (df["m2_utiles"] < RECENT_MAX_M2)
+        & (df["price_clp"] <= ARRIENDO_MAX_CLP)
+        & in_chile(df)
+    ].copy()
+
+    df["clp_m2"] = (df["price_clp"] / df["m2_utiles"]).round()
+
+    return drop_far_outliers(df, "arriendo")
+
+
+def market_payload(df, columns, metric, colors):
+    """Build one market's config + rows, with the ramp scaled to its own data."""
+    vmin, vmax = np.percentile(df[metric], [5, 95])
+
+    return {
+        "colors": colors,
+        "vmin": round(float(vmin)),
+        "vmax": round(float(vmax)),
+        "metric": metric,
+        # to_json turns NaN into null, which json.loads keeps as None
+        "listings": json.loads(df[columns].to_json(orient="records")),
+    }
 
 
 def generate_interactive_map():
-    recent = load_recent()
+    venta = load_recent()
 
-    if recent.empty:
+    if venta.empty:
         print("No recent listings with coordinates; skipping map.")
         return
 
-    vmin, vmax = np.percentile(recent["uf_per_m2"], [5, 95])
+    arriendo = load_arriendos()
 
     comunas = " y ".join(
-        comuna_display(c) for c in sorted(recent["comuna"].dropna().unique())
+        comuna_display(c) for c in sorted(venta["comuna"].dropna().unique())
     )
 
     config = {
-        "colors": SEQ_BLUE,
-        "vmin": round(vmin),
-        "vmax": round(vmax),
+        "updated": pd.Timestamp.today().strftime("%Y-%m-%d"),
         "recentDays": RECENT_DAYS,
         "maxM2": RECENT_MAX_M2,
-        "updated": pd.Timestamp.today().strftime("%Y-%m-%d"),
+        "markets": {
+            "venta": market_payload(
+                venta, VENTA_COLUMNS, "uf_per_m2", SEQ_BLUE
+            ),
+            "arriendo": market_payload(
+                arriendo, ARRIENDO_COLUMNS, "clp_m2", SEQ_PURPLE
+            ) if not arriendo.empty else None,
+        },
     }
-
-    # to_json turns NaN into null, which json.loads keeps as None
-    listings = json.loads(recent[MAP_COLUMNS].to_json(orient="records"))
 
     with open(TEMPLATE_PATH, encoding="utf-8") as f:
         template = f.read()
@@ -96,14 +205,16 @@ def generate_interactive_map():
     html = (
         template
         .replace("__COMUNAS__", comunas)
-        .replace("__CONFIG__", json.dumps(config))
-        .replace("__LISTINGS__", json.dumps(listings, ensure_ascii=False))
+        .replace("__CONFIG__", json.dumps(config, ensure_ascii=False))
     )
 
-    with open(OUTPUT_HTML, "w", encoding="utf-8") as f:
+    with open(OUTPUT_HTML, encoding="utf-8", mode="w") as f:
         f.write(html)
 
-    print(f"Saved {len(recent)} listings to {OUTPUT_HTML}")
+    print(
+        f"Saved {len(venta)} sale and {len(arriendo)} rental listings "
+        f"to {OUTPUT_HTML}"
+    )
 
 
 if __name__ == "__main__":

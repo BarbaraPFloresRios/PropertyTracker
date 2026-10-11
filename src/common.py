@@ -3,6 +3,8 @@
 Nothing here knows about a specific operation: it merges a fresh scrape into
 the stored dataset, reports what changed and writes the CSV back out.
 """
+import os
+
 import pandas as pd
 
 
