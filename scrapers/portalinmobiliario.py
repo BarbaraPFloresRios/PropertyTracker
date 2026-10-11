@@ -1,3 +1,17 @@
+"""Scraper for portalinmobiliario.com (MercadoLibre's Chilean real estate site).
+
+No browser is needed: every search page ships its whole React state as a JSON
+blob inside the HTML, so we read that instead of parsing the DOM. Two levels:
+
+  search pages  -> scrape_search()         one card per listing, cheap, paginated
+  detail pages  -> fetch_listing_details() coordinates, specs, publication age
+
+THIS IS THE MOST FRAGILE FILE IN THE PROJECT. Everything here depends on the
+shape of someone else's undocumented JSON, which changes without notice. When
+the pipeline suddenly returns nothing, the breakage is almost certainly in
+extract_state() or iter_polycards() -- start there, and see the diagnostics
+note in scrape_search().
+"""
 import json
 import re
 import time
@@ -14,9 +28,16 @@ UF_API_URL = "https://mindicador.cl/api/uf"
 UF_CACHE_PATH = Path("data/uf_value.json")
 
 RESULTS_PER_PAGE = 48
+
+# Upper bound on the pagination loop, not an expectation: the site caps results
+# at ~2,016 per search (42 pages), and scrape_search() stops as soon as a page
+# comes back with no usable listings. Raising this does not widen the window.
 MAX_PAGES = 100
+
 SLEEP_SECONDS = 1
 
+# A browser-like User-Agent is required: the site answers requests without one
+# differently (and the embedded state can be missing entirely).
 HEADERS = {
     "Accept": "text/html",
     "User-Agent": (
@@ -92,6 +113,17 @@ def build_page_url(search, page):
 
 
 def extract_state(html):
+    """Pull the page's embedded React state out of the HTML.
+
+    The site assigns its whole state to a JS global, `_n.ctx.r={...}`, followed
+    by more script. raw_decode() reads just the object and ignores whatever
+    trails it, which is why we can't use json.loads() on the match.
+
+    Returning None means the marker wasn't there -- either the site renamed the
+    global (code change needed) or it served a page without state at all, which
+    is what an IP block looks like. scrape_search() prints the response length
+    so the two can be told apart.
+    """
     match = re.search(r"_n\.ctx\.r=(\{.*)", html, re.DOTALL)
 
     if not match:
@@ -102,6 +134,13 @@ def extract_state(html):
 
 
 def iter_polycards(state):
+    """Yield every listing card in the state, flattening the two shapes it uses.
+
+    Cards live under appProps.pageProps.initialState.results, where an entry is
+    either a card itself ("polycard") or a group holding several in "items"
+    (carousels, grouped developments). Both shapes appear on the same page, so
+    both are walked -- missing the second silently drops listings.
+    """
     results = (
         state
         .get("appProps", {})
@@ -127,6 +166,13 @@ def iter_polycards(state):
 
 
 def get_component(card, component_id):
+    """Return a card component's payload by id.
+
+    Note the double indirection: a component declares its own `type`, and the
+    payload sits under a key *named* by that type -- e.g. an id="price" entry
+    carries {"type": "price", "price": {...}}. Hence .get(.get("type")).
+    An unknown id gives {} so callers can chain .get() without guarding.
+    """
     for component in card.get("components", []):
         if component.get("id") == component_id:
             return component.get(component.get("type"), {})
@@ -140,6 +186,13 @@ def parse_int(text):
 
 
 def parse_attributes(card):
+    """Split the card's attribute strings into text and numeric columns.
+
+    The numeric column is filled ONLY when the text holds a single value:
+    developments publish ranges ("2 a 3 dormitorios", "45 - 60 m²"), and
+    picking a number out of a range would invent precision the listing
+    doesn't have. The raw text is always kept alongside it.
+    """
     texts = get_component(card, "attributes_list").get("texts", [])
 
     bedrooms_text = bathrooms_text = m2_text = None
@@ -174,6 +227,12 @@ def parse_attributes(card):
 
 
 def parse_seller(card):
+    """Return (seller name, is official store).
+
+    The seller string interleaves icon placeholders in braces, e.g.
+    "{icon_cockade} Some Agency", so braces are stripped to get the name.
+    The cockade icon is the site's badge for an official store.
+    """
     text = get_component(card, "seller").get("text") or ""
     seller = re.sub(r"\{[^}]*\}", "", text).strip()
 
@@ -181,6 +240,13 @@ def parse_seller(card):
 
 
 def parse_barrio(location_text):
+    """Pull the neighborhood out of the card's location line.
+
+    The line reads "<something>, <barrio>, <comuna>", so the barrio is the
+    second-to-last part. But "<something>" is sometimes a street address, and
+    then the second-to-last part is the street -- any digit in it means that,
+    and we'd rather have no barrio than a street name in the barrio column.
+    """
     parts = [p.strip() for p in (location_text or "").split(",") if p.strip()]
 
     if len(parts) < 2:
@@ -193,10 +259,18 @@ def parse_barrio(location_text):
 
 
 def parse_card(card, search):
+    """Flatten one search-result card into a flat dict (one CSV row).
+
+    Everything here comes from the search page, so it is cheap but partial:
+    coordinates, specs and publication age need the detail page -- see
+    fetch_listing_details().
+    """
     metadata = card.get("metadata", {})
     listing_id = metadata.get("id")
 
-    # pads are paid placements, often from other comunas
+    # Pads are paid placements. They're dropped because they often belong to a
+    # different comuna than the one being searched and duplicate results that
+    # already appear organically.
     if not listing_id or metadata.get("is_pad") == "true":
         return None
 
@@ -205,6 +279,8 @@ def parse_card(card, search):
     if url and not url.startswith("http"):
         url = "https://www." + url
 
+    # currency is a code, not a symbol: "CLF" is UF, "CLP" is pesos.
+    # add_price_conversions() turns one into the other.
     price = get_component(card, "price").get("current_price", {})
     price_value = price.get("value")
     currency = price.get("currency")
@@ -213,6 +289,10 @@ def parse_card(card, search):
     seller, tienda_oficial = parse_seller(card)
 
     location = get_component(card, "location").get("text")
+
+    # Developments ("proyecto") behave differently all over this file: ranges
+    # instead of single values for m2/bedrooms, and no publication date on the
+    # detail page.
     is_project = "DEVELOPMENT" in (metadata.get("domain_id") or "")
 
     return {
@@ -235,6 +315,25 @@ def parse_card(card, search):
 
 
 def scrape_search(search):
+    """Page through one search, newest first, until the results run out.
+
+    DIAGNOSTICS -- the two break messages below mean different things, and
+    telling them apart is the fastest way to triage a run that returned nothing:
+
+      "no embedded state (status=200, len=N)"
+          The page had no `_n.ctx.r=` marker. Either the site changed that
+          global (code fix needed) or it served a contentless page, which is
+          what this site does to datacenter IPs rather than returning 403.
+
+      "0 usable listings (status=200, raw_cards=N)"
+          State parsed fine. raw_cards=0 means the search itself came back
+          empty -- normal at the end of pagination, suspicious on page 1.
+          raw_cards>0 with 0 usable means parse_card() rejected every card,
+          i.e. the card shape changed.
+
+    Pagination stops on its own well before MAX_PAGES: the site exposes ~2,016
+    results per search (42 pages) and page 43 returns 404.
+    """
     listings = []
     seen_ids = set()
 
@@ -296,6 +395,13 @@ DEFAULT_COORDINATES = (-35.675148, -71.54297)
 
 
 def parse_coordinates(html_text):
+    """Extract lat/lng from the detail page, treating the site's fallback as missing.
+
+    Two regexes because the numbers appear quoted on some pages and bare on
+    others. When a listing has no real location the site fills in the centroid
+    of Chile (DEFAULT_COORDINATES) -- plotting that would scatter listings in
+    the middle of the country, so it's reported as absent instead.
+    """
     match = re.search(
         r'"latitude":"(-?\d+\.?\d*)","longitude":"(-?\d+\.?\d*)"',
         html_text,
@@ -351,7 +457,19 @@ def parse_publicado_hace(html_text):
 
 
 def parse_zona_uf_m2(html_text):
-    """Extract the site's "Promedio en la zona" UF/m² from the price comparison widget."""
+    """Extract the site's "Promedio en la zona" UF/m² from the price comparison widget.
+
+    NOT SHOWN IN ANY OUTPUT, on purpose: this is the site's own marketing
+    figure, not a valuation. Measured over the active set, it sits ABOVE the
+    asking price of the very listing it describes in 66% of cases (median gap
+    +10.6%), making almost everything look like a bargain; and of 1,839
+    buildings with 3+ listings at identical coordinates, 66% carry more than
+    one value for it -- up to 92 UF/m² apart within the same building. A figure
+    that varies per listing is not a property of the area.
+
+    Still collected because the detail page is fetched anyway, so it costs
+    nothing and keeps the historical series auditable.
+    """
     start = html_text.find('{"id":"price_comparison"')
 
     if start == -1:
@@ -372,7 +490,15 @@ def parse_zona_uf_m2(html_text):
 
 
 def fetch_listing_details(url):
-    """Fetch parking, common expenses and coordinates from a detail page."""
+    """Fetch coordinates, specs and publication age from one detail page.
+
+    Three possible returns, and callers must handle all three:
+      dict             -> the details
+      LISTING_FINISHED -> the page says "Publicación finalizada" (removed)
+      None             -> the request failed (timeout, 403, 429). Callers leave
+                          enriched_date unset so the listing is retried next
+                          run rather than being stored as having no data.
+    """
     try:
         response = requests.get(url, headers=HEADERS, timeout=30)
         response.raise_for_status()
@@ -415,10 +541,17 @@ def fetch_listing_details(url):
                 attributes[attribute.get("id")] = attribute.get("text")
 
     def count_of(attribute_id):
+        """Count for a spec-sheet attribute, distinguishing zero from unknown.
+
+        Listed    -> its number.
+        Absent but the sheet parsed  -> 0, because the site omits attributes
+                                        the property doesn't have.
+        No sheet at all              -> None (unknown), so a page that failed
+                                        to parse isn't recorded as "has none".
+        """
         if attribute_id in attributes:
             return parse_int(attributes[attribute_id])
 
-        # a spec sheet without the attribute means none
         return 0 if attributes else None
 
     details["parking"] = count_of("Estacionamientos")
