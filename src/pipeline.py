@@ -20,7 +20,16 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
 )
 
 ARRIENDO_OUTPUT_PATH = f"{RAW_DATA_DIR}/portalinmobiliario_rentals.csv"
-ENRICH_MAX_PER_RUN_ARRIENDO = 800
+# Medido el 2026-10-11: entran ~1.850 arriendos nuevos por semana (1.825 el
+# 10-03, 1.882 el 10-10), asi que el tope anterior de 800 dejaba ~1.050 sin
+# enriquecer CADA semana -- deficit estructural, no mala suerte. Se sube para
+# cubrir la llegada real.
+# OJO: el techo de verdad no es esta constante sino el portal, que estrangula
+# (429) alrededor de las ~1.400 fichas seguidas. Un tope mas alto no corrompe
+# nada -- un fetch estrangulado devuelve None, el aviso queda sin
+# enriched_date y se reintenta al run siguiente -- pero tampoco garantiza que
+# se enriquezcan todos en una sola pasada.
+ENRICH_MAX_PER_RUN_ARRIENDO = 2000
 
 RECENT_DAYS = 14
 RECENT_MAX_M2 = 150
@@ -480,13 +489,19 @@ def build_recent_listings():
         na_position="last",
     )
 
+    # zona_uf_m2 NO se exporta: es el widget "Promedio en la zona" del portal,
+    # no una tasacion. Sesgo al alza -- en 66% de los avisos activos queda
+    # ARRIBA del precio que pide ese mismo aviso (brecha mediana +10,6%), y de
+    # 1.839 edificios con 3+ avisos en coordenada identica, 66% tiene mas de un
+    # valor distinto (hasta 92 UF/m2 de diferencia dentro del MISMO edificio).
+    # Si cambia por aviso, no describe la zona. Se sigue guardando en el CSV
+    # crudo, pero no se muestra en ninguna salida.
     columns = [
         "title",
         "price_uf",
         "price_clp",
         "m2_utiles",
         "uf_per_m2",
-        "zona_uf_m2",
         "bedrooms_n",
         "parking",
         "gastos_comunes_clp",

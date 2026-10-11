@@ -33,7 +33,6 @@ MAP_COLUMNS = [
     "price_clp",
     "m2_utiles",
     "uf_per_m2",
-    "zona_uf_m2",
     "bedrooms_n",
     "parking",
     "gastos_comunes_clp",
