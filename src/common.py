@@ -15,6 +15,11 @@ DELIST_TOLERANCE_DAYS = 2
 
 ENRICH_SLEEP_SECONDS = 0.5
 
+# Below this, a surface figure is treated as a data error rather than a very
+# small flat. Sellers mistype it on the portal -- "1 m2" on a 3-bedroom, "3 m2"
+# on a whole flat -- and the portal publishes whatever they typed.
+MIN_PLAUSIBLE_M2 = 15
+
 ENRICH_VALUE_COLUMNS = [
     "parking",
     "bodegas",
@@ -32,7 +37,6 @@ ENRICH_VALUE_COLUMNS = [
     "publicado_hace",
     "publicado_fecha_est",
 ]
-ENRICH_COLUMNS = ENRICH_VALUE_COLUMNS + ["enriched_date"]
 ENRICH_COLUMNS = ENRICH_VALUE_COLUMNS + ["enriched_date"]
 
 
@@ -108,6 +112,64 @@ def add_delisting_columns(listings, today):
     listings.loc[gone, "delisted_date"] = (
         last_seen[gone] + pd.Timedelta(days=1)
     ).dt.strftime("%Y-%m-%d")
+
+    return listings
+
+
+def sanitize_surfaces(listings):
+    """Repair or drop implausible m2_utiles values, in place.
+
+    A wrong surface is louder than a missing one: it divides the price, so a
+    flat priced at 9.000 UF with "1 m2" lands at 9.000 UF/m2 and outranks
+    every real listing in anything sorted by that metric. The README table is
+    sorted by UF/m2 descending, so these used to be its first rows.
+
+    This cannot live in the scraper. Enrichment only visits listings that are
+    still pending, so a bad value written once is never looked at again -- and
+    re-fetching these pages now returns m2_utiles=None, meaning the stored
+    number no longer exists at the source. Running it on every save is what
+    repairs the rows already on disk.
+
+    Where m2_totales is plausible it stands in for the missing m2_utiles. It
+    includes terrace and balcony, so the resulting UF/m2 runs low -- measured
+    against the listings that report both, the median inflation is 7% and the
+    75th percentile 15%. That was judged a better trade than discarding the
+    listing. Where both figures are broken, the surface and every metric
+    derived from it are cleared: no number beats a wrong one.
+    """
+    if "m2_utiles" not in listings.columns:
+        return listings
+
+    utiles = pd.to_numeric(listings["m2_utiles"], errors="coerce")
+    broken = (utiles > 0) & (utiles < MIN_PLAUSIBLE_M2)
+    if not broken.any():
+        return listings
+
+    totales = (
+        pd.to_numeric(listings["m2_totales"], errors="coerce")
+        if "m2_totales" in listings.columns
+        else pd.Series(pd.NA, index=listings.index, dtype="float64")
+    )
+    rescued = broken & (totales >= MIN_PLAUSIBLE_M2)
+    cleared = broken & ~rescued
+
+    listings.loc[rescued, "m2_utiles"] = totales[rescued]
+    listings.loc[cleared, "m2_utiles"] = pd.NA
+
+    # uf_per_m2 is computed at scrape time, so the stored value still carries
+    # the old surface; recompute it for every row touched here.
+    if "uf_per_m2" in listings.columns and "price_uf" in listings.columns:
+        touched = broken
+        listings.loc[touched, "uf_per_m2"] = (
+            pd.to_numeric(listings.loc[touched, "price_uf"], errors="coerce")
+            / pd.to_numeric(listings.loc[touched, "m2_utiles"], errors="coerce")
+        ).round(2)
+
+    print(
+        f"Surfaces under {MIN_PLAUSIBLE_M2} m2: "
+        f"{int(rescued.sum())} replaced with m2_totales, "
+        f"{int(cleared.sum())} cleared"
+    )
 
     return listings
 
@@ -198,6 +260,8 @@ def save_listings(current_listings, output_path, source=""):
         current_listings["first_seen_price"] = current_listings["price"]
         new_listings = current_listings
         listings = current_listings
+
+    listings = sanitize_surfaces(listings)
 
     listings = add_delisting_columns(listings, today)
 
