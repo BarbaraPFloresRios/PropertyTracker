@@ -30,7 +30,13 @@ PORTALINMOBILIARIO_OUTPUT_PATH = (
     f"{RAW_DATA_DIR}/portalinmobiliario_listings.csv"
 )
 
+# Window for the curated export: data/recent_listings.csv and the README
+# table. Stays narrow on purpose -- that export answers "what came on the
+# market lately". The map asks a different question and uses its own, wider
+# window (MAP_DAYS in generate_interactive_map.py); recent_mask takes `days`
+# so the two can diverge without duplicating the filter logic.
 RECENT_DAYS = 14
+
 RECENT_MAX_M2 = 150
 
 # exclude high-end listings above this CLP price from the recent set / map
@@ -39,9 +45,9 @@ RECENT_MAX_PRICE_CLP = 500_000_000
 ENRICH_MAX_PER_RUN = 300
 
 
-def recent_mask(listings):
+def recent_mask(listings, days=RECENT_DAYS):
     today = pd.Timestamp.today()
-    cutoff = (today - pd.Timedelta(days=RECENT_DAYS)).strftime("%Y-%m-%d")
+    cutoff = (today - pd.Timedelta(days=days)).strftime("%Y-%m-%d")
 
     # each comuna's first scrape captures a mix of old and new listings all
     # with the same first_seen_date, so that bootstrap cohort is not "new"
@@ -58,7 +64,7 @@ def recent_mask(listings):
     # can lag publication by months (listings rotate into the scrape window).
     if "publicado_fecha_est" in listings.columns:
         pub = pd.to_datetime(listings["publicado_fecha_est"], errors="coerce")
-        published_recently = pub >= (today - pd.Timedelta(days=RECENT_DAYS))
+        published_recently = pub >= (today - pd.Timedelta(days=days))
 
         # provisional: a listing we just saw but haven't enriched yet has an
         # unknown publication date. Show it now; if enrichment (same run,
@@ -190,7 +196,15 @@ def verify_recent_listings():
         & listings["url"].notna()
     ]
 
-    print(f"Re-checking {len(candidates)} recent listings for 'finalizada'")
+    # Follows the narrow RECENT_DAYS, not the map's wider window: the
+    # re-check costs one request per listing, and following the map would take
+    # a run from ~1,750 to ~4,970 re-checks, pushing the night past the ~4,000
+    # requests where the source starts answering 429. Listings outside this
+    # window still lose their delisted_date through the not-seen heuristic.
+    print(
+        f"Re-checking {len(candidates)} listings published in the last "
+        f"{RECENT_DAYS} days for 'finalizada'"
+    )
 
     gone = 0
 

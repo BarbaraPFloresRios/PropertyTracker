@@ -16,7 +16,14 @@ ARRIENDO_CSV = "data/raw/portalinmobiliario_rentals.csv"
 TEMPLATE_PATH = "src/map_template.html"
 OUTPUT_HTML = "docs/map.html"
 
-RECENT_DAYS = 14
+# The map's own window, deliberately wider than the pipeline's RECENT_DAYS
+# (14), which governs the curated recent_listings.csv export. The map answers
+# "what does the market hold right now", the export answers "what came on
+# lately" -- and the rental layer already shows the whole live market, so a
+# fortnight-wide sale layer made the two halves of the same map inconsistent.
+# Only the view widens: nothing changes in what gets stored or exported.
+MAP_DAYS = 90
+
 RECENT_MAX_M2 = 150
 
 # continental Chile bounding box, to drop listings with a corrupt geocode
@@ -119,7 +126,7 @@ def load_recent():
     df = pd.read_csv(VENTA_CSV, low_memory=False)
 
     df = df[
-        recent_mask(df)
+        recent_mask(df, days=MAP_DAYS)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
         & df["price_clp"].notna()
@@ -187,7 +194,7 @@ def generate_interactive_map():
 
     config = {
         "updated": pd.Timestamp.today().strftime("%Y-%m-%d"),
-        "recentDays": RECENT_DAYS,
+        "recentDays": MAP_DAYS,
         "maxM2": RECENT_MAX_M2,
         "markets": {
             "venta": market_payload(
