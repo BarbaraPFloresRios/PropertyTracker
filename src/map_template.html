@@ -172,6 +172,11 @@
     <input type="range" id="m2-min" autocomplete="off">
     <input type="range" id="m2-max" autocomplete="off">
   </div>
+  <label>Publicado hace <span class="range-value" id="age-value"></span></label>
+  <div class="dual">
+    <div class="track"></div><div class="fill" id="age-fill"></div>
+    <input type="range" id="age-max" autocomplete="off">
+  </div>
   <label>Dormitorios</label>
   <div id="bedrooms-row">
     <button type="button" data-beds="1">1</button>
@@ -224,9 +229,11 @@ const MARKET_UI = {
       ["Superficie", fmt(l.m2_utiles) && fmt(l.m2_utiles) + " m²"],
       ["UF/m²", fmt(l.uf_per_m2, 1)],
     ],
+    // No m² claim here any more: the map dropped the export's 150 m² ceiling,
+    // it only keeps a floor to filter out mis-parsed surfaces.
     subtitle: (visible, total) =>
-      `${visible} de ${total} en venta <${CONFIG.maxM2} m² · publicados en ` +
-      `los últimos ${CONFIG.recentDays} días · ${CONFIG.updated}`,
+      `${visible} de ${total} en venta · ventana de ${CONFIG.recentDays} ` +
+      `días · ${CONFIG.updated}`,
   },
   arriendo: {
     title: (comunas) => `Avisos recientes en ${comunas} — arriendo, CLP/m²`,
@@ -243,8 +250,7 @@ const MARKET_UI = {
     // No recency window on this side: only ~68% of rentals expose a
     // publication date, so the rental layer is the whole live market.
     subtitle: (visible, total) =>
-      `${visible} de ${total} en arriendo <${CONFIG.maxM2} m² · ` +
-      `disponibles hoy · ${CONFIG.updated}`,
+      `${visible} de ${total} en arriendo · disponibles hoy · ${CONFIG.updated}`,
   },
 };
 
@@ -317,6 +323,7 @@ const priceMin = document.getElementById("price-min");
 const priceMax = document.getElementById("price-max");
 const m2Min = document.getElementById("m2-min");
 const m2Max = document.getElementById("m2-max");
+const ageMax = document.getElementById("age-max");
 const parkingOnly = document.getElementById("parking-only");
 const newOnly = document.getElementById("new-only");
 const bedroomButtons = [...document.querySelectorAll("#bedrooms-row button")];
@@ -340,6 +347,19 @@ const bedroomsSelected = new Set();
 let active = null;
 let ui = null;
 let markers = [];
+
+// Age in days of a listing, measured against the dataset date rather than the
+// viewer's clock, so the filter means the same thing whenever the map is
+// opened. Returns null when the listing has no publication date -- the site
+// doesn't show one for developments, and only ~67% of rentals carry it.
+const DATASET_DAY = new Date(CONFIG.updated + "T00:00:00");
+
+function ageInDays(listing) {
+  if (!listing.publicado_fecha_est) return null;
+  const published = new Date(listing.publicado_fecha_est + "T00:00:00");
+  if (isNaN(published)) return null;
+  return Math.round((DATASET_DAY - published) / 86400000);
+}
 
 function setRange(minEl, maxEl, lo, hi, step) {
   minEl.min = maxEl.min = Math.floor(lo / step) * step;
@@ -381,6 +401,27 @@ function applyFilters() {
   updateDual(priceMin, priceMax, "price-fill");
   updateDual(m2Min, m2Max, "m2-fill");
 
+  // At its maximum the age slider means "no limit", which also keeps the
+  // listings with no publication date visible. Narrow it and they drop out --
+  // we can't claim an age we don't have.
+  const ageLimit = Number(ageMax.value);
+  const ageUnlimited = ageLimit >= Number(ageMax.max);
+
+  let undated = 0;
+  for (const { listing } of markers) if (listing._age == null) undated += 1;
+
+  document.getElementById("age-value").textContent = ageUnlimited
+    ? "cualquiera"
+    : `≤ ${ageLimit} días` + (undated ? ` · ${undated} sin fecha` : "");
+
+  {
+    const lo = Number(ageMax.min);
+    const hi = Number(ageMax.max);
+    const fill = document.getElementById("age-fill");
+    fill.style.left = "0%";
+    fill.style.width = ((ageLimit - lo) / (hi - lo)) * 100 + "%";
+  }
+
   let visible = 0;
 
   for (const { listing, marker } of markers) {
@@ -389,6 +430,7 @@ function applyFilters() {
       listing.price_clp <= Number(priceMax.value) &&
       listing.m2_utiles >= Number(m2Min.value) &&
       listing.m2_utiles <= Number(m2Max.value) &&
+      (ageUnlimited || (listing._age != null && listing._age <= ageLimit)) &&
       (!parkingOnly.checked || listing.parking >= 1) &&
       (!newOnly.checked ||
         newSeenDates.has(String(listing.first_seen_date).slice(0, 10))) &&
@@ -414,6 +456,8 @@ function renderMarket(key) {
 
   for (const { marker } of markers) marker.remove();
 
+  for (const listing of active.listings) listing._age = ageInDays(listing);
+
   markers = active.listings.map((listing) => ({
     listing,
     marker: L.circleMarker([listing.lat, listing.lng], {
@@ -437,6 +481,12 @@ function renderMarket(key) {
   const areas = markers.map(({ listing }) => listing.m2_utiles);
   setRange(m2Min, m2Max, Math.min(...areas), Math.max(...areas), 1);
 
+  // The age slider spans the generated window and starts wide open.
+  ageMax.min = 1;
+  ageMax.max = CONFIG.recentDays;
+  ageMax.step = 1;
+  ageMax.value = CONFIG.recentDays;
+
   document.getElementById("title").textContent = ui.title(COMUNAS);
   document.getElementById("price-label").textContent = ui.priceLabel;
   document.getElementById("legend-title").textContent = ui.legend;
@@ -453,7 +503,7 @@ function renderMarket(key) {
   frameListings(markers.map(({ listing }) => [listing.lat, listing.lng]));
 }
 
-for (const input of [priceMin, priceMax, m2Min, m2Max, parkingOnly, newOnly]) {
+for (const input of [priceMin, priceMax, m2Min, m2Max, ageMax, parkingOnly, newOnly]) {
   input.addEventListener("input", applyFilters);
 }
 

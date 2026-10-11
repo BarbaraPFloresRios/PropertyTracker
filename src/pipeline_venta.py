@@ -45,7 +45,21 @@ RECENT_MAX_PRICE_CLP = 500_000_000
 ENRICH_MAX_PER_RUN = 300
 
 
-def recent_mask(listings, days=RECENT_DAYS):
+def recent_mask(
+    listings,
+    days=RECENT_DAYS,
+    max_m2=RECENT_MAX_M2,
+    max_price_clp=RECENT_MAX_PRICE_CLP,
+):
+    """Listings that are live and recent enough to publish.
+
+    The bounds are arguments rather than hardcoded constants because the two
+    consumers want different things. The curated export (recent_listings.csv,
+    README) keeps the narrow defaults. The map passes its own wider window and
+    switches the size/price ceilings off: those two came from one buyer's
+    criteria, and the map is meant to show the market. Pass None to drop a
+    ceiling.
+    """
     today = pd.Timestamp.today()
     cutoff = (today - pd.Timedelta(days=days)).strftime("%Y-%m-%d")
 
@@ -87,14 +101,15 @@ def recent_mask(listings, days=RECENT_DAYS):
 
     # drop high-end listings; >= gives False for NaN, so listings without a
     # known price_clp (e.g. a failed UF fetch) are kept rather than dropped
-    not_too_expensive = ~(listings["price_clp"] >= RECENT_MAX_PRICE_CLP)
+    mask = is_recent & live
 
-    return (
-        is_recent
-        & live
-        & (listings["m2_utiles"] < RECENT_MAX_M2)
-        & not_too_expensive
-    )
+    if max_price_clp is not None:
+        mask &= ~(listings["price_clp"] >= max_price_clp)
+
+    if max_m2 is not None:
+        mask &= listings["m2_utiles"] < max_m2
+
+    return mask
 
 
 def enrich_recent_listings():

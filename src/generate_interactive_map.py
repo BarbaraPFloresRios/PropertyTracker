@@ -24,6 +24,16 @@ OUTPUT_HTML = "docs/map.html"
 # Only the view widens: nothing changes in what gets stored or exported.
 MAP_DAYS = 90
 
+# The map drops the export's size and price ceilings (150 m2 / $500M): those
+# came from one buyer's criteria and the map is about the market. What it adds
+# instead is a floor, because the tail that actually distorts the view is bad
+# data, not luxury. An "edificio Uso Mixto" parsed as 1 m2 shows up at 240,000
+# UF/m2 and stretches the price slider to $9,873M; a genuine 547 m2 flat in Las
+# Condes sits at a perfectly ordinary 123 UF/m2. With the floor, the worst
+# values become $2,777M and 608 UF/m2, and the colour ramp barely moves
+# (p5-p95 goes 42-134 -> 42-137) because it is percentile-based anyway.
+MAP_MIN_M2 = 15
+
 RECENT_MAX_M2 = 150
 
 # continental Chile bounding box, to drop listings with a corrupt geocode
@@ -40,7 +50,7 @@ CHILE_LNG_MIN, CHILE_LNG_MAX = -76.0, -66.0
 # UF. These cut 17 and 29 rows respectively out of ~4,100 (p99.5 of monthly
 # rent is $4.2M, so the ceiling clears every plausible listing).
 ARRIENDO_MAX_CLP = 6_000_000
-ARRIENDO_MIN_M2 = 15
+ARRIENDO_MIN_M2 = MAP_MIN_M2
 
 # Sequential ramps, light -> dark. Blue for sales, purple for rentals: the hue
 # says which market you're looking at, the lightness says the value. Purple
@@ -59,6 +69,7 @@ SEQ_PURPLE = [
 
 BASE_COLUMNS = [
     "title",
+    "publicado_fecha_est",
     "url",
     "lat",
     "lng",
@@ -126,7 +137,8 @@ def load_recent():
     df = pd.read_csv(VENTA_CSV, low_memory=False)
 
     df = df[
-        recent_mask(df, days=MAP_DAYS)
+        recent_mask(df, days=MAP_DAYS, max_m2=None, max_price_clp=None)
+        & (df["m2_utiles"] >= MAP_MIN_M2)
         & df["lat"].notna()
         & df["uf_per_m2"].notna()
         & df["price_clp"].notna()
