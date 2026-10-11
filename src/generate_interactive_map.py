@@ -79,7 +79,6 @@ BASE_COLUMNS = [
     "parking",
     "gastos_comunes_clp",
     "barrio",
-    "first_seen_date",
 ]
 VENTA_COLUMNS = BASE_COLUMNS + ["price_uf", "uf_per_m2"]
 ARRIENDO_COLUMNS = BASE_COLUMNS + ["clp_m2"]

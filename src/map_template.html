@@ -187,9 +187,6 @@
   <div class="checkbox-row">
     <label><input type="checkbox" id="parking-only" autocomplete="off"> Solo con estacionamiento</label>
   </div>
-  <div class="checkbox-row">
-    <label><input type="checkbox" id="new-only" autocomplete="off"> Solo vistos hoy o ayer</label>
-  </div>
 </div>
 
 <div id="legend" class="panel">
@@ -213,8 +210,8 @@ const fmt = (value, decimals = 0) =>
 // Per-market presentation. The DATA differences live in CONFIG.markets (its
 // rows, its ramp, which field the ramp reads); this holds only how to label and
 // format them. The filters are deliberately shared: both markets carry
-// price_clp, m2_utiles, bedrooms_n, parking and first_seen_date, so only the
-// price slider's scale has to change.
+// price_clp, m2_utiles, bedrooms_n, parking and publicado_fecha_est, so only
+// the price slider's scale has to change.
 const MARKET_UI = {
   venta: {
     title: (comunas) => `Avisos recientes en ${comunas} — venta, UF/m²`,
@@ -274,7 +271,7 @@ function popupHtml(listing, marketUi) {
     ["Estacionamientos", fmt(listing.parking)],
     ["Gastos comunes", fmt(listing.gastos_comunes_clp) && "$" + fmt(listing.gastos_comunes_clp)],
     ["Barrio", listing.barrio],
-    ["Publicado desde", listing.first_seen_date],
+    ["Publicado", listing.publicado_fecha_est],
   ];
 
   const lines = rows
@@ -325,21 +322,9 @@ const m2Min = document.getElementById("m2-min");
 const m2Max = document.getElementById("m2-max");
 const ageMax = document.getElementById("age-max");
 const parkingOnly = document.getElementById("parking-only");
-const newOnly = document.getElementById("new-only");
 const bedroomButtons = [...document.querySelectorAll("#bedrooms-row button")];
 const marketButtons = [...document.querySelectorAll("#market-row button")];
 
-// dates counted as "hoy o ayer": the dataset date and the day before,
-// so the filter is stable regardless of when the map is opened
-const newSeenDates = new Set();
-{
-  const base = new Date(CONFIG.updated + "T00:00:00");
-  for (let d = 0; d <= 1; d++) {
-    const dt = new Date(base);
-    dt.setDate(dt.getDate() - d);
-    newSeenDates.add(dt.toISOString().slice(0, 10));
-  }
-}
 // set of selected bedroom counts (4 means "4 or more"); empty = show all
 const bedroomsSelected = new Set();
 
@@ -432,8 +417,6 @@ function applyFilters() {
       listing.m2_utiles <= Number(m2Max.value) &&
       (ageUnlimited || (listing._age != null && listing._age <= ageLimit)) &&
       (!parkingOnly.checked || listing.parking >= 1) &&
-      (!newOnly.checked ||
-        newSeenDates.has(String(listing.first_seen_date).slice(0, 10))) &&
       (bedroomsSelected.size === 0 ||
         (listing.bedrooms_n != null &&
           bedroomsSelected.has(Math.min(listing.bedrooms_n, 4))));
@@ -503,7 +486,7 @@ function renderMarket(key) {
   frameListings(markers.map(({ listing }) => [listing.lat, listing.lng]));
 }
 
-for (const input of [priceMin, priceMax, m2Min, m2Max, ageMax, parkingOnly, newOnly]) {
+for (const input of [priceMin, priceMax, m2Min, m2Max, ageMax, parkingOnly]) {
   input.addEventListener("input", applyFilters);
 }
 
