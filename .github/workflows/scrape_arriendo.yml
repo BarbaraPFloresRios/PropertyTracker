@@ -2,20 +2,20 @@ name: Scrape Rentals
 
 on:
   schedule:
-    # 23:00 UTC todos los dias = 20:00 Chile en verano (UTC-3), 19:00 en
-    # invierno. Mismo horario que scrape.yml a proposito: el runner self-hosted
-    # corre UN job a la vez, asi que arriendos queda encolado y arranca cuando
-    # ventas termina. La serializacion separa las dos rafagas de fetches sin
-    # tener que inventar un horario aparte (y un horario mas tarde arriesgaria
-    # caer fuera de la ventana en que la maquina esta despierta).
+    # 23:00 UTC daily = 20:00 in Chile during DST (UTC-3), 19:00 otherwise.
+    # Same time as scrape.yml on purpose: the self-hosted runner takes ONE job
+    # at a time, so rentals queue up and start when sales finish. That
+    # serialization spreads the two bursts of requests without inventing a
+    # separate schedule (and a later one would risk falling outside the window
+    # in which the machine is awake).
     #
-    # Paso de semanal a DIARIO el 2026-10-11: entran ~1.850 arriendos nuevos por
-    # semana, asi que una sola pasada semanal pedia ~1.940 fetches de golpe y,
-    # sumada a los ~2.200 de ventas esa misma noche, caia en la zona donde el
-    # portal estrangula (medido: ~4.000 fetches acumulados en un dia -> 429).
-    # Diario son ~264 avisos nuevos por run (~356 fetches): el total de la noche
-    # queda en ~2.550, cerca de los 2.192 que corrieron limpios, y la cola de
-    # enriquecimiento no se forma nunca.
+    # Moved from weekly to DAILY on 2026-10-11: ~1,850 new rentals arrive per
+    # week, so a single weekly pass asked for ~1,940 requests at once and, on
+    # top of the ~2,200 from the sales run that same night, landed in the range
+    # where the source throttles (measured: ~4,000 requests in a day -> 429).
+    # Daily means ~264 new listings per run (~356 requests): the night totals
+    # ~2,550, close to the 2,192 that ran clean, and the enrichment backlog
+    # never builds up.
     - cron: "0 23 * * *"
   workflow_dispatch:
 
@@ -24,23 +24,22 @@ permissions:
 
 jobs:
   scrape:
-    # Runner self-hosted: desde 2026-09-29 el portal
-    # responde HTTP 200 sin contenido a las IPs de datacenter de GitHub
-    # (busqueda Y fichas de detalle), asi que el scrape solo funciona
-    # desde una IP residencial chilena. Si el Mac esta dormido a la hora
-    # del cron, el job queda encolado y corre al despertar.
+    # Self-hosted runner: since 2026-09-29 the site answers HTTP 200 with no
+    # content to GitHub's datacenter IPs (both search and detail pages), so the
+    # scrape only works from a residential Chilean connection. If the machine
+    # is asleep at cron time the job queues and runs when it wakes up.
     runs-on: self-hosted
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # No se usa actions/setup-python: en un runner self-hosted de macOS el
-      # paquete que baja trae la ruta /Users/runner/hostedtoolcache hardcodeada
-      # en su script de instalacion (los binarios de Python llevan rutas
-      # absolutas embebidas), falla con "mkdir: /Users/runner: Permission
-      # denied" y ninguna variable de entorno lo redirige. En su lugar: un venv
-      # persistente con el Python de la maquina, que ademas se reusa entre runs.
+      # actions/setup-python is NOT used: on a self-hosted macOS runner the
+      # package it downloads has /Users/runner/hostedtoolcache hardcoded in its
+      # install script (Python binaries carry absolute paths), it fails with
+      # "mkdir: /Users/runner: Permission denied", and no environment variable
+      # redirects it. Instead: a persistent venv built from the machine's own
+      # Python, which also gets reused between runs.
       - name: Set up Python venv
         run: |
           VENV="$HOME/.venvs/propertytracker"
@@ -49,8 +48,8 @@ jobs:
             for c in python3.11 /usr/local/bin/python3 /opt/homebrew/bin/python3 python3; do
               if command -v "$c" >/dev/null 2>&1; then PY="$c"; break; fi
             done
-            if [ -z "$PY" ]; then echo "No encontre un python3"; exit 1; fi
-            echo "Creando venv con $PY ($($PY --version 2>&1))"
+            if [ -z "$PY" ]; then echo "No python3 found"; exit 1; fi
+            echo "Creating venv with $PY ($($PY --version 2>&1))"
             "$PY" -m venv "$VENV"
           fi
           "$VENV/bin/pip" install -q --disable-pip-version-check -r requirements.txt

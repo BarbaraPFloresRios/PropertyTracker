@@ -4,14 +4,14 @@ __pycache__/
 .DS_Store
 .claude/
 
-# --- capa personal: NO se versiona en este repo publico ---
-# El ranking y las preferencias de busqueda son el caso particular de una
-# persona (presupuesto, deptos descartados y por que, favoritos, visitas).
-# Este repo es el pipeline de datos generico: scrape -> enriquecimiento ->
-# mapa -> README. La capa de decision vive local.
+# --- personal layer: NOT versioned in this public repo ---
+# The ranking and the search preferences are one person's particular case
+# (budget, which flats were ruled out and why, favourites, viewings). This
+# repo is the generic data pipeline: scrape -> enrichment -> map -> README.
+# The decision layer stays local.
 scripts/rank_deptos.py
 perfil.yml
 
-# Analisis de una sola vez (comparaciones, escenarios, exploraciones).
-# Si algo de aca se vuelve estable y generico, recien ahi pasa a scripts/.
+# One-off analysis (comparisons, scenarios, explorations). Something moves
+# from here into scripts/ only once it's stable and generic.
 analysis/

@@ -27,15 +27,14 @@ from scrapers.portalinmobiliario import (
 
 ARRIENDO_OUTPUT_PATH = f"{RAW_DATA_DIR}/portalinmobiliario_rentals.csv"
 
-# Medido el 2026-10-11: entran ~1.850 arriendos nuevos por semana (1.825 el
-# 10-03, 1.882 el 10-10), asi que el tope anterior de 800 dejaba ~1.050 sin
-# enriquecer CADA semana -- deficit estructural, no mala suerte. Se sube para
-# cubrir la llegada real.
-# OJO: el techo de verdad no es esta constante sino el portal, que estrangula
-# (429) alrededor de las ~1.400 fichas seguidas. Un tope mas alto no corrompe
-# nada -- un fetch estrangulado devuelve None, el aviso queda sin
-# enriched_date y se reintenta al run siguiente -- pero tampoco garantiza que
-# se enriquezcan todos en una sola pasada.
+# Measured 2026-10-11: ~1,850 new rentals arrive per week (1,825 on 10-03,
+# 1,882 on 10-10), so the previous cap of 800 left ~1,050 unenriched EVERY
+# week -- a structural deficit, not bad luck. Raised to cover actual arrivals.
+# NOTE: the real ceiling isn't this constant, it's the source, which throttles
+# (429) past a few thousand requests in a day. A higher cap corrupts nothing --
+# a throttled fetch returns None, the listing keeps enriched_date unset and is
+# retried next run -- but it doesn't guarantee everything gets enriched in one
+# pass either.
 ENRICH_MAX_PER_RUN_ARRIENDO = 2000
 
 
@@ -122,13 +121,13 @@ def run_arriendo_pipeline():
     print_section("Portalinmobiliario (arriendo)")
     listings = scrape_portalinmobiliario(SEARCHES_ARRIENDO)
 
-    # mismo criterio que en run_pipeline(): vacio = fuente bloqueada, no
-    # "sin novedades". Aca no hay mapa que proteger, pero igual queremos
-    # que el run falle en vez de pasar en silencio.
+    # Same rule as run_pipeline(): empty means the source is blocking us, not
+    # that there's nothing new. There's no map to protect here, but the run
+    # should still fail loudly instead of passing silently.
     if listings.empty:
         raise RuntimeError(
-            "Scrape de arriendo vacio (0 listings): la fuente respondio sin "
-            "contenido. Revisar si la IP del runner esta bloqueada."
+            "Empty rental scrape (0 listings): the source answered with no "
+            "content. Check whether the runner's IP is blocked."
         )
 
     print_phase("Processing results")

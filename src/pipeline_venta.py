@@ -227,13 +227,13 @@ def build_recent_listings():
         na_position="last",
     )
 
-    # zona_uf_m2 NO se exporta: es el widget "Promedio en la zona" del portal,
-    # no una tasacion. Sesgo al alza -- en 66% de los avisos activos queda
-    # ARRIBA del precio que pide ese mismo aviso (brecha mediana +10,6%), y de
-    # 1.839 edificios con 3+ avisos en coordenada identica, 66% tiene mas de un
-    # valor distinto (hasta 92 UF/m2 de diferencia dentro del MISMO edificio).
-    # Si cambia por aviso, no describe la zona. Se sigue guardando en el CSV
-    # crudo, pero no se muestra en ninguna salida.
+    # zona_uf_m2 is deliberately NOT exported: it's the site's own "Promedio en
+    # la zona" widget, not a valuation. It skews high -- for 66% of active
+    # listings it sits ABOVE the asking price of that same listing (median gap
+    # +10.6%), and of 1,839 buildings with 3+ listings at identical
+    # coordinates, 66% carry more than one value (up to 92 UF/m2 apart within
+    # the SAME building). A figure that varies per listing doesn't describe the
+    # area. Still stored in the raw CSV, just never shown in any output.
     columns = [
         "title",
         "price_uf",
@@ -260,18 +260,18 @@ def run_pipeline():
     print_section("Portalinmobiliario")
     listings = scrape_portalinmobiliario()
 
-    # Un scrape vacio no es "cero avisos nuevos": es la fuente devolviendo
-    # HTTP 200 sin contenido, que es como se ve el bloqueo por IP de datacenter
-    # (visto desde los runners de GitHub desde 2026-09-29). Si seguimos, el run
-    # reconstruye recent_listings/mapa/README desde un CSV congelado y, como la
-    # ventana de RECENT_DAYS igual avanza, PUBLICA UN MAPA QUE SE VACIA SOLO
-    # mientras el badge queda verde. Abortar deja publicado el ultimo mapa bueno
-    # y pone el run en rojo, que es la senal que queremos.
+    # An empty scrape is not "no new listings": it's the source answering
+    # HTTP 200 with no content, which is what a datacenter-IP block looks like
+    # here (seen from GitHub's hosted runners since 2026-09-29). Carrying on
+    # would rebuild recent_listings/map/README from a frozen dataset and, since
+    # the RECENT_DAYS window keeps moving, PUBLISH A MAP THAT EMPTIES ITSELF
+    # while the badge stays green. Aborting leaves the last good map published
+    # and turns the run red, which is the signal we want.
     if listings.empty:
         raise RuntimeError(
-            "Scrape vacio (0 listings): la fuente respondio sin contenido. "
-            "No se reconstruyen recent_listings/mapa/README para no publicar "
-            "datos decaidos. Revisar si la IP del runner esta bloqueada."
+            "Empty scrape (0 listings): the source answered with no content. "
+            "Skipping the recent_listings/map/README rebuild so stale data "
+            "isn't published. Check whether the runner's IP is blocked."
         )
 
     print_phase("Processing results")

@@ -60,12 +60,12 @@ def generate_readme():
     with open(README_PATH, encoding="utf-8") as f:
         readme = f.read()
 
-    # El texto se arma desde las constantes del pipeline a proposito: antes
-    # estaba escrito a mano y quedo desfasado -- decia "first seen in the last
-    # 14 days" y "published within the last 30 days" cuando el filtro ya era
-    # por fecha de PUBLICACION y el tope de 30 dias se habia eliminado.
-    # Import diferido: src/pipeline.py importa este modulo, asi que uno a
-    # nivel de modulo seria circular.
+    # Built from the pipeline constants on purpose: this caption used to be
+    # hand-written and had drifted -- it claimed "first seen in the last 14
+    # days" and "published within the last 30 days" when the filter was already
+    # by PUBLICATION date and the 30-day cap had been removed.
+    # Deferred import: pipeline_venta imports this module, so a module-level
+    # one would be circular.
     from src.pipeline_venta import RECENT_DAYS, RECENT_MAX_M2, RECENT_MAX_PRICE_CLP
 
     criterios = (

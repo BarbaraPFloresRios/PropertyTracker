@@ -2,12 +2,12 @@ name: Scrape Listings
 
 on:
   schedule:
-    # 23:00 UTC = 20:00 Chile en verano (UTC-3), 19:00 en invierno (UTC-4).
-    # Elegido asi a proposito: el runner self-hosted vive en una maquina personal,
-    # esta despierto aprox. entre las 19:00 y 22:00. Un cron de madrugada o
-    # de manana queda encolado hasta que abre la tapa, asi que no sirve de nada
-    # tener dos pasadas al dia. Con una alcanza: el scrape relee la ventana
-    # completa (~2.000 por comuna, varios dias de holgura), no es incremental.
+    # 23:00 UTC = 20:00 in Chile during DST (UTC-3), 19:00 otherwise (UTC-4).
+    # Chosen deliberately: the self-hosted runner lives on a personal machine
+    # that is awake roughly between 19:00 and 22:00. A cron at night or in the
+    # morning just queues until the lid is opened, so a second daily pass buys
+    # nothing. One is enough -- the scrape re-reads the whole window (~2,000
+    # per comuna, several days of slack), it isn't incremental.
     - cron: "0 23 * * *"
   workflow_dispatch:
 
@@ -16,23 +16,22 @@ permissions:
 
 jobs:
   scrape:
-    # Runner self-hosted: desde 2026-09-29 el portal
-    # responde HTTP 200 sin contenido a las IPs de datacenter de GitHub
-    # (busqueda Y fichas de detalle), asi que el scrape solo funciona
-    # desde una IP residencial chilena. Si el Mac esta dormido a la hora
-    # del cron, el job queda encolado y corre al despertar.
+    # Self-hosted runner: since 2026-09-29 the site answers HTTP 200 with no
+    # content to GitHub's datacenter IPs (both search and detail pages), so the
+    # scrape only works from a residential Chilean connection. If the machine
+    # is asleep at cron time the job queues and runs when it wakes up.
     runs-on: self-hosted
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      # No se usa actions/setup-python: en un runner self-hosted de macOS el
-      # paquete que baja trae la ruta /Users/runner/hostedtoolcache hardcodeada
-      # en su script de instalacion (los binarios de Python llevan rutas
-      # absolutas embebidas), falla con "mkdir: /Users/runner: Permission
-      # denied" y ninguna variable de entorno lo redirige. En su lugar: un venv
-      # persistente con el Python de la maquina, que ademas se reusa entre runs.
+      # actions/setup-python is NOT used: on a self-hosted macOS runner the
+      # package it downloads has /Users/runner/hostedtoolcache hardcoded in its
+      # install script (Python binaries carry absolute paths), it fails with
+      # "mkdir: /Users/runner: Permission denied", and no environment variable
+      # redirects it. Instead: a persistent venv built from the machine's own
+      # Python, which also gets reused between runs.
       - name: Set up Python venv
         run: |
           VENV="$HOME/.venvs/propertytracker"
@@ -41,8 +40,8 @@ jobs:
             for c in python3.11 /usr/local/bin/python3 /opt/homebrew/bin/python3 python3; do
               if command -v "$c" >/dev/null 2>&1; then PY="$c"; break; fi
             done
-            if [ -z "$PY" ]; then echo "No encontre un python3"; exit 1; fi
-            echo "Creando venv con $PY ($($PY --version 2>&1))"
+            if [ -z "$PY" ]; then echo "No python3 found"; exit 1; fi
+            echo "Creating venv with $PY ($($PY --version 2>&1))"
             "$PY" -m venv "$VENV"
           fi
           "$VENV/bin/pip" install -q --disable-pip-version-check -r requirements.txt
