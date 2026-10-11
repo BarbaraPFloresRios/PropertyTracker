@@ -66,7 +66,7 @@ def generate_readme():
     # por fecha de PUBLICACION y el tope de 30 dias se habia eliminado.
     # Import diferido: src/pipeline.py importa este modulo, asi que uno a
     # nivel de modulo seria circular.
-    from src.pipeline import RECENT_DAYS, RECENT_MAX_M2, RECENT_MAX_PRICE_CLP
+    from src.pipeline_venta import RECENT_DAYS, RECENT_MAX_M2, RECENT_MAX_PRICE_CLP
 
     criterios = (
         f"published in the last {RECENT_DAYS} days, "

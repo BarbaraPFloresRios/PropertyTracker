@@ -47,7 +47,7 @@ def comuna_display(slug):
 
 def load_recent():
     # deferred import: pipeline imports this module at load time
-    from src.pipeline import recent_mask
+    from src.pipeline_venta import recent_mask
 
     df = pd.read_csv(RAW_CSV)
 

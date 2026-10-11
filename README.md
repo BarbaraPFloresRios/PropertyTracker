@@ -4,7 +4,7 @@
 
 A real estate listing monitor built in Python. PropertyTracker scrapes apartment listings from [Portal Inmobiliario](https://www.portalinmobiliario.com) (Chile's largest real estate marketplace, owned by MercadoLibre), maintains a historical dataset of listings and prices, and detects newly published properties and price changes over time.
 
-The long-term goal is to use this growing dataset to **detect personal real estate investment opportunities**: undervalued listings, price drops, and neighborhoods trending above or below their historical price per m².
+This repository is the **data pipeline**: it collects, enriches and publishes the dataset. The goal is for that dataset to support detecting investment opportunities — undervalued listings, price drops, and neighborhoods trending above or below their historical price per m². Any ranking built on personal criteria (budget, preferred area, shortlist) is deliberately kept out of this repo and lives locally.
 
 ## Interactive map
 
@@ -58,13 +58,17 @@ Each run:
 * Reports **truly new listings** and **price changes** since the last run
 * Tracks `first_seen_date`, `last_seen_date` and `first_seen_price` per listing
 * Stores the full history in `data/raw/portalinmobiliario_listings.csv`
-* Exports listings discovered in the last 14 days (under 150 m², sorted by UF/m²) to `data/recent_listings.csv`
+* Re-checks the currently published set and flags listings whose detail page now reads *"Publicación finalizada"*
+* Exports the **recent set** to `data/recent_listings.csv`: published in the last 14 days, under 150 m², under $500M CLP, and still live (the thresholds are the `RECENT_*` constants in `src/pipeline.py`, and the README table caption is generated from them so it cannot drift)
+
+There are two independent pipelines, each with its own entry point, its own CSV and its own schedule. Nothing in one touches the other's files:
 
 ```bash
-python3 main.py
+python3 main.py            # sale listings  -> data/raw/portalinmobiliario_listings.csv (+ map + README)
+python3 main_arriendo.py   # rental listings -> data/raw/portalinmobiliario_rentals.csv
 ```
 
-The exact publication date is not public on the site, so `first_seen_date` approximates it with one-day precision when the tracker runs daily — building a timestamped dataset that doesn't exist anywhere else.
+**On publication dates.** The site never exposes an exact one, but each detail page says *"Publicado hoy / ayer / hace N días"*. That text is parsed into `publicado_fecha_est` (`publicado_hace` keeps the raw string), which is precise to the day for anything published within the last month. This matters because listings rotate into the newest-first search window months after being published: filtering by `first_seen_date` would label them as new, which is why the recent set filters by publication date instead.
 
 ## Data captured
 
@@ -83,22 +87,31 @@ The dataset this tracker accumulates is designed to feed machine learning models
 
 ## Configuration
 
-Searches are defined in `scrapers/portalinmobiliario.py` (`SEARCHES`). To add rentals or other comunas:
+Searches live in `scrapers/portalinmobiliario.py`: `SEARCHES` for sales and `SEARCHES_ARRIENDO` for rentals. Both currently cover three comunas — Providencia, Las Condes and Santiago Centro:
 
 ```python
 SEARCHES = [
     {"operation": "venta", "property_type": "departamento", "location": "providencia-metropolitana"},
-    {"operation": "arriendo", "property_type": "departamento", "location": "providencia-metropolitana"},
+    # ... las-condes-metropolitana, santiago-metropolitana
 ]
 ```
 
-The `location` slug is the one that appears in the site URL when searching for a comuna.
+Adding a comuna is one entry in that list and nothing else: the display name, the map title, the README table and the filters are all derived from the data. The `location` slug is the one that appears in the site URL when searching for a comuna.
+
+## Automation
+
+Both pipelines run daily at 23:00 UTC (20:00 in Chile during DST, 19:00 otherwise) via GitHub Actions — `.github/workflows/scrape.yml` and `scrape_arriendo.yml` — and commit their own data.
+
+They run on a **self-hosted runner**, not on GitHub's hosted ones: since 2026-09-29 the site answers HTTP 200 with no content to datacenter IPs, for both search pages and detail pages, so the scrape only works from a residential connection. The runner takes one job at a time, so the two pipelines serialize instead of hammering the site in parallel.
+
+A guard aborts the run if the scrape comes back empty. An empty scrape is not "no new listings", it's the source refusing to answer — and continuing would rebuild the recent set, the map and the README from a frozen dataset, quietly publishing a map that empties itself as the 14-day window moves while the badge stayed green.
 
 ## Notes
 
 * Paid placements (`is_pad`) are excluded: they often belong to other comunas and duplicate organic results
 * For new developments, m² comes as a range, so `uf_per_m2` is only computed for listings with a single m² value
-* One daily run with a 1-second pause between pages (~70 requests) keeps the load on the site respectful
+* One run per pipeline per day, sequential, with a pause between requests. A sale run is roughly 126 search pages (42 per comuna, the site's pagination cap) plus up to 300 detail pages for enrichment and ~1,900 for the re-check; a rental run is ~92 search pages plus enrichment
+* Detail pages are fetched once per listing and cached, and the source throttles (HTTP 429) past a few thousand requests in a day — which is why enrichment is capped per run and the pipelines are spread across the evening rather than bunched up
 
 ## Status
 
