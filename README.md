@@ -43,10 +43,10 @@ _Top 30 by UF/m² among listings published in the last 90 days, still live. Upda
 | [Departamento En Venta De 4 Dorm.3 Baños 160 M2 En Santiago](https://www.portalinmobiliario.com/MLC-4557232746-departamento-en-venta-de-4-dorm3-banos-160-m2-en-santiago-_JM) | 3,600 | $148,109,508 | 130 | 27.69 | 4 | 0 | $0 | 2026-10-09 |
 | [Cesión De Promesa De Cv De Depto Nuevo Entrega En Dic-2026](https://www.portalinmobiliario.com/MLC-4536724996-cesion-de-promesa-de-cv-de-depto-nuevo-entrega-en-dic-2026-_JM) | 1,800 | $74,054,754 | 64 | 28.12 | 2 | 1 |  | 2026-10-03 |
 | [Oportunidad De Inversión En El Corazón De Santiago $65 Mm](https://www.portalinmobiliario.com/MLC-2293289251-oportunidad-de-inversion-en-el-corazon-de-santiago-65-mm-_JM) | 1,580 | $65,000,000 | 56 | 28.21 | 2 | 0 |  | 2026-10-02 |
+| [Venta Departamento Santiago De 3 Dorm 2 Baños Antiguo Piso 1](https://www.portalinmobiliario.com/MLC-4567549122-venta-departamento-santiago-de-3-dorm-2-banos-antiguo-piso-1-_JM) | 2,674 | $110,000,000 | 94 | 28.44 | 3 | 0 | $68,000 | 2026-08-21 |
 | [Venta Departamento Santiago De 3 Dorm 2 Baños Antiguo Piso 1](https://www.portalinmobiliario.com/MLC-2316023383-venta-departamento-santiago-de-3-dorm-2-banos-antiguo-piso-1-_JM) | 2,674 | $110,000,000 | 94 | 28.45 | 3 | 0 | $68,000 | 2026-08-21 |
 | [Venta Departamento 4d Centro Histórico - Santiago](https://www.portalinmobiliario.com/MLC-4543942130-venta-departamento-4d-centro-historico-santiago-_JM) | 3,330 | $137,000,000 | 116 | 28.71 | 4 | 0 | $150,000 | 2026-10-05 |
 | [Se Remata Departamento Santiago Centro](https://www.portalinmobiliario.com/MLC-4552202306-se-remata-departamento-santiago-centro-_JM) | 1,580 | $65,000,000 | 55 | 28.73 | 2 | 0 | $75,000 | 2026-10-08 |
-| [Depto En Santiago Centro: Oportunidad Inversión (171236)](https://www.portalinmobiliario.com/MLC-2312819831-depto-en-santiago-centro-oportunidad-inversion-171236-_JM) | 1,823 | $75,000,000 | 62 | 29.40 | 3 | 0 | $60,000 | 2026-08-19 |
 <!-- RECENT_LISTINGS:END -->
 
 ## How it works
