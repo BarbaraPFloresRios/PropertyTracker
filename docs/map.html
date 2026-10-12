@@ -142,6 +142,11 @@
   #legend .bar { height: 10px; border-radius: 3px; margin: 4px 0 2px; }
   #legend .labels { display: flex; justify-content: space-between; }
 
+  /* The filters live in a <details> so a phone can fold them away. On a
+     desktop there is room for them, so the control that folds them is the
+     only thing hidden -- the panel itself looks exactly as it did. */
+  #filters > summary { display: none; }
+
   /* Desktop keeps the two top panels independently fixed, so #controls must
      not introduce a box of its own. */
   #controls { display: contents; }
@@ -170,10 +175,68 @@
       transform: none;
       min-width: 0;
     }
-    #title-panel .title { font-size: 14px; }
+    /* Everything below is sized for a finger and a phone screen, not for a
+       cursor on a desktop. The 12px panel text and the 16px slider thumbs
+       that the desktop layout uses are unreadable and barely tappable here;
+       the usual guidance for a touch target is ~44px. */
+    #title-panel .title { font-size: 17px; }
+    #title-panel .subtitle { font-size: 13px; line-height: 1.35; }
+
     /* the filters are the part that can grow without bound, so they are the
        part that scrolls */
-    #filter-panel { overflow-y: auto; padding: 8px 14px 10px; }
+    #filter-panel {
+      overflow-y: auto;
+      padding: 10px 16px 14px;
+      font-size: 15px;
+    }
+    #filter-panel label { margin-top: 14px; }
+    #filter-panel .checkbox-row { margin-top: 16px; }
+    #filter-panel .checkbox-row input { width: 20px; height: 20px; }
+
+    #bedrooms-row, #market-row { gap: 8px; margin-top: 8px; }
+    #bedrooms-row button, #market-row button {
+      padding: 11px 0;
+      font-size: 15px;
+      border-radius: 7px;
+    }
+
+    /* a taller row gives the thumb somewhere to grow into */
+    .dual { height: 40px; }
+    .dual .track, .dual .fill { height: 6px; border-radius: 3px; }
+    .dual input::-webkit-slider-thumb { width: 28px; height: 28px; }
+    .dual input::-moz-range-thumb { width: 24px; height: 24px; }
+
+    /* on a phone the filters start folded: open, they leave barely a third
+       of the screen for the map, which is the thing the page is for */
+    #filters > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 6px 0;
+      cursor: pointer;
+    }
+    /* display:flex drops the native disclosure marker, so the affordance has
+       to be drawn: without it the row reads as a dead label, not a control */
+    #filters > summary::-webkit-details-marker { display: none; }
+    #filters > summary::after {
+      content: "";
+      width: 9px;
+      height: 9px;
+      margin-right: 4px;
+      border-right: 2px solid #52514e;
+      border-bottom: 2px solid #52514e;
+      transform: rotate(45deg) translate(-2px, -2px);
+      transition: transform .15s;
+    }
+    #filters[open] > summary::after {
+      transform: rotate(225deg) translate(-2px, -2px);
+    }
+    #filters[open] > summary { margin-bottom: 2px; }
+
+    #legend { font-size: 13px; padding: 10px 16px 12px; }
+    #legend .bar { height: 14px; }
     /* clear of Leaflet's attribution bar, which sits flush at the bottom and
        is the one element on the map we are not free to cover. On a narrow
        screen that bar wraps to two lines and spans the full width, so it is
@@ -200,6 +263,8 @@
 </div>
 
 <div id="filter-panel" class="panel">
+  <details id="filters" open>
+  <summary>Filtros</summary>
   <label><span id="price-label">Precio</span> <span class="range-value" id="price-value"></span></label>
   <div class="dual">
     <div class="track"></div><div class="fill" id="price-fill"></div>
@@ -227,6 +292,7 @@
   <div class="checkbox-row">
     <label><input type="checkbox" id="parking-only" autocomplete="off"> Solo con estacionamiento</label>
   </div>
+  </details>
 </div>
 </div>
 
@@ -550,6 +616,19 @@ for (const btn of marketButtons) {
   }
   btn.addEventListener("click", () => renderMarket(btn.dataset.market));
 }
+
+// The filters ship open so the page still works without this script, and so
+// a desktop never sees them folded. A phone gets them folded: left open they
+// cover most of the map.
+const filters = document.getElementById("filters");
+const narrow = window.matchMedia("(max-width: 600px)");
+if (narrow.matches) filters.open = false;
+
+// A closed <details> has no layout, so the slider fills measure 0 wide while
+// it is folded. Recompute them the moment it opens.
+filters.addEventListener("toggle", () => {
+  if (filters.open) applyFilters();
+});
 
 requestAnimationFrame(() => renderMarket("venta"));
 </script>
