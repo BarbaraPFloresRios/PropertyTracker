@@ -142,6 +142,45 @@
   #legend .bar { height: 10px; border-radius: 3px; margin: 4px 0 2px; }
   #legend .labels { display: flex; justify-content: space-between; }
 
+  /* Desktop keeps the two top panels independently fixed, so #controls must
+     not introduce a box of its own. */
+  #controls { display: contents; }
+
+  /* Phones. Every panel was positioned with fixed coordinates chosen for a
+     wide window: the title centred at top:10 and the filters pinned at
+     top:70. A long title wraps to three lines on a narrow screen and runs
+     straight under the filter panel. Stacking them in one flow column means
+     neither has to guess the other's height. */
+  @media (max-width: 600px) {
+    #controls {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: fixed;
+      z-index: 1000;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      /* leave the lower half of the map visible and reachable */
+      max-height: 62vh;
+    }
+    #controls .panel {
+      position: static;
+      width: auto;
+      transform: none;
+      min-width: 0;
+    }
+    #title-panel .title { font-size: 14px; }
+    /* the filters are the part that can grow without bound, so they are the
+       part that scrolls */
+    #filter-panel { overflow-y: auto; padding: 8px 14px 10px; }
+    /* clear of Leaflet's attribution bar, which sits flush at the bottom and
+       is the one element on the map we are not free to cover. On a narrow
+       screen that bar wraps to two lines and spans the full width, so it is
+       ~34px tall rather than the ~17px it takes on a desktop. */
+    #legend { bottom: 44px; left: 10px; right: auto; }
+  }
+
   .popup { font-family: system-ui, sans-serif; font-size: 13px; min-width: 220px; }
   .popup a { font-weight: 600; }
   .popup .rows { margin-top: 6px; }
@@ -150,6 +189,7 @@
 <body>
 <div id="map"></div>
 
+<div id="controls">
 <div id="title-panel" class="panel">
   <div class="title" id="title"></div>
   <div class="subtitle" id="subtitle"></div>
@@ -187,6 +227,7 @@
   <div class="checkbox-row">
     <label><input type="checkbox" id="parking-only" autocomplete="off"> Solo con estacionamiento</label>
   </div>
+</div>
 </div>
 
 <div id="legend" class="panel">
