@@ -43,12 +43,21 @@ RECENT_MAX_M2 = None
 RECENT_MAX_PRICE_CLP = None
 
 # The 'finalizada' re-check keeps its OWN, narrower window, because unlike the
-# others it costs one request per listing and is not capped. Following
-# RECENT_DAYS would take a run from ~2,030 re-checks to ~5,886, and the source
-# starts answering 429 somewhere past ~4,000 cumulative requests in a day (32
-# of them already showed up in the 2026-10-11 run at ~2,000). Listings outside
-# this window still lose their delisted_date through the not-seen heuristic,
-# just a few days later.
+# others it costs one request per listing and is not capped: following
+# RECENT_DAYS would take a run from ~2,030 re-checks to ~5,886.
+#
+# What the source actually does, measured on the 2026-10-11 run: sequential
+# fetches at 1.5s draw a steady ~2% of 429s (32 in 1,753 re-checks), spread
+# evenly from the ~565th request of the run to the last, with no ramp. That is
+# a rate, not a daily quota -- a quota would show nothing and then a wall --
+# and the run finished every re-check regardless. The real wall is
+# concurrency: four parallel workers ran clean to ~1,360 fetches and then took
+# 420 consecutive 403s, which lifted on its own in ~5 minutes.
+#
+# So tripling the re-check count would not hit a cliff, it would just triple a
+# ~40-minute run that already has to finish inside one evening. Listings
+# outside this window still lose their delisted_date through the not-seen
+# heuristic, just a few days later.
 VERIFY_DAYS = 14
 
 ENRICH_MAX_PER_RUN = 300
