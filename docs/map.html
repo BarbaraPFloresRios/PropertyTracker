@@ -630,7 +630,20 @@ filters.addEventListener("toggle", () => {
   if (filters.open) applyFilters();
 });
 
-requestAnimationFrame(() => renderMarket("venta"));
+// The first render is deferred one frame so the panels have laid out before
+// fitBounds measures the map container. requestAnimationFrame alone was not
+// enough: a hidden tab never paints, so opening the map with cmd-click left
+// the controls empty and the map blank until the tab was focused. setTimeout
+// still fires there (background tabs throttle it, they do not stop it), so
+// whichever lands first wins and the other finds the work already done.
+let rendered = false;
+const renderFirst = () => {
+  if (rendered) return;
+  rendered = true;
+  renderMarket("venta");
+};
+requestAnimationFrame(renderFirst);
+setTimeout(renderFirst, 200);
 </script>
 
 </body>
