@@ -22,6 +22,18 @@ on:
 permissions:
   contents: write
 
+# Both workflows share one self-hosted runner and both push to main, so they
+# must never overlap. The group name is deliberately the same in both files:
+# it serialises them against each other, not just against themselves.
+#
+# What this does NOT do is skip duplicate work. A cron that GitHub dispatches
+# hours late (measured: 4.6h average, never under 1.7h) still runs after the
+# one it collided with, it just waits its turn. cancel-in-progress stays false
+# because the alternative is killing a 40-minute run at minute 39.
+concurrency:
+  group: propertytracker-scrape
+  cancel-in-progress: false
+
 jobs:
   scrape:
     # Self-hosted runner: since 2026-09-29 the site answers HTTP 200 with no
