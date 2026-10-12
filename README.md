@@ -100,7 +100,7 @@ Adding a comuna is one entry in that list and nothing else: the display name, th
 
 ## Automation
 
-Both pipelines run daily at 23:00 UTC (20:00 in Chile during DST, 19:00 otherwise) via GitHub Actions — `.github/workflows/scrape.yml` and `scrape_arriendo.yml` — and commit their own data.
+Both pipelines run daily via GitHub Actions — `.github/workflows/scrape.yml` and `scrape_arriendo.yml` — and commit their own data. They run on a self-hosted runner, triggered from that machine at 20:00 local (rentals first, so the map the sale pipeline builds carries the same night's rental layer). The `schedule:` block in each workflow is a backup at 00:30 UTC, an hour and a half later, for nights the machine missed.
 
 They run on a **self-hosted runner**, not on GitHub's hosted ones: since 2026-09-29 the site answers HTTP 200 with no content to datacenter IPs, for both search pages and detail pages, so the scrape only works from a residential connection. The runner takes one job at a time, so the two pipelines serialize instead of hammering the site in parallel.
 

@@ -2,21 +2,27 @@ name: Scrape Rentals
 
 on:
   schedule:
-    # 23:00 UTC daily = 20:00 in Chile during DST (UTC-3), 19:00 otherwise.
-    # Same time as scrape.yml on purpose: the self-hosted runner takes ONE job
-    # at a time, so rentals queue up and start when sales finish. That
-    # serialization spreads the two bursts of requests without inventing a
-    # separate schedule (and a later one would risk falling outside the window
-    # in which the machine is awake).
+    # BACKUP ONLY, same as scrape.yml -- see the rationale there. The primary
+    # trigger is the launchd agent on the runner's Mac, which runs THIS
+    # workflow first and the sale one after it: the map is built by the sale
+    # pipeline reading both CSVs, so rentals landing second publishes a map
+    # carrying the previous rental layer.
     #
-    # Moved from weekly to DAILY on 2026-10-11: ~1,850 new rentals arrive per
-    # week, so a single weekly pass asked for ~1,940 requests at once and, on
-    # top of the ~2,200 from the sales run that same night, landed in the range
-    # where the source throttles (measured: ~4,000 requests in a day -> 429).
-    # Daily means ~264 new listings per run (~356 requests): the night totals
-    # ~2,550, close to the 2,192 that ran clean, and the enrichment backlog
-    # never builds up.
-    - cron: "0 23 * * *"
+    # 00:30 UTC = 21:30 in Chile during DST (UTC-3), 20:30 otherwise.
+    #
+    # Weekly -> DAILY on 2026-10-11: ~1,850 new rentals arrive per week, so one
+    # weekly pass asked for ~1,940 requests in a single burst. Daily spreads it
+    # to ~264 new listings per run (~356 requests) and keeps the enrichment
+    # backlog from building up.
+    #
+    # An earlier version of this comment blamed the burst on a "~4,000 requests
+    # per day" ceiling. That number was never measured and the data contradicts
+    # it: counting where the 429s fall, they start at the ~565th request of a
+    # run and continue at a flat ~2% to the end, with no ramp -- a rate, not a
+    # quota. The wall that does exist is concurrency (four parallel workers ran
+    # clean to ~1,360 fetches, then took 420 consecutive 403s), which is why
+    # every fetch here stays sequential.
+    - cron: "30 0 * * *"
   workflow_dispatch:
 
 permissions:

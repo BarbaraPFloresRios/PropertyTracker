@@ -2,13 +2,19 @@ name: Scrape Listings
 
 on:
   schedule:
-    # 23:00 UTC = 20:00 in Chile during DST (UTC-3), 19:00 otherwise (UTC-4).
-    # Chosen deliberately: the self-hosted runner lives on a personal machine
-    # that is awake roughly between 19:00 and 22:00. A cron at night or in the
-    # morning just queues until the lid is opened, so a second daily pass buys
-    # nothing. One is enough -- the scrape re-reads the whole window (~2,000
-    # per comuna, several days of slack), it isn't incremental.
-    - cron: "0 23 * * *"
+    # BACKUP ONLY. The primary trigger is a launchd agent on the runner's own
+    # Mac that fires at 20:00 local -- see propertytracker-nightly.sh. GitHub's
+    # scheduler was measured on this repo at 4.6h average delay, never under
+    # 1.7h, so it cannot be relied on to land inside the window when that Mac
+    # is awake. On 2026-10-11 the two scheduled runs showed both failure modes
+    # in one night: the rentals job started at 04:58 local and died with no
+    # network, and the sale job sat queued for 11 hours.
+    #
+    # 00:30 UTC = 21:30 in Chile during DST (UTC-3), 20:30 otherwise (UTC-4) --
+    # an hour and a half after the local launcher, so this only does real work
+    # on nights the launcher did not. The :30 is deliberate too: the top of the
+    # hour is the most congested slot in GitHub's queue.
+    - cron: "30 0 * * *"
   workflow_dispatch:
 
 permissions:
