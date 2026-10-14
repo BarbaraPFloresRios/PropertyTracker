@@ -60,7 +60,12 @@ RECENT_MAX_PRICE_CLP = None
 # heuristic, just a few days later.
 VERIFY_DAYS = 14
 
-ENRICH_MAX_PER_RUN = 300
+# 300 stopped being enough when the map widened the window: the pending queue
+# went 448 -> 536 -> 557 over three runs on 11-12 Oct 2026, so each run cleared
+# 300 while more than 300 arrived, and the overflow stays without coordinates,
+# invisible to both the map and the ranking. At 0.5s a fetch, doubling the cap
+# costs about five minutes a run and eats the backlog in two or three nights.
+ENRICH_MAX_PER_RUN = 600
 
 
 def recent_mask(
