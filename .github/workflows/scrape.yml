@@ -65,8 +65,12 @@ jobs:
           "$VENV/bin/pip" install -q --disable-pip-version-check -r requirements.txt
           echo "$VENV/bin" >> "$GITHUB_PATH"
 
+      # caffeinate -i holds off idle sleep only while the scraper runs. Without
+      # it the Mac slept mid-run on 11 consecutive runs (2026-10-21..30) and the
+      # job died with "runner lost communication"; the nightly launcher's own
+      # caffeinate does not cover runs started by the backup cron.
       - name: Run scraper
-        run: python main.py
+        run: caffeinate -i python main.py
 
       - name: Commit and push changes
         run: |

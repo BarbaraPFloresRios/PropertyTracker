@@ -74,7 +74,8 @@ jobs:
           echo "$VENV/bin" >> "$GITHUB_PATH"
 
       - name: Run rental scraper
-        run: python main_arriendo.py
+        # caffeinate -i: see the note in scrape.yml (Mac slept mid-run).
+        run: caffeinate -i python main_arriendo.py
 
       - name: Commit and push changes
         run: |
